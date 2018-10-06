@@ -33,7 +33,7 @@ import {
 } from '@coreui/angular';
 
 // Import routing module
-import { AppRoutingModule } from './app.routing';
+import { AppRoutingModule } from './app-routing.module';
 
 // Import 3rd party components
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
@@ -66,6 +66,6 @@ import { ChartsModule } from 'ng2-charts/ng2-charts';
     provide: LocationStrategy,
     useClass: HashLocationStrategy
   }],
-  bootstrap: [ AppComponent ]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
