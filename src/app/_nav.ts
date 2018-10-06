@@ -2,6 +2,50 @@ export const navItems = [
   {
     name: 'Dashboard',
     url: '/dashboard',
+    icon: 'cui-dashboard'
+  },
+  {
+    name: 'Buildzuweisung',
+    url: '/dashboard',
+    icon: 'cui-layers'
+  },
+  {
+    name: 'Lampenverwaltung',
+    url: '/dashboard',
+    icon: 'cui-lightbulb'
+  },
+  {
+    name: 'Bridgeverwaltung',
+    url: '/dashboard',
+    icon: 'cui-globe'
+  },
+  {
+    name: 'Benutzerverwaltung',
+    url: '/dashboard',
+    icon: 'cui-user'
+  },
+  {
+    name: 'Teamverwaltung',
+    url: '/dashboard',
+    icon: 'cui-people'
+  },
+  {
+    name: 'Teameinstellungen',
+    url: '/dashboard',
+    icon: 'cui-settings'
+  },
+  {
+    name: 'Farbentest',
+    url: '/dashboard',
+    icon: 'cui-brush'
+  },
+  {
+    title: true,
+    name: 'Preinstalled pages'
+  },
+  {
+    name: 'Dashboard',
+    url: '/dashboard',
     icon: 'icon-speedometer',
     badge: {
       variant: 'info',
