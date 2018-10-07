@@ -21,7 +21,7 @@ export const navItems = [
   },
   {
     name: 'Benutzerverwaltung',
-    url: '/dashboard',
+    url: '/user-management',
     icon: 'cui-user'
   },
   {
