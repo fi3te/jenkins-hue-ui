@@ -31,7 +31,7 @@ export const navItems = [
   },
   {
     name: 'Teameinstellungen',
-    url: '/dashboard',
+    url: '/team-settings',
     icon: 'cui-settings'
   },
   {

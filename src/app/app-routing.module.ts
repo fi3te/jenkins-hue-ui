@@ -75,6 +75,10 @@ export const routes: Routes = [
         loadChildren: './team-management/team-management.module#TeamManagementModule'
       },
       {
+        path: 'team-settings',
+        loadChildren: './team-settings/team-settings.module#TeamSettingsModule'
+      },
+      {
         path: 'base',
         loadChildren: './views/base/base.module#BaseModule'
       },
