@@ -79,6 +79,10 @@ export const routes: Routes = [
         loadChildren: './team-settings/team-settings.module#TeamSettingsModule'
       },
       {
+        path: 'color-test',
+        loadChildren: './color-test/color-test.module#ColorTestModule'
+      },
+      {
         path: 'base',
         loadChildren: './views/base/base.module#BaseModule'
       },

@@ -36,7 +36,7 @@ export const navItems = [
   },
   {
     name: 'Farbentest',
-    url: '/dashboard',
+    url: '/color-test',
     icon: 'cui-brush'
   },
   {
