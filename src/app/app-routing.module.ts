@@ -55,6 +55,10 @@ export const routes: Routes = [
         loadChildren: './dashboard/dashboard.module#DashboardModule'
       },
       {
+        path: 'build-assignment',
+        loadChildren: './build-assignment/build-assignment.module#BuildAssignmentModule'
+      },
+      {
         path: 'base',
         loadChildren: './views/base/base.module#BaseModule'
       },
