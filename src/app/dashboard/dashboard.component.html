@@ -1,3 +1,38 @@
-<p>
-  dashboard works!
-</p>
+<div class="animated fadeIn">
+
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+      <app-dashboard-card backgroundColor="bg-blue" caption="421" text="Bridges" icon="cui-globe" linkText="Verwalten"
+        link="#/bridge-management"></app-dashboard-card>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+      <app-dashboard-card backgroundColor="bg-yellow" caption="421" text="Verfügbare Lampen" icon="icon-bulb" linkText="Verwalten"
+        link="#/lamp-management"></app-dashboard-card>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+      <app-dashboard-card backgroundColor="bg-light-blue" caption="6" text="Lampen des Teams" icon="icon-bulb" linkText="Zuweisungen"
+        link="#/build-assignment"></app-dashboard-card>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+      <app-dashboard-card backgroundColor="bg-light-blue" caption="23" text="Alle Lampen" icon="icon-bulb"></app-dashboard-card>
+    </div>
+  </div>
+  <!--/.row-->
+
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+      <app-dashboard-card backgroundColor="bg-red" caption="21" text="Administratoren des Teams" icon="cui-people"
+        linkText="Verwalten" link="#/user-management"></app-dashboard-card>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+      <app-dashboard-card backgroundColor="bg-red" caption="42" text="Alle Administratoren" icon="cui-people"></app-dashboard-card>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+      <app-dashboard-card backgroundColor="bg-green" caption="28" text="Vom Team überwachte Jobs" icon="cui-layers"></app-dashboard-card>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+      <app-dashboard-card backgroundColor="bg-green" caption="125" text="Alle überwachten Jobs" icon="cui-layers"></app-dashboard-card>
+    </div>
+  </div>
+
+</div>
