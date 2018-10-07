@@ -63,6 +63,10 @@ export const routes: Routes = [
         loadChildren: './lamp-management/lamp-management.module#LampManagementModule'
       },
       {
+        path: 'bridge-management',
+        loadChildren: './bridge-management/bridge-management.module#BridgeManagementModule'
+      },
+      {
         path: 'base',
         loadChildren: './views/base/base.module#BaseModule'
       },

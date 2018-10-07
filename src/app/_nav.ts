@@ -16,7 +16,7 @@ export const navItems = [
   },
   {
     name: 'Bridgeverwaltung',
-    url: '/dashboard',
+    url: '/bridge-management',
     icon: 'cui-globe'
   },
   {
