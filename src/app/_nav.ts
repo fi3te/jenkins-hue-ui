@@ -26,7 +26,7 @@ export const navItems = [
   },
   {
     name: 'Teamverwaltung',
-    url: '/dashboard',
+    url: '/team-management',
     icon: 'cui-people'
   },
   {
