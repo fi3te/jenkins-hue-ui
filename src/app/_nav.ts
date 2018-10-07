@@ -11,7 +11,7 @@ export const navItems = [
   },
   {
     name: 'Lampenverwaltung',
-    url: '/dashboard',
+    url: '/lamp-management',
     icon: 'cui-lightbulb'
   },
   {
