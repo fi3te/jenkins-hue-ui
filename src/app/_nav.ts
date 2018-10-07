@@ -7,12 +7,12 @@ export const navItems = [
   {
     name: 'Buildzuweisung',
     url: '/build-assignment',
-    icon: 'cui-layers'
+    icon: 'icon-rocket'
   },
   {
     name: 'Lampenverwaltung',
     url: '/lamp-management',
-    icon: 'cui-lightbulb'
+    icon: 'icon-bulb'
   },
   {
     name: 'Bridgeverwaltung',

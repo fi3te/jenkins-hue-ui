@@ -1,0 +1,13 @@
+<div class="card {{backgroundColor}}">
+  <div class="card-body text-white">
+    <div class="h1 text-muted text-right mb-4">
+      <i [class]="icon"></i>
+    </div>
+    <div class="h1 mb-0">{{caption}}</div>
+    <small class="text-muted text-uppercase font-weight-bold">{{text}}</small>
+  </div>
+  <div class="card-footer px-3 py-2">
+    <span *ngIf="!link" class="font-xs btn-blocks">&nbsp;</span>
+    <a *ngIf="link" class="font-weight-bold font-xs btn-block text-muted" [href]="link">{{linkText}} <i class="fa fa-angle-right float-right font-lg"></i></a>
+  </div>
+</div>
