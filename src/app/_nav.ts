@@ -1,7 +1,7 @@
 export const navItems = [
   {
     name: 'Dashboard',
-    url: '/dashboard',
+    url: '/dashboard2',
     icon: 'cui-dashboard'
   },
   {
