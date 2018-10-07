@@ -6,7 +6,7 @@ export const navItems = [
   },
   {
     name: 'Buildzuweisung',
-    url: '/dashboard',
+    url: '/build-assignment',
     icon: 'cui-layers'
   },
   {
