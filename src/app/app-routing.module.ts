@@ -59,6 +59,10 @@ export const routes: Routes = [
         loadChildren: './build-assignment/build-assignment.module#BuildAssignmentModule'
       },
       {
+        path: 'lamp-management',
+        loadChildren: './lamp-management/lamp-management.module#LampManagementModule'
+      },
+      {
         path: 'base',
         loadChildren: './views/base/base.module#BaseModule'
       },
