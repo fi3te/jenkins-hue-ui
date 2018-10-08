@@ -41,6 +41,7 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { TimepickerModule } from 'ngx-bootstrap/timepicker';
 import { ChartsModule } from 'ng2-charts/ng2-charts';
+import { HttpModule } from '@angular/http';
 
 @NgModule({
   imports: [
@@ -56,7 +57,8 @@ import { ChartsModule } from 'ng2-charts/ng2-charts';
     TabsModule.forRoot(),
     TimepickerModule.forRoot(),
     AccordionModule.forRoot(),
-    ChartsModule
+    ChartsModule,
+    HttpModule
   ],
   declarations: [
     AppComponent,
