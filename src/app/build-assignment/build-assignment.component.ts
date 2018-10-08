@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { DTO } from '../generated-dtos.model';
+import LampDTO = DTO.LampDTO;
 
 @Component({
   selector: 'app-build-assignment',
@@ -6,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./build-assignment.component.scss']
 })
 export class BuildAssignmentComponent implements OnInit {
+
+  public lampDTOs: LampDTO[];
 
   constructor() { }
 
