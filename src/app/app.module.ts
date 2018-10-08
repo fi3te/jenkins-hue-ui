@@ -39,6 +39,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AccordionModule } from 'ngx-bootstrap/accordion';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TabsModule } from 'ngx-bootstrap/tabs';
+import { TimepickerModule } from 'ngx-bootstrap/timepicker';
 import { ChartsModule } from 'ng2-charts/ng2-charts';
 
 @NgModule({
@@ -53,6 +54,7 @@ import { ChartsModule } from 'ng2-charts/ng2-charts';
     PerfectScrollbarModule,
     BsDropdownModule.forRoot(),
     TabsModule.forRoot(),
+    TimepickerModule.forRoot(),
     AccordionModule.forRoot(),
     ChartsModule
   ],
