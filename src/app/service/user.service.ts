@@ -1,20 +1,37 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
-import { DTO } from '../generated-dtos.model';
-import UserDTO = DTO.UserDTO;
 import { Observable } from 'rxjs';
-import { REST_USERS } from './constants';
-import mapResponse from './map-response';
+
+import { DTO } from '../generated-dtos.model';
+
+import UserDTO = DTO.UserDTO;
+import UserCreateDTO = DTO.UserCreateDTO;
+import UserUpdateDTO = DTO.UserUpdateDTO;
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
+  constructor() {}
 
-  constructor(private http: Http) { }
-
-  public findAll(page: number, size: number): Observable<any> {
-    return this.http.get(`${REST_USERS}/${page}/${size}`).pipe(mapResponse);
+  public find(
+    page: number,
+    size: number,
+    searchItem?: string
+  ): Observable<UserDTO[]> {
+    return null;
   }
 
+  public count(searchItem?: string): Observable<number> {
+    return null;
+  }
+
+  public create(userCreateDTO: UserCreateDTO): Observable<UserDTO> {
+    return null;
+  }
+
+  public update(userUpdateDtO: UserUpdateDTO): Observable<UserDTO> {
+    return null;
+  }
+
+  public remove(id: number): void {}
 }
