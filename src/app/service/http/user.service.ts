@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { DTO } from '../generated-dtos.model';
+import { DTO } from '../../generated-dtos.model';
 
 import UserDTO = DTO.UserDTO;
 import UserCreateDTO = DTO.UserCreateDTO;
