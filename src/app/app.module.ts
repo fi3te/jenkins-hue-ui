@@ -1,6 +1,8 @@
+import { UniversalService } from './service/http/universal.service';
+import { SessionService } from './service/session.service';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { HttpClientXsrfModule, HttpClientModule, HttpInterceptor, HttpRequest, HttpHandler, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { NgModule, Injectable } from '@angular/core';
+import { NgModule, Injectable, APP_INITIALIZER } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppAsideModule, AppBreadcrumbModule, AppFooterModule, AppHeaderModule, AppSidebarModule } from '@coreui/angular';
 import { ChartsModule } from 'ng2-charts/ng2-charts';
@@ -33,6 +35,22 @@ export class XhrInterceptor implements HttpInterceptor {
       headers: req.headers.set('X-Requested-With', 'XMLHttpRequest')
     });
     return next.handle(xhr);
+  }
+}
+
+export function init(sessionService: SessionService) {
+  return () => {
+    // TODO live
+    // sessionService.fetchPrincipal();
+
+    // TODO demo
+    sessionService.getPrincipal().subscribe(null, () => {
+      const credentials = {
+        username: 'a',
+        password: 'a'
+      };
+      sessionService.login(credentials);
+    });
   }
 }
 
@@ -71,6 +89,11 @@ export class XhrInterceptor implements HttpInterceptor {
     }, {
       provide: HTTP_INTERCEPTORS,
       useClass: XhrInterceptor,
+      multi: true
+    }, {
+      provide: APP_INITIALIZER,
+      useFactory: init,
+      deps: [SessionService],
       multi: true
     }
   ],
