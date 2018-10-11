@@ -1,3 +1,5 @@
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -6,32 +8,37 @@ import { DTO } from '../../generated-dtos.model';
 import UserDTO = DTO.UserDTO;
 import UserCreateDTO = DTO.UserCreateDTO;
 import UserUpdateDTO = DTO.UserUpdateDTO;
+import { REST_USERS } from './common/constants';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  constructor() {}
+  constructor(private httpClient: HttpClient) {}
 
   public find(
     page: number,
     size: number,
     searchItem?: string
   ): Observable<UserDTO[]> {
-    return null;
+    const options = searchItem ? {params: new HttpParams().set('searchItem', `${searchItem}`)} : undefined;
+    return this.httpClient.get<UserDTO[]>(`${REST_USERS}`);
   }
 
   public count(searchItem?: string): Observable<number> {
-    return null;
+    const options = searchItem ? {params: new HttpParams().set('searchItem', `${searchItem}`)} : undefined;
+    return this.httpClient.get<number>(`${REST_USERS}/count`, options);
   }
 
   public create(userCreateDTO: UserCreateDTO): Observable<UserDTO> {
-    return null;
+    return this.httpClient.post(`${REST_USERS}/create`, userCreateDTO);
   }
 
-  public update(userUpdateDtO: UserUpdateDTO): Observable<UserDTO> {
-    return null;
+  public update(userUpdateDTO: UserUpdateDTO): Observable<UserDTO> {
+    return this.httpClient.post(`${REST_USERS}/update`, userUpdateDTO);
   }
 
-  public remove(id: number): void {}
+  public remove(id: number): Observable<any> {
+    return this.httpClient.delete(`${REST_USERS}/remove/${id}`);
+  }
 }
