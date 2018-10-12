@@ -1,4 +1,3 @@
-import { UniversalService } from './service/http/universal.service';
 import { SessionService } from './service/session.service';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { HttpClientXsrfModule, HttpClientModule, HttpInterceptor, HttpRequest, HttpHandler, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -9,6 +8,7 @@ import { ChartsModule } from 'ng2-charts/ng2-charts';
 import { AccordionModule } from 'ngx-bootstrap/accordion';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TabsModule } from 'ngx-bootstrap/tabs';
+import { AlertModule } from 'ngx-bootstrap/alert';
 import { TimepickerModule } from 'ngx-bootstrap/timepicker';
 import { PerfectScrollbarConfigInterface, PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 
@@ -19,6 +19,7 @@ import { P404Component } from './views/error/404.component';
 import { P500Component } from './views/error/500.component';
 import { LoginComponent } from './views/login/login.component';
 import { RegisterComponent } from './views/register/register.component';
+import { AlertContainerComponent } from './alert-container/alert-container.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
@@ -71,6 +72,7 @@ export function init(sessionService: SessionService) {
     TimepickerModule.forRoot(),
     AccordionModule.forRoot(),
     ChartsModule,
+    AlertModule.forRoot(),
     HttpClientModule,
     HttpClientXsrfModule
   ],
@@ -80,7 +82,8 @@ export function init(sessionService: SessionService) {
     P404Component,
     P500Component,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    AlertContainerComponent
   ],
   providers: [
     {
