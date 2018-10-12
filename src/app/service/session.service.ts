@@ -36,6 +36,10 @@ export class SessionService {
     return false;
   }
 
+  public getTeamId(): number {
+    return this.principal.teamId;
+  }
+
   public getPrincipal(): Observable<PrincipalDTO> {
     return this.universalService.getPrincipal().pipe(
       tap((next: any) => {
