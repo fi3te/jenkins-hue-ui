@@ -1,3 +1,4 @@
+import { ChangeRolesModalComponent } from './../shared/change-roles-modal/change-roles-modal.component';
 import { Component, OnInit } from '@angular/core';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import { RenameModalComponent } from '../shared/rename-modal/rename-modal.component';
@@ -19,6 +20,18 @@ export class TeamManagementComponent implements OnInit {
     };
 
     const bsModalRef: BsModalRef = this.modalService.show(RenameModalComponent, {initialState});
+
+    // this.bsModalRef.content.closeBtsnName = 'Close';
+
+    this.changeRolesDemo();
+  }
+
+  public changeRolesDemo(): void {
+    const initialState = {
+      roles: []
+    };
+
+    const bsModalRef: BsModalRef = this.modalService.show(ChangeRolesModalComponent, {initialState});
 
     // this.bsModalRef.content.closeBtsnName = 'Close';
   }

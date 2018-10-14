@@ -1,3 +1,4 @@
+import { ChangeRolesModalComponent } from './../shared/change-roles-modal/change-roles-modal.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TeamManagementComponent } from './team-management.component';
@@ -16,7 +17,7 @@ import { RenameModalComponent } from '../shared/rename-modal/rename-modal.compon
   ],
   declarations: [TeamManagementComponent, TeamListComponent],
   entryComponents: [
-    RenameModalComponent
+    RenameModalComponent, ChangeRolesModalComponent
   ]
 })
 export class TeamManagementModule { }
