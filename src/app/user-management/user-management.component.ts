@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../service/http/user.service';
+import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
+import { BsModalService } from 'ngx-bootstrap/modal';
+import { ChangeRolesModalComponent } from '../shared/change-roles-modal/change-roles-modal.component';
 
 @Component({
   selector: 'app-user-management',
@@ -8,9 +11,14 @@ import { UserService } from '../service/http/user.service';
 })
 export class UserManagementComponent implements OnInit {
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private modalService: BsModalService) { }
 
-  ngOnInit() {
+  public ngOnInit(): void {
+    const initialState = {
+      roles: []
+    };
+
+    const bsModalRef: BsModalRef = this.modalService.show(ChangeRolesModalComponent, {initialState});
   }
 
 }
