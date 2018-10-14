@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
+import { RenameModalComponent } from '../shared/rename-modal/rename-modal.component';
+import { BsModalService } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-team-management',
@@ -7,9 +10,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TeamManagementComponent implements OnInit {
 
-  constructor() { }
+  constructor(private modalService: BsModalService) { }
 
-  ngOnInit() {
+  public ngOnInit(): void {
+    const initialState = {
+      title: 'Modal with component',
+      icon: 'users'
+    };
+
+    const bsModalRef: BsModalRef = this.modalService.show(RenameModalComponent, {initialState});
+
+    // this.bsModalRef.content.closeBtsnName = 'Close';
   }
 
 }

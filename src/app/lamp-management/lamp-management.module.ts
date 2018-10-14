@@ -1,15 +1,23 @@
+import { RenameModalComponent } from './../shared/rename-modal/rename-modal.component';
+import { SharedModule } from './../shared/shared.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LampManagementComponent } from './lamp-management.component';
 import { LampManagementRoutingModule } from './lamp-management-routing.module';
 import { AvailableLampsComponent } from './available-lamps/available-lamps.component';
 import { LampListComponent } from './lamp-list/lamp-list.component';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 @NgModule({
   imports: [
     CommonModule,
-    LampManagementRoutingModule
+    LampManagementRoutingModule,
+    SharedModule,
+    ModalModule.forRoot()
   ],
-  declarations: [LampManagementComponent, AvailableLampsComponent, LampListComponent]
+  declarations: [LampManagementComponent, AvailableLampsComponent, LampListComponent],
+  entryComponents: [
+    RenameModalComponent
+  ]
 })
 export class LampManagementModule { }
