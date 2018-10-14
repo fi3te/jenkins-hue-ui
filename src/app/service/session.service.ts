@@ -57,12 +57,12 @@ export class SessionService {
   }
 
   public silentLogin(credentials: Credentials): void {
-    this.loginTest(credentials).subscribe(() => {
+    this.login(credentials).subscribe(() => {
         this.fetchPrincipal();
       });
   }
 
-  public loginTest(credentials: Credentials): Observable<any> {
+  public login(credentials: Credentials): Observable<any> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/x-www-form-urlencoded'
     });

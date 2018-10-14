@@ -19,7 +19,7 @@ export class LoginComponent {
   constructor(private sessionService: SessionService, private alertService: AlertService, private router: Router) { }
 
   public login(): void {
-    this.sessionService.loginTest(this.credentials).subscribe(() => {
+    this.sessionService.login(this.credentials).subscribe(() => {
       this.sessionService.getPrincipal().subscribe(() => {
         this.router.navigate(['dashboard2']);
       }, () => {
