@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import { BsModalService } from 'ngx-bootstrap/modal';
+import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import { FoundBridgesModalComponent } from './found-bridges-modal/found-bridges-modal.component';
 
 @Component({
@@ -8,8 +9,6 @@ import { FoundBridgesModalComponent } from './found-bridges-modal/found-bridges-
   styleUrls: ['./bridge-management.component.scss']
 })
 export class BridgeManagementComponent implements OnInit {
-
-  public bsModalRef: BsModalRef;
 
   constructor(private modalService: BsModalService) { }
 
@@ -21,9 +20,10 @@ export class BridgeManagementComponent implements OnInit {
       bridges: [],
       title: 'Modal with component'
     };
-    this.bsModalRef = this.modalService.show(FoundBridgesModalComponent, {initialState});
+    const bsModalRef: BsModalRef = this.modalService.show(FoundBridgesModalComponent, {initialState});
 
     // this.bsModalRef.content.closeBtsnName = 'Close';
+
   }
 
 }
