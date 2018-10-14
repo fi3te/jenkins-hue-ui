@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 import { Alert } from '../service/model/alert.model';
 import { AlertService } from './../service/alert.service';
@@ -9,6 +9,13 @@ import { AlertService } from './../service/alert.service';
   styleUrls: ['./alert-container.component.scss']
 })
 export class AlertContainerComponent implements OnInit {
+
+  @Input()
+  public top = '60px';
+
+  @Input()
+  public right = '30px';
+
   public alerts: Alert[] = [];
 
   constructor(private alertService: AlertService) {}

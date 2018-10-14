@@ -1,4 +1,3 @@
-import { Authority } from './model/authority.model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
@@ -57,7 +56,13 @@ export class SessionService {
     this.getPrincipal().subscribe();
   }
 
-  public login(credentials: Credentials): void {
+  public silentLogin(credentials: Credentials): void {
+    this.loginTest(credentials).subscribe(() => {
+        this.fetchPrincipal();
+      });
+  }
+
+  public loginTest(credentials: Credentials): Observable<any> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/x-www-form-urlencoded'
     });
@@ -66,13 +71,10 @@ export class SessionService {
     body.set('username', credentials.username);
     body.set('password', credentials.password);
 
-    this.httpClient
+    return this.httpClient
       .post(REST_LOGIN, body.toString(), {
         headers: headers,
         withCredentials: true
-      })
-      .subscribe((next) => {
-        this.fetchPrincipal();
       });
   }
 
@@ -84,7 +86,7 @@ export class SessionService {
     });
   }
 
-  private reloadPage(): void {
+  public reloadPage(): void {
     window.location.reload();
   }
 }

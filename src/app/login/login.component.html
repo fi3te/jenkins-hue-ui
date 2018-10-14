@@ -1,0 +1,40 @@
+<app-alert-container [top]="'30px'" [right]="'30px'"></app-alert-container>
+<div class="app-body">
+  <main class="main d-flex align-items-center">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 col-lg-6 mx-auto">
+          <div class="card p-4">
+            <div class="card-body">
+              <form (submit)="login()">
+                <h1 class="login-logo"><b>Jenkins</b>Hue</h1>
+                <p class="text-muted">Bitte einloggen</p>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="icon-user"></i></span>
+                  </div>
+                  <input type="text" class="form-control" name="username" [(ngModel)]="credentials.username" placeholder="Benutzername" autocomplete="username" required>
+                </div>
+                <div class="input-group mb-4">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="icon-lock"></i></span>
+                  </div>
+                  <input type="password" class="form-control" name="password" [(ngModel)]="credentials.password" placeholder="Passwort" autocomplete="current-password"
+                    required>
+                </div>
+                <div class="row">
+                  <div class="col-6">
+                    <button type="submit" class="btn btn-primary px-4">Login</button>
+                  </div>
+                  <div class="col-6 text-right">
+                    <button type="button" class="btn btn-link px-0">Passwort vergessen?</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>

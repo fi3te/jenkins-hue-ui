@@ -1,3 +1,4 @@
+import { FormsModule } from '@angular/forms';
 import { SessionService } from './service/session.service';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { HttpClientXsrfModule, HttpClientModule, HttpInterceptor, HttpRequest, HttpHandler, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -17,9 +18,9 @@ import { AppComponent } from './app.component';
 import { DefaultLayoutComponent } from './containers';
 import { P404Component } from './views/error/404.component';
 import { P500Component } from './views/error/500.component';
-import { LoginComponent } from './views/login/login.component';
 import { RegisterComponent } from './views/register/register.component';
 import { AlertContainerComponent } from './alert-container/alert-container.component';
+import { LoginComponent } from './login/login.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
@@ -50,7 +51,7 @@ export function init(sessionService: SessionService) {
         username: 'a',
         password: 'a'
       };
-      sessionService.login(credentials);
+      sessionService.silentLogin(credentials);
     });
   }
 }
@@ -74,7 +75,8 @@ export function init(sessionService: SessionService) {
     ChartsModule,
     AlertModule.forRoot(),
     HttpClientModule,
-    HttpClientXsrfModule
+    HttpClientXsrfModule,
+    FormsModule
   ],
   declarations: [
     AppComponent,
