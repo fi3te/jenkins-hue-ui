@@ -1,3 +1,4 @@
+import { AddScenarioModalComponent } from './add-scenario-modal/add-scenario-modal.component';
 import { AddJobsModalComponent } from './add-jobs-modal/add-jobs-modal.component';
 import { Component, OnInit } from '@angular/core';
 import { DTO } from '../generated-dtos.model';
@@ -24,5 +25,15 @@ export class BuildAssignmentComponent implements OnInit {
     const bsModalRef: BsModalRef = this.modalService.show(AddJobsModalComponent, {initialState});
 
     // this.bsModalRef.content.closeBtsnName = 'Close';
+
+    this.addScenariosDemo();
+  }
+
+  public addScenariosDemo(): void {
+    const initialState = {
+      scenarios: []
+    };
+
+    const bsModalRef: BsModalRef = this.modalService.show(AddScenarioModalComponent, {initialState});
   }
 }
