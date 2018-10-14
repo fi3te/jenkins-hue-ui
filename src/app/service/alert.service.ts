@@ -7,7 +7,6 @@ import { Alert, ALERT_DEFAULT_TIMEOUT } from './model/alert.model';
 })
 export class AlertService {
 
-
   public alert$ = new Subject<Alert>();
 
   public success(message: string, timeout?: number): void {
