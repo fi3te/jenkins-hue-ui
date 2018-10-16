@@ -21,6 +21,7 @@ import { P500Component } from './views/error/500.component';
 import { RegisterComponent } from './views/register/register.component';
 import { AlertContainerComponent } from './alert-container/alert-container.component';
 import { LoginComponent } from './login/login.component';
+import { CollapseModule } from 'ngx-bootstrap/collapse';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
@@ -74,6 +75,7 @@ export function init(sessionService: SessionService) {
     AccordionModule.forRoot(),
     ChartsModule,
     AlertModule.forRoot(),
+    CollapseModule.forRoot(),
     HttpClientModule,
     HttpClientXsrfModule,
     FormsModule
