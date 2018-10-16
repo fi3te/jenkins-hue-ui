@@ -1,0 +1,72 @@
+<div class="jh-box-border">
+  <!-- TODO -->
+  <!-- <label>{{ scenarioConfig.scenario.text }}</label> -->
+  <!-- <remove-button class="pull-right" (click)="removeScenario($parent.$index, scenarioConfig.scenario.name)"></remove-button> -->
+
+  <div>
+    <input type="checkbox" [(ngModel)]="scenarioConfig.lampOn" autocomplete="off">
+    <label *ngIf="scenarioConfig.lampOn">Lampe: Ein</label>
+    <label *ngIf="!scenarioConfig.lampOn">Lampe: Aus</label>
+  </div>
+  <div class="jh-box jh-scenario-config" [ngClass]="{'jh-hidden': !scenarioConfig.lampOn}">
+
+    <div>
+      <input type="checkbox" [(ngModel)]="scenarioConfig.onetimePulsationEnabled" autocomplete="off">
+      <label>Einmaliges Pulsieren: </label>
+      <span *ngIf="scenarioConfig.onetimePulsationEnabled">Ein</span>
+      <span *ngIf="!scenarioConfig.onetimePulsationEnabled">Aus</span>
+    </div>
+    <div class="jh-box" [collapse]="!scenarioConfig.onetimePulsationEnabled">
+      <!-- Farbwechsel beim Pulsieren -->
+      <div>
+        <input type="checkbox" [(ngModel)]="scenarioConfig.onetimePulsationColorChangeEnabled" autocomplete="off">
+        <span>Farbiges Pulsieren: </span>
+        <span *ngIf="scenarioConfig.onetimePulsationColorChangeEnabled">Ein</span>
+        <span *ngIf="!scenarioConfig.onetimePulsationColorChangeEnabled">Aus</span>
+      </div>
+      <div [collapse]="!scenarioConfig.onetimePulsationColorChangeEnabled">
+
+        <div class="input-group">
+          <input [(colorPicker)]="scenarioConfig.onetimePulsationColorHex" [cpOutputFormat]="'hex'" [cpAlphaChannel]="'disabled'"
+            [style.background]="scenarioConfig.onetimePulsationColorHex" [value]="scenarioConfig.onetimePulsationColorHex">
+        </div><!-- /.input group -->
+
+      </div>
+    </div>
+
+
+
+
+
+    <div>
+      <input type="checkbox" [(ngModel)]="scenarioConfig.colorChangeEnabled" autocomplete="off">
+      <label>Farbwechsel: </label>
+      <span *ngIf="scenarioConfig.colorChangeEnabled">Ein</span>
+      <span *ngIf="!scenarioConfig.colorChangeEnabled">Aus</span>
+    </div>
+    <div class="jh-box" [collapse]="!scenarioConfig.colorChangeEnabled">
+      <div class="input-group">
+        <input [(colorPicker)]="scenarioConfig.colorHex" [cpOutputFormat]="'hex'" [cpAlphaChannel]="'disabled'"
+          [style.background]="scenarioConfig.colorHex" [value]="scenarioConfig.colorHex">
+      </div>
+    </div>
+
+
+
+
+
+    <div>
+      <input type="checkbox" [(ngModel)]="scenarioConfig.brightnessChangeEnabled" autocomplete="off">
+      <label> Helligkeitswechsel: </label>
+      <span *ngIf="scenarioConfig.brightnessChangeEnabled">{{ scenarioConfig.brightness / 254 * 100 | number :
+        '1.0-0'}}%</span>
+      <span *ngIf="!scenarioConfig.brightnessChangeEnabled">Aus</span>
+    </div>
+    <div class="jh-box" [collapse]="!scenarioConfig.brightnessChangeEnabled">
+      <!-- TODO ng-animate -->
+      <ng5-slider [options]="sliderOptions" [(value)]="scenarioConfig.brightness"></ng5-slider>
+    </div>
+
+  </div>
+
+</div>
