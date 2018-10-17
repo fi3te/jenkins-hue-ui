@@ -75,7 +75,6 @@ export function init(sessionService: SessionService) {
     AccordionModule.forRoot(),
     ChartsModule,
     AlertModule.forRoot(),
-    CollapseModule.forRoot(),
     HttpClientModule,
     HttpClientXsrfModule,
     FormsModule

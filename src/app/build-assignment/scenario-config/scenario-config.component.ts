@@ -7,21 +7,24 @@ import { Options } from 'ng5-slider';
 @Component({
   selector: 'app-scenario-config',
   templateUrl: './scenario-config.component.html',
-  styleUrls: ['./scenario-config.component.scss']
+  styleUrls: [
+    '../../../scss/local/slider.scss',
+    './scenario-config.component.scss'
+  ]
 })
 export class ScenarioConfigComponent implements OnInit {
-
   @Input()
   public scenarioConfig: ScenarioConfigDTO;
 
   public sliderOptions: Options = {
     floor: 1,
-    ceil: 254
+    ceil: 254,
+    hideLimitLabels: true,
+    hidePointerLabels: true,
+    showSelectionBar: true
   };
 
-  constructor() { }
+  constructor() {}
 
-  public ngOnInit(): void {
-  }
-
+  public ngOnInit(): void {}
 }
