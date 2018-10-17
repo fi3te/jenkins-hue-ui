@@ -20,7 +20,6 @@ import { ColorPickerModule } from 'ngx-color-picker';
     AccordionModule,
     TimepickerModule,
     ModalModule.forRoot(),
-    CollapseModule,
     FormsModule,
     Ng5SliderModule,
     ColorPickerModule
