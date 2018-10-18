@@ -1,27 +1,36 @@
-import { FormsModule } from '@angular/forms';
-import { SessionService } from './service/session.service';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
-import { HttpClientXsrfModule, HttpClientModule, HttpInterceptor, HttpRequest, HttpHandler, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { NgModule, Injectable, APP_INITIALIZER } from '@angular/core';
+import {
+  HTTP_INTERCEPTORS,
+  HttpClientModule,
+  HttpClientXsrfModule,
+  HttpErrorResponse,
+  HttpHandler,
+  HttpInterceptor,
+  HttpRequest,
+} from '@angular/common/http';
+import { APP_INITIALIZER, Injectable, NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppAsideModule, AppBreadcrumbModule, AppFooterModule, AppHeaderModule, AppSidebarModule } from '@coreui/angular';
 import { ChartsModule } from 'ng2-charts/ng2-charts';
 import { AccordionModule } from 'ngx-bootstrap/accordion';
+import { AlertModule } from 'ngx-bootstrap/alert';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TabsModule } from 'ngx-bootstrap/tabs';
-import { AlertModule } from 'ngx-bootstrap/alert';
 import { TimepickerModule } from 'ngx-bootstrap/timepicker';
 import { PerfectScrollbarConfigInterface, PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
+import { tap } from 'rxjs/operators';
 
+import { AlertContainerComponent } from './alert-container/alert-container.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DefaultLayoutComponent } from './containers';
+import { LoginComponent } from './login/login.component';
+import { AlertService } from './service/alert.service';
+import { SessionService } from './service/session.service';
 import { P404Component } from './views/error/404.component';
 import { P500Component } from './views/error/500.component';
 import { RegisterComponent } from './views/register/register.component';
-import { AlertContainerComponent } from './alert-container/alert-container.component';
-import { LoginComponent } from './login/login.component';
-import { CollapseModule } from 'ngx-bootstrap/collapse';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
@@ -41,6 +50,25 @@ export class XhrInterceptor implements HttpInterceptor {
   }
 }
 
+@Injectable()
+export class ErrorResponseInterceptor implements HttpInterceptor {
+
+  constructor(private alertService: AlertService) {}
+
+  intercept(req: HttpRequest<any>, next: HttpHandler) {
+    return next.handle(req).pipe(tap(
+      () => {},
+      (error) => {
+        console.log(error);
+        if (error instanceof HttpErrorResponse && error.error) {
+          const message = error.error.message;
+          this.alertService.danger(message ? message : error.message);
+        }
+      }
+    ));
+  }
+}
+
 export function init(sessionService: SessionService) {
   return () => {
     // TODO live
@@ -54,7 +82,7 @@ export function init(sessionService: SessionService) {
       };
       sessionService.silentLogin(credentials);
     });
-  }
+  };
 }
 
 // Import routing module
@@ -95,6 +123,10 @@ export function init(sessionService: SessionService) {
     }, {
       provide: HTTP_INTERCEPTORS,
       useClass: XhrInterceptor,
+      multi: true
+    }, {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorResponseInterceptor,
       multi: true
     }, {
       provide: APP_INITIALIZER,
