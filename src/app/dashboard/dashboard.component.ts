@@ -3,7 +3,6 @@ import { Component, OnInit } from '@angular/core';
 import { UniversalService } from '../service/http/universal.service';
 import { SessionService } from '../service/session.service';
 import { DTO } from './../generated-dtos.model';
-import { AlertService } from './../service/alert.service';
 
 import DashboardInformationDTO = DTO.DashboardInformationDTO;
 
@@ -17,8 +16,7 @@ export class DashboardComponent implements OnInit {
 
   constructor(
     private sessionService: SessionService,
-    private universalService: UniversalService,
-    private alertService: AlertService
+    private universalService: UniversalService
   ) {}
 
   public ngOnInit(): void {
@@ -27,9 +25,6 @@ export class DashboardComponent implements OnInit {
       .subscribe(
         next => {
           this.dashboard = next;
-        },
-        error => {
-          this.alertService.danger(error.message);
         }
       );
   }
