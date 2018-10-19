@@ -7,6 +7,7 @@ import { REST_UNIVERSAL } from './common/constants';
 
 import PrincipalDTO = DTO.PrincipalDTO;
 import DashboardInformationDTO = DTO.DashboardInformationDTO;
+import { SimpleEnum } from '../model/simple-enum.model';
 
 @Injectable({
   providedIn: 'root'
@@ -14,12 +15,12 @@ import DashboardInformationDTO = DTO.DashboardInformationDTO;
 export class UniversalService {
   constructor(private httpClient: HttpClient) {}
 
-  public scenarios(): Observable<any> {
-    return this.httpClient.get(`${REST_UNIVERSAL}/scenarios`);
+  public scenarios(): Observable<SimpleEnum[]> {
+    return this.httpClient.get<SimpleEnum[]>(`${REST_UNIVERSAL}/scenarios`);
   }
 
-  public roles(): Observable<any> {
-    return this.httpClient.get(`${REST_UNIVERSAL}/roles`);
+  public roles(): Observable<SimpleEnum[]> {
+    return this.httpClient.get<SimpleEnum[]>(`${REST_UNIVERSAL}/roles`);
   }
 
   public getDashboardInformation(

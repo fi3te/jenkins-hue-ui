@@ -9,7 +9,8 @@ import { AddJobsModalComponent } from './add-jobs-modal/add-jobs-modal.component
 import { AddScenarioModalComponent } from './add-scenario-modal/add-scenario-modal.component';
 
 import TeamLampsDTO_LampDTO = DTO.TeamLampsDTO_LampDTO;
-import Scenario = DTO.Scenario;
+import { UniversalService } from '../service/http/universal.service';
+import { SimpleEnum } from '../service/model/simple-enum.model';
 
 @Component({
   selector: 'app-build-assignment',
@@ -19,14 +20,15 @@ import Scenario = DTO.Scenario;
 export class BuildAssignmentComponent implements OnInit {
 
   public lampDTOs: TeamLampsDTO_LampDTO[];
-  public scenarioPriority: Scenario[];
+  public scenarioPriority: SimpleEnum[];
 
   public test = new Date();
 
   constructor(
     private modalService: BsModalService,
     private sessionService: SessionService,
-    private lampService: LampService
+    private lampService: LampService,
+    private universalService: UniversalService
   ) {}
 
   public ngOnInit(): void {
@@ -51,7 +53,14 @@ export class BuildAssignmentComponent implements OnInit {
     // this.bsModalRef.content.closeBtsnName = 'Close';
   }
 
-  public addScenariosDemo(): void {
+  public addScenario(lampDTO: TeamLampsDTO_LampDTO): void {
+
+    this.universalService.scenarios().subscribe((next) => {
+      console.log(next);
+    });
+
+
+    /*
     const initialState = {
       scenarios: []
     };
@@ -60,6 +69,8 @@ export class BuildAssignmentComponent implements OnInit {
       AddScenarioModalComponent,
       { initialState }
     );
+
+    */
   }
 
   // TODO remove
