@@ -336,6 +336,13 @@
   resolved "https://registry.yarnpkg.com/@coreui/icons/-/icons-0.3.0.tgz#d5bece91b1442a9543593d1146bc8042b18489e3"
   integrity sha512-RbBi5K5hUA8LUI9mM/i1BTaLjlyoS6kHwKbxWsH62+/j9L9WF8gAiJUhrNjMt1br8TY9RLeolyQys0E9480fIg==
 
+"@ng-select/ng-select@^2.11.0":
+  version "2.11.0"
+  resolved "https://registry.yarnpkg.com/@ng-select/ng-select/-/ng-select-2.11.0.tgz#53eeb457c364c9f829a95a8e27bb25a8eb3f3025"
+  integrity sha512-8S1akS262d5oZO6YoiOlLU9NkPaq4GqUS0AWb7tARyHzWv9P0j941exZp+dJPh4KEFSSo2BiBIp6ZxTCv9PXFw==
+  dependencies:
+    tslib "^1.9.0"
+
 "@ngtools/webpack@6.1.5":
   version "6.1.5"
   resolved "https://registry.yarnpkg.com/@ngtools/webpack/-/webpack-6.1.5.tgz#134639686eb4519885ed27665babdf80ce098263"
