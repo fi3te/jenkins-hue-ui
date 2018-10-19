@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import { SimpleEnum } from '../../service/model/simple-enum.model';
 
@@ -7,13 +7,20 @@ import { SimpleEnum } from '../../service/model/simple-enum.model';
   templateUrl: './add-scenario-modal.component.html',
   styleUrls: ['./add-scenario-modal.component.scss']
 })
-export class AddScenarioModalComponent implements OnInit {
+export class AddScenarioModalComponent {
 
   public scenarios: SimpleEnum[];
+  public selectedScenarios: SimpleEnum[];
 
   constructor(public bsModalRef: BsModalRef) { }
 
-  ngOnInit() {
+  public cancel(): void {
+    this.selectedScenarios = [];
+    this.bsModalRef.hide();
+  }
+
+  public addScenarios(): void {
+    this.bsModalRef.hide();
   }
 
 }

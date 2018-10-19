@@ -10,6 +10,7 @@ import { AddJobsModalComponent } from './add-jobs-modal/add-jobs-modal.component
 import { AddScenarioModalComponent } from './add-scenario-modal/add-scenario-modal.component';
 
 import TeamLampsDTO_LampDTO = DTO.TeamLampsDTO_LampDTO;
+import ScenarioConfigDTO = DTO.ScenarioConfigDTO;
 import { UniversalService } from '../service/http/universal.service';
 import { SimpleEnum } from '../service/model/simple-enum.model';
 
@@ -58,7 +59,7 @@ export class BuildAssignmentComponent implements OnInit {
     this.universalService.scenarios().subscribe(next => {
       const scenarios: SimpleEnum[] = next;
 
-      let currentScenarios = [];
+      let currentScenarios: ScenarioConfigDTO[] = [];
       if (lampDTO.buildingConfigs) {
         currentScenarios = currentScenarios.concat(lampDTO.buildingConfigs);
       }
@@ -74,7 +75,7 @@ export class BuildAssignmentComponent implements OnInit {
 
       // remove already selected scenarios
       for (const s of currentScenarios) {
-        const index = this.findWithAttr(scenarios, 'name', s.name);
+        const index = this.findWithAttr(scenarios, 'name', s.scenario.name);
         if (index > -1) {
           scenarios.splice(index, 1);
         }
@@ -100,9 +101,6 @@ export class BuildAssignmentComponent implements OnInit {
     lampDTO: TeamLampsDTO_LampDTO,
     selectableScenarios: SimpleEnum[]
   ): void {
-    // TODO remove
-    console.log(selectableScenarios);
-
     const initialState = {
       scenarios: selectableScenarios
     };
@@ -112,32 +110,60 @@ export class BuildAssignmentComponent implements OnInit {
       { initialState }
     );
 
-    // TODO
-    // TODO
-    // TODO
+    const subscription = this.modalService.onHide.subscribe(() => {
+      const selectedScenarios = bsModalRef.content.selectedScenarios;
+
+      if (selectedScenarios) {
+        if (!lampDTO.buildingConfigs) {
+          lampDTO.buildingConfigs = [];
+        }
+        if (!lampDTO.failureConfigs) {
+          lampDTO.failureConfigs = [];
+        }
+        if (!lampDTO.unstableConfigs) {
+          lampDTO.unstableConfigs = [];
+        }
+        if (!lampDTO.successConfigs) {
+          lampDTO.successConfigs = [];
+        }
+
+        for (const s of selectedScenarios) {
+          const newScenario = { config: {}, scenario: s };
+          if (s.name.startsWith('BUILDING')) {
+            lampDTO.buildingConfigs.push(newScenario);
+          } else if (s.name.startsWith('FAILURE')) {
+            lampDTO.failureConfigs.push(newScenario);
+          } else if (s.name.startsWith('UNSTABLE')) {
+            lampDTO.unstableConfigs.push(newScenario);
+          } else if (s.name.startsWith('SUCCESS')) {
+            lampDTO.successConfigs.push(newScenario);
+          }
+        }
+        this.sortScenarioConfigs();
+      }
+
+      subscription.unsubscribe();
+    });
   }
 
   private sortScenarioConfigs(): void {
+    const compare = (a: ScenarioConfigDTO, b: ScenarioConfigDTO) =>
+      this.scenarioPriority.indexOf(a.scenario) - this.scenarioPriority.indexOf(b.scenario);
+
     for (const lamp of this.lampDTOs) {
       if (lamp.buildingConfigs) {
-        lamp.buildingConfigs.sort(this.compareScenarioConfigs);
+        lamp.buildingConfigs.sort(compare);
       }
       if (lamp.failureConfigs) {
-        lamp.failureConfigs.sort(this.compareScenarioConfigs);
+        lamp.failureConfigs.sort(compare);
       }
       if (lamp.unstableConfigs) {
-        lamp.unstableConfigs.sort(this.compareScenarioConfigs);
+        lamp.unstableConfigs.sort(compare);
       }
       if (lamp.successConfigs) {
-        lamp.successConfigs.sort(this.compareScenarioConfigs);
+        lamp.successConfigs.sort(compare);
       }
     }
-  }
-
-  private compareScenarioConfigs(a, b): number {
-    const posA = this.scenarioPriority.indexOf(a.scenario);
-    const posB = this.scenarioPriority.indexOf(b.scenario);
-    return posA - posB;
   }
 
   private findWithAttr(array: any[], attr: string, value: any): number {
