@@ -28,8 +28,6 @@ import { DefaultLayoutComponent } from './containers';
 import { LoginComponent } from './login/login.component';
 import { AlertService } from './service/alert.service';
 import { SessionService } from './service/session.service';
-import { P404Component } from './views/error/404.component';
-import { P500Component } from './views/error/500.component';
 import { RegisterComponent } from './views/register/register.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
@@ -110,8 +108,6 @@ export function init(sessionService: SessionService) {
   declarations: [
     AppComponent,
     ...APP_CONTAINERS,
-    P404Component,
-    P500Component,
     LoginComponent,
     RegisterComponent,
     AlertContainerComponent
