@@ -12,6 +12,9 @@ import { AddScenariosModalComponent } from './add-scenarios-modal/add-scenarios-
 import TeamLampsDTO_LampDTO = DTO.TeamLampsDTO_LampDTO;
 import ScenarioConfigDTO = DTO.ScenarioConfigDTO;
 import JenkinsJobNamesDTO_JobDTO = DTO.JenkinsJobNamesDTO_JobDTO;
+import LampGroupedScenariosDTO = DTO.LampGroupedScenariosDTO;
+import TeamLampsDTO = DTO.TeamLampsDTO;
+import LampUpdateDTO = DTO.LampUpdateDTO;
 import { UniversalService } from '../service/http/universal.service';
 import { SimpleEnum } from '../service/model/simple-enum.model';
 import { JenkinsService } from '../service/http/jenkins.service';
@@ -27,6 +30,8 @@ export class BuildAssignmentComponent implements OnInit {
 
   public test = new Date();
 
+  private teamId: number;
+
   constructor(
     private modalService: BsModalService,
     private sessionService: SessionService,
@@ -37,8 +42,8 @@ export class BuildAssignmentComponent implements OnInit {
   ) {}
 
   public ngOnInit(): void {
-    const teamId = this.sessionService.getTeamId();
-    this.lampService.findAllOfATeam(teamId).subscribe(next => {
+    this.teamId = this.sessionService.getTeamId();
+    this.lampService.findAllOfATeam(this.teamId).subscribe((next: TeamLampsDTO) => {
       this.lampDTOs = next.lamps;
       this.scenarioPriority = next.scenarioPriority;
       this.fix();
@@ -108,6 +113,32 @@ export class BuildAssignmentComponent implements OnInit {
       } else {
         this.alertService.warning('Keine weiteren Szenarios verfügbar!');
       }
+    });
+  }
+
+  public saveLamp(lampDTO: TeamLampsDTO_LampDTO): void {
+    const updateDTO: LampUpdateDTO = lampDTO;
+    updateDTO.teamId = this.teamId;
+    this.lampService.update(updateDTO).subscribe(() => {
+      this.alertService.info('Einstellungen gespeichert!');
+    });
+  }
+
+  public resetLamp(lampDTO: TeamLampsDTO_LampDTO): void {
+    this.lampService.findOne(lampDTO.id).subscribe((next: LampGroupedScenariosDTO) => {
+      lampDTO.name = next.name;
+      lampDTO.workingStart = next.workingStart;
+      lampDTO.workingEnd = next.workingEnd;
+      this.fix();
+      lampDTO.jobs = next.jobs;
+
+      lampDTO.buildingConfigs = next.buildingConfigs;
+      lampDTO.failureConfigs = next.failureConfigs;
+      lampDTO.unstableConfigs = next.unstableConfigs;
+      lampDTO.successConfigs = next.successConfigs;
+
+      this.sortScenarioConfigs();
+      this.alertService.info('Änderungen verworfen!');
     });
   }
 
