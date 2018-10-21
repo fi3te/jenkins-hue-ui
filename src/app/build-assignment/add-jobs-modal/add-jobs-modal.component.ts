@@ -1,21 +1,27 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 
 import { DTO } from '../../generated-dtos.model';
-import JenkinsJobNamesDTO = DTO.JenkinsJobNamesDTO;
+
+import JenkinsJobNamesDTO_JobDTO = DTO.JenkinsJobNamesDTO_JobDTO;
 
 @Component({
   selector: 'app-add-jobs-modal',
   templateUrl: './add-jobs-modal.component.html',
   styleUrls: ['./add-jobs-modal.component.scss']
 })
-export class AddJobsModalComponent implements OnInit {
+export class AddJobsModalComponent {
+  public jobs: JenkinsJobNamesDTO_JobDTO[];
+  public selectedJobs: JenkinsJobNamesDTO_JobDTO[];
 
-  public jobNames: JenkinsJobNamesDTO;
+  constructor(public bsModalRef: BsModalRef) {}
 
-  constructor(public bsModalRef: BsModalRef) { }
-
-  ngOnInit() {
+  public cancel(): void {
+    this.selectedJobs = [];
+    this.bsModalRef.hide();
   }
 
+  public addJobs(): void {
+    this.bsModalRef.hide();
+  }
 }

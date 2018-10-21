@@ -11,8 +11,10 @@ import { AddScenarioModalComponent } from './add-scenario-modal/add-scenario-mod
 
 import TeamLampsDTO_LampDTO = DTO.TeamLampsDTO_LampDTO;
 import ScenarioConfigDTO = DTO.ScenarioConfigDTO;
+import JenkinsJobNamesDTO_JobDTO = DTO.JenkinsJobNamesDTO_JobDTO;
 import { UniversalService } from '../service/http/universal.service';
 import { SimpleEnum } from '../service/model/simple-enum.model';
+import { JenkinsService } from '../service/http/jenkins.service';
 
 @Component({
   selector: 'app-build-assignment',
@@ -30,6 +32,7 @@ export class BuildAssignmentComponent implements OnInit {
     private sessionService: SessionService,
     private lampService: LampService,
     private universalService: UniversalService,
+    private jenkinsService: JenkinsService,
     private alertService: AlertService
   ) {}
 
@@ -43,16 +46,25 @@ export class BuildAssignmentComponent implements OnInit {
     });
   }
 
-  public addJobsDemo(): void {
-    const initialState = {
-      jobNames: []
-    };
+  public addJob(lampDTO: TeamLampsDTO_LampDTO): void {
+    this.jenkinsService.getJenkinsJobNames().subscribe((next) => {
+      const jobs = next.jobs;
+      const currentJobs = lampDTO.jobs;
 
-    const bsModalRef: BsModalRef = this.modalService.show(
-      AddJobsModalComponent,
-      { initialState }
-    );
-    // this.bsModalRef.content.closeBtsnName = 'Close';
+      // remove already selected jobs
+      for (const tmp of currentJobs) {
+        const index = this.findWithAttr(jobs, 'name', tmp.name);
+        if (index > -1) {
+          jobs.splice(index, 1);
+        }
+      }
+
+      if (jobs.length) {
+        this.openAddJobsModal(lampDTO, jobs);
+      } else {
+        this.alertService.warning('Keine weiteren Jobs verfügbar!');
+      }
+    });
   }
 
   public addScenario(lampDTO: TeamLampsDTO_LampDTO): void {
@@ -97,10 +109,33 @@ export class BuildAssignmentComponent implements OnInit {
     }
   }
 
-  private openAddScenarioDialog(
-    lampDTO: TeamLampsDTO_LampDTO,
-    selectableScenarios: SimpleEnum[]
-  ): void {
+  private openAddJobsModal(lampDTO: TeamLampsDTO_LampDTO, selectableJobs: JenkinsJobNamesDTO_JobDTO[]): void {
+    const initialState = {
+      jobs: selectableJobs
+    };
+
+    const bsModalRef: BsModalRef = this.modalService.show(
+      AddJobsModalComponent,
+      { initialState }
+    );
+
+    const subscription = this.modalService.onHide.subscribe(() => {
+      const selectedJobs = bsModalRef.content.selectedJobs;
+
+      if (selectedJobs.length) {
+        if (!lampDTO.jobs || !lampDTO.jobs.length) {
+          lampDTO.jobs = selectedJobs;
+        } else {
+          lampDTO.jobs.push.apply(lampDTO.jobs, selectedJobs);
+        }
+      }
+
+      subscription.unsubscribe();
+    });
+
+  }
+
+  private openAddScenarioDialog(lampDTO: TeamLampsDTO_LampDTO, selectableScenarios: SimpleEnum[]): void {
     const initialState = {
       scenarios: selectableScenarios
     };
@@ -113,7 +148,7 @@ export class BuildAssignmentComponent implements OnInit {
     const subscription = this.modalService.onHide.subscribe(() => {
       const selectedScenarios = bsModalRef.content.selectedScenarios;
 
-      if (selectedScenarios) {
+      if (selectedScenarios.length) {
         if (!lampDTO.buildingConfigs) {
           lampDTO.buildingConfigs = [];
         }
