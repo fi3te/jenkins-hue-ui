@@ -7,7 +7,7 @@ import { DTO } from '../generated-dtos.model';
 import { SessionService } from '../service/session.service';
 import { LampService } from './../service/http/lamp.service';
 import { AddJobsModalComponent } from './add-jobs-modal/add-jobs-modal.component';
-import { AddScenarioModalComponent } from './add-scenario-modal/add-scenario-modal.component';
+import { AddScenariosModalComponent } from './add-scenarios-modal/add-scenarios-modal.component';
 
 import TeamLampsDTO_LampDTO = DTO.TeamLampsDTO_LampDTO;
 import ScenarioConfigDTO = DTO.ScenarioConfigDTO;
@@ -141,7 +141,7 @@ export class BuildAssignmentComponent implements OnInit {
     };
 
     const bsModalRef: BsModalRef = this.modalService.show(
-      AddScenarioModalComponent,
+      AddScenariosModalComponent,
       { initialState }
     );
 

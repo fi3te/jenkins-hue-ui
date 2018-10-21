@@ -8,7 +8,7 @@ import { AccordionModule } from 'ngx-bootstrap/accordion';
 import { TimepickerModule } from 'ngx-bootstrap/timepicker';
 import { AddJobsModalComponent } from './add-jobs-modal/add-jobs-modal.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
-import { AddScenarioModalComponent } from './add-scenario-modal/add-scenario-modal.component';
+import { AddScenariosModalComponent } from './add-scenarios-modal/add-scenarios-modal.component';
 import { ScenarioConfigComponent } from './scenario-config/scenario-config.component';
 import { Ng5SliderModule } from 'ng5-slider';
 import { ColorPickerModule } from 'ngx-color-picker';
@@ -29,11 +29,11 @@ import { NgSelectModule } from '@ng-select/ng-select';
   ],
   declarations: [
     AddJobsModalComponent,
-    AddScenarioModalComponent,
+    AddScenariosModalComponent,
     BuildAssignmentComponent,
     RemoveButtonComponent,
     ScenarioConfigComponent
   ],
-  entryComponents: [AddJobsModalComponent, AddScenarioModalComponent]
+  entryComponents: [AddJobsModalComponent, AddScenariosModalComponent]
 })
 export class BuildAssignmentModule { }
