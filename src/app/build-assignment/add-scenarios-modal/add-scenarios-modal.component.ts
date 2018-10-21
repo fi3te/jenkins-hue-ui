@@ -3,11 +3,11 @@ import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import { SimpleEnum } from '../../service/model/simple-enum.model';
 
 @Component({
-  selector: 'app-add-scenario-modal',
-  templateUrl: './add-scenario-modal.component.html',
-  styleUrls: ['./add-scenario-modal.component.scss']
+  selector: 'app-add-scenarios-modal',
+  templateUrl: './add-scenarios-modal.component.html',
+  styleUrls: ['./add-scenarios-modal.component.scss']
 })
-export class AddScenarioModalComponent {
+export class AddScenariosModalComponent {
 
   public scenarios: SimpleEnum[];
   public selectedScenarios: SimpleEnum[];
