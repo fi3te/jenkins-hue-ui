@@ -117,30 +117,9 @@
       </div><!-- /.form group -->
 
       <div class="form-group jh-gap-normal">
-        <button class="btn btn-success" ng-click="saveLamp($index)">Speichern</button>
-        <button class="btn btn-default" ng-click="resetLamp($index)">Zurücksetzen</button>
+        <button class="btn btn-success" (click)="saveLamp(lampDTO)">Speichern</button>
+        <button class="btn btn-default" (click)="resetLamp(lampDTO)">Zurücksetzen</button>
       </div><!-- /.form group -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     </accordion-group>
   </accordion>
 
