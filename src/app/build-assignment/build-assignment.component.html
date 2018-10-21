@@ -29,15 +29,15 @@
       <div class="form-group jh-gap-normal">
         <label><u>Jobs</u></label>
         <ul>
-          <li ng-repeat="job in l.jobs">
-            job.name
+          <li *ngFor="let job of lampDTO.jobs">
+            {{ job.name }}
             <!-- TODO ng-click="removeJob($parent.$index, job.name) -->
             <app-remove-button></app-remove-button>
           </li>
         </ul>
 
         <div class="input-group">
-          <button class="btn btn-default" ng-click="addJob($index)" ng-disabled="loadingJobs">Job hinzufügen</button>
+          <button class="btn btn-default" (click)="addJob(lampDTO)" ng-disabled="loadingJobs">Job hinzufügen</button>
         </div>
       </div><!-- /.form group -->
 
