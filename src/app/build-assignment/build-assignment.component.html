@@ -32,7 +32,7 @@
           <li *ngFor="let job of lampDTO.jobs">
             {{ job.name }}
             <!-- TODO ng-click="removeJob($parent.$index, job.name) -->
-            <app-remove-button></app-remove-button>
+            <app-remove-button (click)="removeJob(lampDTO, job)"></app-remove-button>
           </li>
         </ul>
 

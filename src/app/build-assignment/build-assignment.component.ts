@@ -67,6 +67,16 @@ export class BuildAssignmentComponent implements OnInit {
     });
   }
 
+  public removeJob(lampDTO: TeamLampsDTO_LampDTO, job: JenkinsJobNamesDTO_JobDTO) {
+    let jobRemoved = false;
+    lampDTO.jobs.forEach((value, index) => {
+      if (!jobRemoved && value.name === job.name) {
+        lampDTO.jobs.splice(index, 1);
+        jobRemoved = true;
+      }
+    });
+  }
+
   public addScenario(lampDTO: TeamLampsDTO_LampDTO): void {
     this.universalService.scenarios().subscribe(next => {
       const scenarios: SimpleEnum[] = next;
@@ -94,7 +104,7 @@ export class BuildAssignmentComponent implements OnInit {
       }
 
       if (scenarios.length > 0) {
-        this.openAddScenarioDialog(lampDTO, scenarios);
+        this.openAddScenariosModal(lampDTO, scenarios);
       } else {
         this.alertService.warning('Keine weiteren Szenarios verfügbar!');
       }
@@ -122,7 +132,7 @@ export class BuildAssignmentComponent implements OnInit {
     const subscription = this.modalService.onHide.subscribe(() => {
       const selectedJobs = bsModalRef.content.selectedJobs;
 
-      if (selectedJobs.length) {
+      if (selectedJobs && selectedJobs.length) {
         if (!lampDTO.jobs || !lampDTO.jobs.length) {
           lampDTO.jobs = selectedJobs;
         } else {
@@ -135,7 +145,7 @@ export class BuildAssignmentComponent implements OnInit {
 
   }
 
-  private openAddScenarioDialog(lampDTO: TeamLampsDTO_LampDTO, selectableScenarios: SimpleEnum[]): void {
+  private openAddScenariosModal(lampDTO: TeamLampsDTO_LampDTO, selectableScenarios: SimpleEnum[]): void {
     const initialState = {
       scenarios: selectableScenarios
     };
@@ -148,7 +158,7 @@ export class BuildAssignmentComponent implements OnInit {
     const subscription = this.modalService.onHide.subscribe(() => {
       const selectedScenarios = bsModalRef.content.selectedScenarios;
 
-      if (selectedScenarios.length) {
+      if (selectedScenarios && selectedScenarios.length) {
         if (!lampDTO.buildingConfigs) {
           lampDTO.buildingConfigs = [];
         }
