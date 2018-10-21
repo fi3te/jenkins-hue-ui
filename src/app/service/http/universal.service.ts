@@ -1,3 +1,4 @@
+import { map } from 'rxjs/operators';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -7,7 +8,9 @@ import { REST_UNIVERSAL } from './common/constants';
 
 import PrincipalDTO = DTO.PrincipalDTO;
 import DashboardInformationDTO = DTO.DashboardInformationDTO;
+import ScenarioConfigDTO = DTO.ScenarioConfigDTO;
 import { SimpleEnum } from '../model/simple-enum.model';
+import findWithAttr from './common/find-with-attr';
 
 @Injectable({
   providedIn: 'root'
@@ -15,8 +18,22 @@ import { SimpleEnum } from '../model/simple-enum.model';
 export class UniversalService {
   constructor(private httpClient: HttpClient) {}
 
-  public scenarios(): Observable<SimpleEnum[]> {
-    return this.httpClient.get<SimpleEnum[]>(`${REST_UNIVERSAL}/scenarios`);
+  public scenarios(exclude?: ScenarioConfigDTO[]): Observable<SimpleEnum[]> {
+    if (exclude && exclude.length > 0) {
+      return this.httpClient.get<SimpleEnum[]>(`${REST_UNIVERSAL}/scenarios`).pipe(map(
+        (next: SimpleEnum[]) => {
+          for (const tmp of exclude) {
+            const index = findWithAttr(next, 'name', tmp.scenario.name);
+            if (index > -1) {
+              next.splice(index, 1);
+            }
+          }
+          return next;
+        }
+      ));
+    } else {
+      return this.httpClient.get<SimpleEnum[]>(`${REST_UNIVERSAL}/scenarios`);
+    }
   }
 
   public roles(): Observable<SimpleEnum[]> {
