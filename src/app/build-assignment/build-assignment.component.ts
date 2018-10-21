@@ -1,10 +1,13 @@
-import { AlertService } from './../service/alert.service';
 import { Component, OnInit } from '@angular/core';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 
 import { DTO } from '../generated-dtos.model';
+import { JenkinsService } from '../service/http/jenkins.service';
+import { UniversalService } from '../service/http/universal.service';
+import { SimpleEnum } from '../service/model/simple-enum.model';
 import { SessionService } from '../service/session.service';
+import { AlertService } from './../service/alert.service';
 import { LampService } from './../service/http/lamp.service';
 import { AddJobsModalComponent } from './add-jobs-modal/add-jobs-modal.component';
 import { AddScenariosModalComponent } from './add-scenarios-modal/add-scenarios-modal.component';
@@ -15,9 +18,6 @@ import JenkinsJobNamesDTO_JobDTO = DTO.JenkinsJobNamesDTO_JobDTO;
 import LampGroupedScenariosDTO = DTO.LampGroupedScenariosDTO;
 import TeamLampsDTO = DTO.TeamLampsDTO;
 import LampUpdateDTO = DTO.LampUpdateDTO;
-import { UniversalService } from '../service/http/universal.service';
-import { SimpleEnum } from '../service/model/simple-enum.model';
-import { JenkinsService } from '../service/http/jenkins.service';
 
 @Component({
   selector: 'app-build-assignment',
@@ -43,27 +43,20 @@ export class BuildAssignmentComponent implements OnInit {
 
   public ngOnInit(): void {
     this.teamId = this.sessionService.getTeamId();
-    this.lampService.findAllOfATeam(this.teamId).subscribe((next: TeamLampsDTO) => {
-      this.lampDTOs = next.lamps;
-      this.scenarioPriority = next.scenarioPriority;
-      this.fix();
-      this.sortScenarioConfigs();
-    });
+    this.lampService
+      .findAllOfATeam(this.teamId)
+      .subscribe((next: TeamLampsDTO) => {
+        this.lampDTOs = next.lamps;
+        this.scenarioPriority = next.scenarioPriority;
+        this.fix();
+        this.sortScenarioConfigs();
+      });
   }
 
   public addJob(lampDTO: TeamLampsDTO_LampDTO): void {
-    this.jenkinsService.getJenkinsJobNames().subscribe((next) => {
+    const currentJobs = lampDTO.jobs;
+    this.jenkinsService.getJenkinsJobNames(currentJobs).subscribe(next => {
       const jobs = next.jobs;
-      const currentJobs = lampDTO.jobs;
-
-      // remove already selected jobs
-      for (const tmp of currentJobs) {
-        const index = this.findWithAttr(jobs, 'name', tmp.name);
-        if (index > -1) {
-          jobs.splice(index, 1);
-        }
-      }
-
       if (jobs.length) {
         this.openAddJobsModal(lampDTO, jobs);
       } else {
@@ -72,7 +65,10 @@ export class BuildAssignmentComponent implements OnInit {
     });
   }
 
-  public removeJob(lampDTO: TeamLampsDTO_LampDTO, job: JenkinsJobNamesDTO_JobDTO) {
+  public removeJob(
+    lampDTO: TeamLampsDTO_LampDTO,
+    job: JenkinsJobNamesDTO_JobDTO
+  ) {
     let jobRemoved = false;
     lampDTO.jobs.forEach((value, index) => {
       if (!jobRemoved && value.name === job.name) {
@@ -83,37 +79,29 @@ export class BuildAssignmentComponent implements OnInit {
   }
 
   public addScenario(lampDTO: TeamLampsDTO_LampDTO): void {
-    this.universalService.scenarios().subscribe(next => {
-      const scenarios: SimpleEnum[] = next;
+    let currentScenarios: ScenarioConfigDTO[] = [];
+    if (lampDTO.buildingConfigs) {
+      currentScenarios = currentScenarios.concat(lampDTO.buildingConfigs);
+    }
+    if (lampDTO.failureConfigs) {
+      currentScenarios = currentScenarios.concat(lampDTO.failureConfigs);
+    }
+    if (lampDTO.unstableConfigs) {
+      currentScenarios = currentScenarios.concat(lampDTO.unstableConfigs);
+    }
+    if (lampDTO.successConfigs) {
+      currentScenarios = currentScenarios.concat(lampDTO.successConfigs);
+    }
 
-      let currentScenarios: ScenarioConfigDTO[] = [];
-      if (lampDTO.buildingConfigs) {
-        currentScenarios = currentScenarios.concat(lampDTO.buildingConfigs);
-      }
-      if (lampDTO.failureConfigs) {
-        currentScenarios = currentScenarios.concat(lampDTO.failureConfigs);
-      }
-      if (lampDTO.unstableConfigs) {
-        currentScenarios = currentScenarios.concat(lampDTO.unstableConfigs);
-      }
-      if (lampDTO.successConfigs) {
-        currentScenarios = currentScenarios.concat(lampDTO.successConfigs);
-      }
-
-      // remove already selected scenarios
-      for (const s of currentScenarios) {
-        const index = this.findWithAttr(scenarios, 'name', s.scenario.name);
-        if (index > -1) {
-          scenarios.splice(index, 1);
+    this.universalService
+      .scenarios(currentScenarios)
+      .subscribe((scenarios: SimpleEnum[]) => {
+        if (scenarios.length > 0) {
+          this.openAddScenariosModal(lampDTO, scenarios);
+        } else {
+          this.alertService.warning('Keine weiteren Szenarios verfügbar!');
         }
-      }
-
-      if (scenarios.length > 0) {
-        this.openAddScenariosModal(lampDTO, scenarios);
-      } else {
-        this.alertService.warning('Keine weiteren Szenarios verfügbar!');
-      }
-    });
+      });
   }
 
   public saveLamp(lampDTO: TeamLampsDTO_LampDTO): void {
@@ -125,21 +113,23 @@ export class BuildAssignmentComponent implements OnInit {
   }
 
   public resetLamp(lampDTO: TeamLampsDTO_LampDTO): void {
-    this.lampService.findOne(lampDTO.id).subscribe((next: LampGroupedScenariosDTO) => {
-      lampDTO.name = next.name;
-      lampDTO.workingStart = next.workingStart;
-      lampDTO.workingEnd = next.workingEnd;
-      this.fix();
-      lampDTO.jobs = next.jobs;
+    this.lampService
+      .findOne(lampDTO.id)
+      .subscribe((next: LampGroupedScenariosDTO) => {
+        lampDTO.name = next.name;
+        lampDTO.workingStart = next.workingStart;
+        lampDTO.workingEnd = next.workingEnd;
+        this.fix();
+        lampDTO.jobs = next.jobs;
 
-      lampDTO.buildingConfigs = next.buildingConfigs;
-      lampDTO.failureConfigs = next.failureConfigs;
-      lampDTO.unstableConfigs = next.unstableConfigs;
-      lampDTO.successConfigs = next.successConfigs;
+        lampDTO.buildingConfigs = next.buildingConfigs;
+        lampDTO.failureConfigs = next.failureConfigs;
+        lampDTO.unstableConfigs = next.unstableConfigs;
+        lampDTO.successConfigs = next.successConfigs;
 
-      this.sortScenarioConfigs();
-      this.alertService.info('Änderungen verworfen!');
-    });
+        this.sortScenarioConfigs();
+        this.alertService.info('Änderungen verworfen!');
+      });
   }
 
   // TODO remove
@@ -150,7 +140,10 @@ export class BuildAssignmentComponent implements OnInit {
     }
   }
 
-  private openAddJobsModal(lampDTO: TeamLampsDTO_LampDTO, selectableJobs: JenkinsJobNamesDTO_JobDTO[]): void {
+  private openAddJobsModal(
+    lampDTO: TeamLampsDTO_LampDTO,
+    selectableJobs: JenkinsJobNamesDTO_JobDTO[]
+  ): void {
     const initialState = {
       jobs: selectableJobs
     };
@@ -173,10 +166,12 @@ export class BuildAssignmentComponent implements OnInit {
 
       subscription.unsubscribe();
     });
-
   }
 
-  private openAddScenariosModal(lampDTO: TeamLampsDTO_LampDTO, selectableScenarios: SimpleEnum[]): void {
+  private openAddScenariosModal(
+    lampDTO: TeamLampsDTO_LampDTO,
+    selectableScenarios: SimpleEnum[]
+  ): void {
     const initialState = {
       scenarios: selectableScenarios
     };
@@ -224,7 +219,8 @@ export class BuildAssignmentComponent implements OnInit {
 
   private sortScenarioConfigs(): void {
     const compare = (a: ScenarioConfigDTO, b: ScenarioConfigDTO) =>
-      this.scenarioPriority.indexOf(a.scenario) - this.scenarioPriority.indexOf(b.scenario);
+      this.scenarioPriority.indexOf(a.scenario) -
+      this.scenarioPriority.indexOf(b.scenario);
 
     for (const lamp of this.lampDTOs) {
       if (lamp.buildingConfigs) {
@@ -240,14 +236,5 @@ export class BuildAssignmentComponent implements OnInit {
         lamp.successConfigs.sort(compare);
       }
     }
-  }
-
-  private findWithAttr(array: any[], attr: string, value: any): number {
-    for (let i = 0; i < array.length; i++) {
-      if (array[i][attr] === value) {
-        return i;
-      }
-    }
-    return -1;
   }
 }
