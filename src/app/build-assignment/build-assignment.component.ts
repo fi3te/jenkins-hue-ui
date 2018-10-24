@@ -25,10 +25,10 @@ import LampUpdateDTO = DTO.LampUpdateDTO;
   styleUrls: ['./build-assignment.component.scss']
 })
 export class BuildAssignmentComponent implements OnInit {
+
   public lampDTOs: TeamLampsDTO_LampDTO[];
   public scenarioPriority: SimpleEnum[];
-
-  public test = new Date();
+  public loading: boolean;
 
   private teamId: number;
 
@@ -43,6 +43,7 @@ export class BuildAssignmentComponent implements OnInit {
 
   public ngOnInit(): void {
     this.teamId = this.sessionService.getTeamId();
+    this.loading = true;
     this.lampService
       .findAllOfATeam(this.teamId)
       .subscribe((next: TeamLampsDTO) => {
@@ -50,11 +51,15 @@ export class BuildAssignmentComponent implements OnInit {
         this.scenarioPriority = next.scenarioPriority;
         this.fix();
         this.sortScenarioConfigs();
+        this.loading = false;
+      }, () => {
+        this.loading = false;
       });
   }
 
   public addJob(lampDTO: TeamLampsDTO_LampDTO): void {
     const currentJobs = lampDTO.jobs;
+    this.loading = true;
     this.jenkinsService.getJenkinsJobNames(currentJobs).subscribe(next => {
       const jobs = next.jobs;
       if (jobs.length) {
@@ -62,6 +67,9 @@ export class BuildAssignmentComponent implements OnInit {
       } else {
         this.alertService.warning('Keine weiteren Jobs verfügbar!');
       }
+      this.loading = false;
+    }, () => {
+      this.loading = false;
     });
   }
 
@@ -93,6 +101,7 @@ export class BuildAssignmentComponent implements OnInit {
       currentScenarios = currentScenarios.concat(lampDTO.successConfigs);
     }
 
+    this.loading = true;
     this.universalService
       .scenarios(currentScenarios)
       .subscribe((scenarios: SimpleEnum[]) => {
@@ -101,18 +110,26 @@ export class BuildAssignmentComponent implements OnInit {
         } else {
           this.alertService.warning('Keine weiteren Szenarios verfügbar!');
         }
+        this.loading = false;
+      }, () => {
+        this.loading = false;
       });
   }
 
   public saveLamp(lampDTO: TeamLampsDTO_LampDTO): void {
     const updateDTO: LampUpdateDTO = lampDTO;
     updateDTO.teamId = this.teamId;
+    this.loading = true;
     this.lampService.update(updateDTO).subscribe(() => {
       this.alertService.info('Einstellungen gespeichert!');
+      this.loading = false;
+    }, () => {
+      this.loading = false;
     });
   }
 
   public resetLamp(lampDTO: TeamLampsDTO_LampDTO): void {
+    this.loading = true;
     this.lampService
       .findOne(lampDTO.id)
       .subscribe((next: LampGroupedScenariosDTO) => {
@@ -129,6 +146,9 @@ export class BuildAssignmentComponent implements OnInit {
 
         this.sortScenarioConfigs();
         this.alertService.info('Änderungen verworfen!');
+        this.loading = false;
+      }, () => {
+        this.loading = false;
       });
   }
 
