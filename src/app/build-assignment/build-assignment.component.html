@@ -7,17 +7,6 @@
 
       <div accordion-heading>{{ lampDTO.name }}</div>
 
-
-
-      TODO
-      TODO
-      TODO
-      TODO
-      TODO
-
-
-
-
       <div class="form-group">
         <label><u>Arbeitszeit</u></label>
         <div class="input-group">
@@ -31,13 +20,12 @@
         <ul>
           <li *ngFor="let job of lampDTO.jobs">
             {{ job.name }}
-            <!-- TODO ng-click="removeJob($parent.$index, job.name) -->
             <app-remove-button (click)="removeJob(lampDTO, job)"></app-remove-button>
           </li>
         </ul>
 
         <div class="input-group">
-          <button class="btn btn-default" (click)="addJob(lampDTO)" ng-disabled="loadingJobs">Job hinzufügen</button>
+          <button class="btn btn-default" (click)="addJob(lampDTO)" [disabled]="loading">Job hinzufügen</button>
         </div>
       </div><!-- /.form group -->
 
@@ -110,7 +98,7 @@
         </div>
 
         <div class="input-group">
-          <button class="btn btn-default" (click)="addScenario(lampDTO)" ng-disabled="loadingScenarios">Szenario
+          <button class="btn btn-default" (click)="addScenario(lampDTO)" [disabled]="loading">Szenario
             hinzufügen</button>
         </div><!-- /.input group -->
 
