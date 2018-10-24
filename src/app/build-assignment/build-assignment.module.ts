@@ -25,7 +25,8 @@ import { NgSelectModule } from '@ng-select/ng-select';
     FormsModule,
     Ng5SliderModule,
     ColorPickerModule,
-    NgSelectModule
+    NgSelectModule,
+    CollapseModule.forRoot(),
   ],
   declarations: [
     AddJobsModalComponent,
