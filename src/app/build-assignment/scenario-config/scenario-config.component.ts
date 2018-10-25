@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input, EventEmitter, Output } from '@angular/core';
 
 import { DTO } from '../../generated-dtos.model';
 import ScenarioConfigDTO = DTO.ScenarioConfigDTO;
@@ -12,9 +12,12 @@ import { Options } from 'ng5-slider';
     './scenario-config.component.scss'
   ]
 })
-export class ScenarioConfigComponent implements OnInit {
+export class ScenarioConfigComponent {
   @Input()
   public scenarioConfig: ScenarioConfigDTO;
+
+  @Output()
+  public remove = new EventEmitter<ScenarioConfigDTO>();
 
   public sliderOptions: Options = {
     floor: 1,
@@ -24,7 +27,7 @@ export class ScenarioConfigComponent implements OnInit {
     showSelectionBar: true
   };
 
-  constructor() {}
-
-  public ngOnInit(): void {}
+  public removeScenarioConfig(): void {
+    this.remove.emit(this.scenarioConfig);
+  }
 }

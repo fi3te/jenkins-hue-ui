@@ -1,9 +1,6 @@
 <div class="jh-box-border">
-  <!-- TODO -->
-  <label>Scenario TODO</label>
-  <!-- <label>{{ scenarioConfig.scenario.text }}</label> -->
-  <!-- TODO  (click)="removeScenario($parent.$index, scenarioConfig.scenario.name)" -->
-  <app-remove-button class="pull-right"></app-remove-button>
+  <label>{{ scenarioConfig.scenario.text }}</label>
+  <app-remove-button class="pull-right" (click)="removeScenarioConfig()"></app-remove-button>
 
   <div class="jh-switch-row">
     <label class="switch switch-sm switch-pill switch-secondary">
