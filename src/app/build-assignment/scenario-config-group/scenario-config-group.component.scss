@@ -1,0 +1,11 @@
+.jh-scenario-config {
+  padding: 0;
+}
+
+.jh-scenario-config:first-child {
+  padding-left: 15px;
+}
+
+.jh-scenario-config:last-child:not(:first-child) {
+  padding-right: 15px;
+}

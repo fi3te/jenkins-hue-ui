@@ -41,7 +41,7 @@
         </div>
         <div class="jh-box" *ngIf="scenarioConfig.onetimePulsationColorChangeEnabled">
           <div class="input-group">
-            <input class="form-control" [(colorPicker)]="scenarioConfig.onetimePulsationColorHex" [cpOutputFormat]="'hex'"
+            <input class="form-control jh-color-input" [(colorPicker)]="scenarioConfig.onetimePulsationColorHex" [cpOutputFormat]="'hex'"
               [cpAlphaChannel]="'disabled'" [value]="scenarioConfig.onetimePulsationColorHex">
             <div class="input-group-append">
               <span class="input-group-text">
@@ -63,7 +63,7 @@
       </div>
       <div class="jh-box" *ngIf="scenarioConfig.colorChangeEnabled">
         <div class="input-group">
-          <input class="form-control" [(colorPicker)]="scenarioConfig.colorHex" [cpOutputFormat]="'hex'"
+          <input class="form-control jh-color-input" [(colorPicker)]="scenarioConfig.colorHex" [cpOutputFormat]="'hex'"
             [cpAlphaChannel]="'disabled'" [value]="scenarioConfig.colorHex">
           <div class="input-group-append">
             <span class="input-group-text">
