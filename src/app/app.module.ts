@@ -57,10 +57,13 @@ export class ErrorResponseInterceptor implements HttpInterceptor {
     return next.handle(req).pipe(tap(
       () => {},
       (error) => {
-        console.log(error);
         if (error instanceof HttpErrorResponse && error.error) {
           const message = error.error.message;
-          this.alertService.danger(message ? message : error.message);
+          if (!message) {
+            this.alertService.danger(error.message);
+          } else if (message.indexOf('Access Denied') === -1) {
+            this.alertService.danger(message);
+          }
         }
       }
     ));
