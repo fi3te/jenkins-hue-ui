@@ -82,6 +82,11 @@
   margin-top: 48px;
 }
 
+.jh-clickable-text {
+  cursor: pointer;
+  user-select: none;
+}
+
 .small-box h4 {
   font-weight: bold;
   margin: 0 0 10px 0;

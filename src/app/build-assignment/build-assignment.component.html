@@ -33,83 +33,15 @@
       <div class="form-group jh-gap-normal">
         <label><u>Szenarien</u></label>
 
-        <div class="box collapsed-box box-solid" *ngIf="lampDTO.buildingConfigs.length">
-          <div class="box-header">
-            <div class="pull-right">
-              <button type="button" class="btn btn-primary btn-sm" (click)="buildingConfigsCollapse.toggle()">
-                <i [class]="buildingConfigsCollapse.isCollapsed ? 'fa fa-plus' : 'fa fa-minus'"></i>
-              </button>
-            </div>
-            <h3 class="box-title jh-clickable-text" (click)="buildingConfigsCollapse.toggle()">BUILDING ({{ lampDTO.buildingConfigs.length }})</h3>
-          </div><!-- /.box-header -->
-          <div class="box-body no-padding" #buildingConfigsCollapse="bs-collapse" [collapse]="true">
-            <div class="row">
-              <div class="col-md-3 col-sm-6" *ngFor="let s of lampDTO.buildingConfigs">
-                <app-scenario-config [scenarioConfig]="s"></app-scenario-config>
-              </div>
-            </div><!-- /.row -->
-          </div><!-- /.box-body -->
-        </div>
-
-        <div class="box collapsed-box box-solid" *ngIf="lampDTO.failureConfigs.length">
-          <div class="box-header">
-            <div class="pull-right">
-              <button type="button" class="btn btn-danger btn-sm" (click)="failureConfigsCollapse.toggle()">
-                  <i [class]="failureConfigsCollapse.isCollapsed ? 'fa fa-plus' : 'fa fa-minus'"></i>
-              </button>
-            </div>
-            <h3 class="box-title jh-clickable-text" (click)="failureConfigsCollapse.toggle()">FAILURE ({{ lampDTO.failureConfigs.length }})</h3>
-          </div><!-- /.box-header -->
-          <div class="box-body no-padding" #failureConfigsCollapse="bs-collapse" [collapse]="true">
-            <div class="row">
-              <div class="col-md-3 col-sm-6" *ngFor="let s of lampDTO.failureConfigs">
-                <app-scenario-config [scenarioConfig]="s"></app-scenario-config>
-              </div>
-            </div><!-- /.row -->
-          </div><!-- /.box-body -->
-        </div>
-
-        <div class="box collapsed-box box-solid" *ngIf="lampDTO.unstableConfigs.length">
-          <div class="box-header">
-            <div class="pull-right">
-              <button type="button" class="btn btn-warning btn-sm" (click)="unstableConfigsCollapse.toggle()">
-                  <i [class]="unstableConfigsCollapse.isCollapsed ? 'fa fa-plus' : 'fa fa-minus'"></i>
-              </button>
-            </div>
-            <h3 class="box-title jh-clickable-text" (click)="unstableConfigsCollapse.toggle()">UNSTABLE ({{ lampDTO.unstableConfigs.length }})</h3>
-          </div><!-- /.box-header -->
-          <div class="box-body no-padding" #unstableConfigsCollapse="bs-collapse" [collapse]="true">
-            <div class="row">
-              <div class="col-md-3 col-sm-6" *ngFor="let s of lampDTO.unstableConfigs">
-                <app-scenario-config [scenarioConfig]="s"></app-scenario-config>
-              </div>
-            </div><!-- /.row -->
-          </div><!-- /.box-body -->
-        </div>
-
-        <div class="box collapsed-box box-solid" *ngIf="lampDTO.successConfigs.length">
-          <div class="box-header">
-            <div class="pull-right">
-              <button type="button" class="btn btn-success btn-sm" (click)="successConfigsCollapse.toggle()">
-                  <i [class]="successConfigsCollapse.isCollapsed ? 'fa fa-plus' : 'fa fa-minus'"></i>
-              </button>
-            </div>
-            <h3 class="box-title jh-clickable-text" (click)="successConfigsCollapse.toggle()">SUCCESS ({{ lampDTO.successConfigs.length }})</h3>
-          </div><!-- /.box-header -->
-          <div class="box-body no-padding" #successConfigsCollapse="bs-collapse" [collapse]="true">
-            <div class="row">
-              <div class="col-md-3 col-sm-6" *ngFor="let s of lampDTO.successConfigs">
-                <app-scenario-config [scenarioConfig]="s"></app-scenario-config>
-              </div>
-            </div><!-- /.row -->
-          </div><!-- /.box-body -->
-        </div>
+        <app-scenario-config-group [name]="'BUILDING'" [buttonColor]="'btn-primary'" [configs]="lampDTO.buildingConfigs"></app-scenario-config-group>
+        <app-scenario-config-group [name]="'FAILURE'" [buttonColor]="'btn-danger'" [configs]="lampDTO.failureConfigs"></app-scenario-config-group>
+        <app-scenario-config-group [name]="'UNSTABLE'" [buttonColor]="'btn-warning'" [configs]="lampDTO.unstableConfigs"></app-scenario-config-group>
+        <app-scenario-config-group [name]="'SUCCESS'" [buttonColor]="'btn-success'" [configs]="lampDTO.successConfigs"></app-scenario-config-group>
 
         <div class="input-group">
           <button class="btn btn-default" (click)="addScenario(lampDTO)" [disabled]="loading">Szenario
             hinzufügen</button>
         </div><!-- /.input group -->
-
       </div><!-- /.form group -->
 
       <div class="form-group jh-gap-normal">

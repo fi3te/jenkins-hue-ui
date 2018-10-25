@@ -14,6 +14,7 @@ import { Ng5SliderModule } from 'ng5-slider';
 import { ColorPickerModule } from 'ngx-color-picker';
 import { RemoveButtonComponent } from './remove-button/remove-button.component';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { ScenarioConfigGroupComponent } from './scenario-config-group/scenario-config-group.component';
 
 @NgModule({
   imports: [
@@ -33,7 +34,8 @@ import { NgSelectModule } from '@ng-select/ng-select';
     AddScenariosModalComponent,
     BuildAssignmentComponent,
     RemoveButtonComponent,
-    ScenarioConfigComponent
+    ScenarioConfigComponent,
+    ScenarioConfigGroupComponent
   ],
   entryComponents: [AddJobsModalComponent, AddScenariosModalComponent]
 })
