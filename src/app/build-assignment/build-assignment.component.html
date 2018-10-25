@@ -5,7 +5,7 @@
   <accordion [closeOthers]="true" >
     <accordion-group *ngFor="let lampDTO of lampDTOs">
 
-      <div accordion-heading>{{ lampDTO.name }}</div>
+      <div accordion-heading class="jh-clickable-text">{{ lampDTO.name }}</div>
 
       <div class="form-group">
         <label><u>Arbeitszeit</u></label>
@@ -35,10 +35,12 @@
 
         <div class="box collapsed-box box-solid" *ngIf="lampDTO.buildingConfigs.length">
           <div class="box-header">
-            <h3 class="box-title">BUILDING ({{ lampDTO.buildingConfigs.length }})</h3>
-            <div class="pull-right box-tools">
-              <button type="button" class="btn btn-primary btn-sm" (click)="buildingConfigsCollapse.toggle()"><i class="fa fa-plus"></i></button>
-            </div><!-- /. box-tools -->
+            <div class="pull-right">
+              <button type="button" class="btn btn-primary btn-sm" (click)="buildingConfigsCollapse.toggle()">
+                <i [class]="buildingConfigsCollapse.isCollapsed ? 'fa fa-plus' : 'fa fa-minus'"></i>
+              </button>
+            </div>
+            <h3 class="box-title jh-clickable-text" (click)="buildingConfigsCollapse.toggle()">BUILDING ({{ lampDTO.buildingConfigs.length }})</h3>
           </div><!-- /.box-header -->
           <div class="box-body no-padding" #buildingConfigsCollapse="bs-collapse" [collapse]="true">
             <div class="row">
@@ -51,10 +53,12 @@
 
         <div class="box collapsed-box box-solid" *ngIf="lampDTO.failureConfigs.length">
           <div class="box-header">
-            <h3 class="box-title">FAILURE ({{ lampDTO.failureConfigs.length }})</h3>
-            <div class="pull-right box-tools">
-              <button type="button" class="btn btn-danger btn-sm" (click)="failureConfigsCollapse.toggle()"><i class="fa fa-plus"></i></button>
-            </div><!-- /. box-tools -->
+            <div class="pull-right">
+              <button type="button" class="btn btn-danger btn-sm" (click)="failureConfigsCollapse.toggle()">
+                  <i [class]="failureConfigsCollapse.isCollapsed ? 'fa fa-plus' : 'fa fa-minus'"></i>
+              </button>
+            </div>
+            <h3 class="box-title jh-clickable-text" (click)="failureConfigsCollapse.toggle()">FAILURE ({{ lampDTO.failureConfigs.length }})</h3>
           </div><!-- /.box-header -->
           <div class="box-body no-padding" #failureConfigsCollapse="bs-collapse" [collapse]="true">
             <div class="row">
@@ -67,10 +71,12 @@
 
         <div class="box collapsed-box box-solid" *ngIf="lampDTO.unstableConfigs.length">
           <div class="box-header">
-            <h3 class="box-title">UNSTABLE ({{ lampDTO.unstableConfigs.length }})</h3>
-            <div class="pull-right box-tools">
-              <button type="button" class="btn btn-warning btn-sm" (click)="unstableConfigsCollapse.toggle()"><i class="fa fa-plus"></i></button>
-            </div><!-- /. box-tools -->
+            <div class="pull-right">
+              <button type="button" class="btn btn-warning btn-sm" (click)="unstableConfigsCollapse.toggle()">
+                  <i [class]="unstableConfigsCollapse.isCollapsed ? 'fa fa-plus' : 'fa fa-minus'"></i>
+              </button>
+            </div>
+            <h3 class="box-title jh-clickable-text" (click)="unstableConfigsCollapse.toggle()">UNSTABLE ({{ lampDTO.unstableConfigs.length }})</h3>
           </div><!-- /.box-header -->
           <div class="box-body no-padding" #unstableConfigsCollapse="bs-collapse" [collapse]="true">
             <div class="row">
@@ -83,10 +89,12 @@
 
         <div class="box collapsed-box box-solid" *ngIf="lampDTO.successConfigs.length">
           <div class="box-header">
-            <h3 class="box-title">SUCCESS ({{ lampDTO.successConfigs.length }})</h3>
-            <div class="pull-right box-tools">
-              <button type="button" class="btn btn-success btn-sm" (click)="successConfigsCollapse.toggle()"><i class="fa fa-plus"></i></button>
-            </div><!-- /. box-tools -->
+            <div class="pull-right">
+              <button type="button" class="btn btn-success btn-sm" (click)="successConfigsCollapse.toggle()">
+                  <i [class]="successConfigsCollapse.isCollapsed ? 'fa fa-plus' : 'fa fa-minus'"></i>
+              </button>
+            </div>
+            <h3 class="box-title jh-clickable-text" (click)="successConfigsCollapse.toggle()">SUCCESS ({{ lampDTO.successConfigs.length }})</h3>
           </div><!-- /.box-header -->
           <div class="box-body no-padding" #successConfigsCollapse="bs-collapse" [collapse]="true">
             <div class="row">
