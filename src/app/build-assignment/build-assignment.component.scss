@@ -1,3 +1,8 @@
 /deep/ accordion-group .card {
   margin-bottom: 0;
 }
+
+.jh-clickable-text {
+  cursor: pointer;
+  user-select: none;
+}
