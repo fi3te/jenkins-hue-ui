@@ -1,3 +1,4 @@
+import { SimpleEnum } from './../../service/model/simple-enum.model';
 import { Component, Input } from '@angular/core';
 
 import { DTO } from '../../generated-dtos.model';
@@ -18,4 +19,11 @@ export class ScenarioConfigGroupComponent {
 
   @Input()
   public configs: ScenarioConfigDTO[];
+
+  public removeScenarioConfig(event: ScenarioConfigDTO) {
+    const index = this.configs.indexOf(event);
+    if (index > -1) {
+      this.configs.splice(index, 1);
+    }
+  }
 }

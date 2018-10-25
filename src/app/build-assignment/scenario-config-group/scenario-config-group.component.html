@@ -10,7 +10,7 @@
     <div class="box-body no-padding" #collapse="bs-collapse" [collapse]="true">
       <div class="row">
         <div class="col-lg-3 col-md-6 col-sm-6 jh-scenario-config" *ngFor="let s of configs">
-          <app-scenario-config [scenarioConfig]="s"></app-scenario-config>
+          <app-scenario-config [scenarioConfig]="s" (remove)="removeScenarioConfig($event)"></app-scenario-config>
         </div>
       </div><!-- /.row -->
     </div><!-- /.box-body -->
