@@ -1,7 +1,9 @@
+import { AlertService } from './../../service/alert.service';
 import { Component, OnInit } from '@angular/core';
 
 import { DTO } from '../../generated-dtos.model';
 import LampHueDTO = DTO.LampHueDTO;
+import { LampService } from '../../service/http/lamp.service';
 
 @Component({
   selector: 'app-available-lamps',
@@ -14,9 +16,10 @@ export class AvailableLampsComponent implements OnInit {
   public isRefreshing: boolean;
   public isTaking: boolean;
 
-  constructor() { }
+  constructor(private lampService: LampService, private alertService: AlertService) { }
 
-  ngOnInit() {
+  public ngOnInit(): void {
+    this.updateAvailableLamps(true);
   }
 
   public refresh(): void {
@@ -31,4 +34,16 @@ export class AvailableLampsComponent implements OnInit {
     // TODO
   }
 
+  private updateAvailableLamps(noAlert?: boolean): void {
+    this.isRefreshing = true;
+    this.lampService.findAllAvailable().subscribe((next: LampHueDTO[]) => {
+      this.availableLamps = next;
+      if (!noAlert) {
+        this.alertService.info('Verfügbare Lampen aktualisiert');
+      }
+      this.isRefreshing = false;
+    }, () => {
+      this.isRefreshing = false;
+    });
+  }
 }
