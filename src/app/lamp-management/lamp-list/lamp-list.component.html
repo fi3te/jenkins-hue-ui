@@ -1,3 +1,51 @@
-<p>
-  lamp-list works!
-</p>
+<div class="box">
+    <div class="box-header">
+      <h3 class="box-title">Lampen meines Teams</h3>
+    </div><!-- /.box-header -->
+    <div class="box-body">
+
+      <div class="form-group">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">
+              <i class="fa fa-search"></i>
+            </span>
+          </div>
+          <input type="text" name="searchItem" class="form-control" placeholder="Suchen" [(ngModel)]="searchItem" (ngModelChange)="filter()">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="text-success">Anzahl: {{ teamLamps?.length }}</label>
+      </div>
+
+      <p *ngIf="teamLamps?.length < 1">keine Lampen vorhanden</p>
+
+      <table class="table table-bordered table-striped" [hidden]="teamLamps?.length < 1">
+        <thead>
+          <tr>
+            <th>Hue-ID</th>
+            <th>Name</th>
+            <th>Beginn</th>
+            <th>Ende</th>
+            <th>Jobs</th>
+            <th>Aktionen</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let l of filteredLamps">
+            <td>{{ l.hueUniqueId }}</td>
+            <td>{{ l.name }}</td>
+            <td>{{ l.workingStart | date:'HH:mm' }} Uhr</td>
+            <td>{{ l.workingEnd | date:'HH:mm' }} Uhr</td>
+            <td>{{ l.jobs.length }}</td>
+            <td>
+              <button class="btn btn-sm btn-primary" (click)="renameLamp(l)">Umbenennen</button>
+              <button class="btn btn-sm btn-success" (click)="pulseOnce(l)">Pulsieren lassen</button>
+              <button class="btn btn-sm btn-danger" (click)="releaseLamp(l)">Freigeben</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div><!-- /.box-body -->
+  </div><!-- /.box -->

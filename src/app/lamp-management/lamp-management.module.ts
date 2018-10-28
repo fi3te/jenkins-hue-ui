@@ -1,3 +1,4 @@
+import { FormsModule } from '@angular/forms';
 import { RenameModalComponent } from './../shared/rename-modal/rename-modal.component';
 import { SharedModule } from './../shared/shared.module';
 import { NgModule } from '@angular/core';
@@ -13,6 +14,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     CommonModule,
     LampManagementRoutingModule,
     SharedModule,
+    FormsModule,
     ModalModule.forRoot()
   ],
   declarations: [LampManagementComponent, AvailableLampsComponent, LampListComponent],
