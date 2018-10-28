@@ -1,7 +1,16 @@
-// Here you can add other styles
+.card-header {
+  background-color: unset;
+}
+
+
+
+
+
+
+
+
 
 // TODO remove global styling
-
 
 /*
  * animation for ng-view
@@ -107,11 +116,6 @@
   z-index: 10;
   background: rgba(0,0,0,0.1);
   text-decoration: none;
-}
-
-/* growl */
-.growl-container.growl-fixed.top-right {
-  top: 60px;
 }
 
 @media (max-width: 1280px) {
