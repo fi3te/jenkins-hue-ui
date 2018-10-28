@@ -1,4 +1,22 @@
-<p>
-  rename-modal works!
-  {{title}}: {{icon}}
-</p>
+<div class="modal-header">
+  <h4 class="modal-title pull-left">{{title}}</h4>
+  <button type="button" class="close pull-right" aria-label="Close" (click)="cancel()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <div class="form-group">
+    <div class="input-group">
+      <div class="input-group-prepend" *ngIf="icon">
+        <span class="input-group-text">
+          <i [ngClass]="icon"></i>
+        </span>
+      </div>
+      <input type="text" name="name" class="form-control" placeholder="Name eingeben" [(ngModel)]="name">
+    </div><!-- /.input group -->
+  </div><!-- /.form-group -->
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-default" (click)="cancel()">Abbrechen</button>
+  <button type="button" class="btn btn-primary" (click)="save()">Speichern</button>
+</div>
