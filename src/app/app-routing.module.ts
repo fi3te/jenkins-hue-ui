@@ -7,6 +7,7 @@ import { DefaultLayoutComponent } from './containers';
 
 import { RegisterComponent } from './views/register/register.component';
 import { LoginComponent } from './login/login.component';
+import { DashboardResolveGuard } from './guard/dashboard-resolve.guard';
 
 export const routes: Routes = [
   {
@@ -38,7 +39,10 @@ export const routes: Routes = [
     children: [
       {
         path: 'dashboard2',
-        loadChildren: './dashboard/dashboard.module#DashboardModule'
+        loadChildren: './dashboard/dashboard.module#DashboardModule',
+        resolve: {
+          dashboardInformationDTO: DashboardResolveGuard
+        }
       },
       {
         path: 'build-assignment',

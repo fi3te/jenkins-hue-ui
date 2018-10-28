@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
-import { UniversalService } from '../service/http/universal.service';
-import { SessionService } from '../service/session.service';
 import { DTO } from './../generated-dtos.model';
 
 import DashboardInformationDTO = DTO.DashboardInformationDTO;
@@ -14,18 +13,13 @@ import DashboardInformationDTO = DTO.DashboardInformationDTO;
 export class DashboardComponent implements OnInit {
   public dashboard: DashboardInformationDTO;
 
-  constructor(
-    private sessionService: SessionService,
-    private universalService: UniversalService
-  ) {}
+  constructor(private route: ActivatedRoute) {}
 
   public ngOnInit(): void {
-    this.universalService
-      .getDashboardInformation(this.sessionService.getTeamId())
-      .subscribe(
-        next => {
-          this.dashboard = next;
-        }
-      );
+    this.route.data.subscribe(
+      (data: { dashboardInformationDTO: DashboardInformationDTO }) => {
+        this.dashboard = data.dashboardInformationDTO;
+      }
+    );
   }
 }
