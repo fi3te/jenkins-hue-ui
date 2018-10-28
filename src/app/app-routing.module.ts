@@ -1,3 +1,4 @@
+import { BuildAssignmentResolveGuard } from './guard/build-assignment-resolve.guard';
 import { AuthenticationGuard } from './guard/authentication.guard';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -46,7 +47,10 @@ export const routes: Routes = [
       },
       {
         path: 'build-assignment',
-        loadChildren: './build-assignment/build-assignment.module#BuildAssignmentModule'
+        loadChildren: './build-assignment/build-assignment.module#BuildAssignmentModule',
+        resolve: {
+          teamLampsDTO: BuildAssignmentResolveGuard
+        }
       },
       {
         path: 'lamp-management',

@@ -17,7 +17,7 @@ export class DashboardResolveGuard implements Resolve<DashboardInformationDTO> {
     private universalService: UniversalService
   ) {}
 
-  public resolve(): Observable<DTO.DashboardInformationDTO> {
+  public resolve(): Observable<DashboardInformationDTO> {
     return this.universalService.getDashboardInformation(
       this.sessionService.getTeamId()
     );

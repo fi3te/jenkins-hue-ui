@@ -18,6 +18,7 @@ import JenkinsJobNamesDTO_JobDTO = DTO.JenkinsJobNamesDTO_JobDTO;
 import LampGroupedScenariosDTO = DTO.LampGroupedScenariosDTO;
 import TeamLampsDTO = DTO.TeamLampsDTO;
 import LampUpdateDTO = DTO.LampUpdateDTO;
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-build-assignment',
@@ -38,23 +39,20 @@ export class BuildAssignmentComponent implements OnInit {
     private lampService: LampService,
     private universalService: UniversalService,
     private jenkinsService: JenkinsService,
-    private alertService: AlertService
+    private alertService: AlertService,
+    private route: ActivatedRoute
   ) {}
 
   public ngOnInit(): void {
     this.teamId = this.sessionService.getTeamId();
-    this.loading = true;
-    this.lampService
-      .findAllOfATeam(this.teamId)
-      .subscribe((next: TeamLampsDTO) => {
-        this.lampDTOs = next.lamps;
-        this.scenarioPriority = next.scenarioPriority;
+    this.route.data.subscribe(
+      (data: { teamLampsDTO: TeamLampsDTO }) => {
+        this.lampDTOs = data.teamLampsDTO.lamps;
+        this.scenarioPriority = data.teamLampsDTO.scenarioPriority;
         this.fix();
         this.sortScenarioConfigs();
-        this.loading = false;
-      }, () => {
-        this.loading = false;
-      });
+      }
+    );
   }
 
   public addJob(lampDTO: TeamLampsDTO_LampDTO): void {
