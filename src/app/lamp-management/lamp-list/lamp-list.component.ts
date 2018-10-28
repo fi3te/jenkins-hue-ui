@@ -1,3 +1,4 @@
+import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
@@ -27,12 +28,17 @@ export class LampListComponent implements OnInit {
     private sessionService: SessionService,
     private lampService: LampService,
     private alertService: AlertService,
-    private modalService: BsModalService
+    private modalService: BsModalService,
+    private route: ActivatedRoute
   ) {}
 
   public ngOnInit(): void {
     this.teamId = this.sessionService.getTeamId();
-    this.fetchTeamLamps();
+    this.route.data.subscribe(
+      (data: { teamLampsDTO: TeamLampsDTO }) => {
+        this.setTeamLamps(data.teamLampsDTO.lamps);
+      }
+    );
   }
 
   public filter(): void {
@@ -90,8 +96,12 @@ export class LampListComponent implements OnInit {
     this.lampService
       .findAllOfATeam(this.teamId)
       .subscribe((next: TeamLampsDTO) => {
-        this.teamLamps = next.lamps;
-        this.filter();
+        this.setTeamLamps(next.lamps);
       });
+  }
+
+  private setTeamLamps(lamps: TeamLampsDTO_LampDTO[]) {
+    this.teamLamps = lamps;
+    this.filter();
   }
 }

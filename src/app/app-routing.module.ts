@@ -1,3 +1,4 @@
+import { LampManagementResolveGuard } from './guard/lamp-management-resolve.guard';
 import { BuildAssignmentResolveGuard } from './guard/build-assignment-resolve.guard';
 import { AuthenticationGuard } from './guard/authentication.guard';
 import { NgModule } from '@angular/core';
@@ -54,7 +55,10 @@ export const routes: Routes = [
       },
       {
         path: 'lamp-management',
-        loadChildren: './lamp-management/lamp-management.module#LampManagementModule'
+        loadChildren: './lamp-management/lamp-management.module#LampManagementModule',
+        resolve: {
+          teamLampsDTO: LampManagementResolveGuard
+        }
       },
       {
         path: 'bridge-management',
