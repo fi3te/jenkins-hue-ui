@@ -6,7 +6,6 @@ import { FormsComponent } from './forms.component';
 import { SwitchesComponent } from './switches.component';
 import { TablesComponent } from './tables.component';
 import { TabsComponent } from './tabs.component';
-import { CarouselsComponent } from './carousels.component';
 import { CollapsesComponent } from './collapses.component';
 import { PaginationsComponent } from './paginations.component';
 import {PopoversComponent} from './popovers.component';
@@ -53,13 +52,6 @@ const routes: Routes = [
         component: TabsComponent,
         data: {
           title: 'Tabs'
-        }
-      },
-      {
-        path: 'carousels',
-        component: CarouselsComponent,
-        data: {
-          title: 'Carousels'
         }
       },
       {

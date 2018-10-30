@@ -15,10 +15,6 @@ import { TablesComponent } from './tables.component';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { TabsComponent } from './tabs.component';
 
-// Carousel Component
-import { CarouselModule } from 'ngx-bootstrap/carousel';
-import { CarouselsComponent } from './carousels.component';
-
 // Collapse Component
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { CollapsesComponent } from './collapses.component';
@@ -53,7 +49,6 @@ import { BaseRoutingModule } from './base-routing.module';
     BaseRoutingModule,
     BsDropdownModule.forRoot(),
     TabsModule,
-    CarouselModule.forRoot(),
     CollapseModule.forRoot(),
     PaginationModule.forRoot(),
     PopoverModule.forRoot(),
@@ -66,7 +61,6 @@ import { BaseRoutingModule } from './base-routing.module';
     SwitchesComponent,
     TablesComponent,
     TabsComponent,
-    CarouselsComponent,
     CollapsesComponent,
     PaginationsComponent,
     PopoversComponent,
