@@ -6,6 +6,7 @@ import { BridgeManagementRoutingModule } from './bridge-management-routing.modul
 import { BridgeManagementComponent } from './bridge-management.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { FoundBridgesModalComponent } from './found-bridges-modal/found-bridges-modal.component';
+import { AddBridgeComponent } from './add-bridge/add-bridge.component';
 
 @NgModule({
   entryComponents: [
@@ -15,7 +16,8 @@ import { FoundBridgesModalComponent } from './found-bridges-modal/found-bridges-
   declarations: [
     BridgeManagementComponent,
     BridgeListComponent,
-    FoundBridgesModalComponent
+    FoundBridgesModalComponent,
+    AddBridgeComponent
   ],
 
 })
