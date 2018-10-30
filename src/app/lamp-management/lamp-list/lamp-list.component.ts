@@ -1,5 +1,5 @@
-import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 
@@ -8,6 +8,7 @@ import { SessionService } from '../../service/session.service';
 import { RenameModalComponent } from '../../shared/rename-modal/rename-modal.component';
 import { DTO } from './../../generated-dtos.model';
 import { AlertService } from './../../service/alert.service';
+import { LampOwnershipService } from './../lamp-ownership.service';
 
 import TeamLampsDTO = DTO.TeamLampsDTO;
 import TeamLampsDTO_LampDTO = DTO.TeamLampsDTO_LampDTO;
@@ -18,7 +19,6 @@ import TeamLampsDTO_LampDTO = DTO.TeamLampsDTO_LampDTO;
   styleUrls: ['./lamp-list.component.scss']
 })
 export class LampListComponent implements OnInit {
-
   public teamLamps: TeamLampsDTO_LampDTO[];
   public filteredLamps: TeamLampsDTO_LampDTO[];
   public searchItem = '';
@@ -29,16 +29,18 @@ export class LampListComponent implements OnInit {
     private lampService: LampService,
     private alertService: AlertService,
     private modalService: BsModalService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private lampOwnershipService: LampOwnershipService
   ) {}
 
   public ngOnInit(): void {
     this.teamId = this.sessionService.getTeamId();
-    this.route.data.subscribe(
-      (data: { teamLampsDTO: TeamLampsDTO }) => {
-        this.setTeamLamps(data.teamLampsDTO.lamps);
-      }
-    );
+    this.route.data.subscribe((data: { teamLampsDTO: TeamLampsDTO }) => {
+      this.setTeamLamps(data.teamLampsDTO.lamps);
+    });
+    this.lampOwnershipService.lampTaken$.subscribe(() => {
+      this.fetchTeamLamps();
+    });
   }
 
   public filter(): void {
@@ -86,7 +88,8 @@ export class LampListComponent implements OnInit {
   }
 
   public releaseLamp(lamp: TeamLampsDTO_LampDTO) {
-    this.lampService.remove(lamp.id).subscribe(next => {
+    this.lampService.remove(lamp.id).subscribe(() => {
+      this.lampOwnershipService.lampReleased();
       this.fetchTeamLamps();
       this.alertService.info('Lampe freigegeben!');
     });
