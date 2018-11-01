@@ -3,28 +3,23 @@
     <h4>Hue Bridge hinzufügen</h4>
   </div>
 
-  <!-- form start -->
-  <form role="form" name="ipForm" novalidate>
+  <form role="form" name="ipForm" class="needs-validation" novalidate (submit)="createBridge()">
     <div class="card-body">
-
-      <!-- IP mask -->
-      <div class="form-group" ng-class="{'has-error': ipForm.ip.$invalid && ipForm.ip.$touched, 'has-success': ipForm.ip.$valid}">
-        <label><i class="fa" ng-class="{'fa-times-circle-o': ipForm.ip.$invalid && ipForm.ip.$touched, 'fa-check': ipForm.ip.$valid}"></i> IP-Adresse:</label>
+      <div class="form-group">
+        <label><i class="fa" [ngClass]="{'fa-times-circle-o': bridgeIp.invalid && bridgeIp.dirty, 'fa-check': bridgeIp.valid}"></i> IP-Adresse:</label>
         <div class="input-group">
           <div class="input-group-prepend">
             <span class="input-group-text">
               <i class="fa fa-laptop"></i>
             </span>
           </div>
-          <input type="text" class="form-control" name="ip" placeholder="IP-Adresse" ng-model="ip" data-inputmask="'alias': 'ip'"
-            data-mask required>
-        </div><!-- /.input group -->
-      </div><!-- /.form group -->
+          <input type="text" class="form-control" [class.is-invalid]="bridgeIp.invalid && bridgeIp.dirty" [class.is-valid]="bridgeIp.valid" name="ip" placeholder="IP-Adresse" #bridgeIp="ngModel" [(ngModel)]="ip" required="required" [pattern]="ipPattern">
+        </div>
+      </div>
     </div>
-
     <div class="card-footer">
-      <button type="submit" class="btn btn-success mr-1" ng-disabled="ipForm.$invalid" ng-click="createBridge()">Anlegen</button>
-      <button type="submit" class="btn btn-default" ng-click="searchForBridges()" ng-disabled="loadingBridges">Nach
+      <button type="submit" class="btn btn-success mr-1" [disabled]="bridgeIp.invalid">Anlegen</button>
+      <button type="button" class="btn btn-default" (click)="searchForBridges()" [disabled]="loadingBridges">Nach
         Bridges suchen</button>
     </div>
   </form>

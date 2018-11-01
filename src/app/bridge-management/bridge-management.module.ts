@@ -1,3 +1,4 @@
+import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
@@ -12,7 +13,12 @@ import { AddBridgeComponent } from './add-bridge/add-bridge.component';
   entryComponents: [
     FoundBridgesModalComponent
   ],
-  imports: [CommonModule, BridgeManagementRoutingModule, ModalModule.forRoot()],
+  imports: [
+    CommonModule,
+    FormsModule,
+    BridgeManagementRoutingModule,
+    ModalModule.forRoot()
+  ],
   declarations: [
     BridgeManagementComponent,
     BridgeListComponent,
