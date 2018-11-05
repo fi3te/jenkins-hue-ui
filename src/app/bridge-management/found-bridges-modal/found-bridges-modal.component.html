@@ -1,3 +1,33 @@
-<p>
-  found-bridges-modal works!
-</p>
+<app-modal-header [title]="'Verfügbare Bridges'" (cancel)="cancel()"></app-modal-header>
+<div class="modal-body">
+  <p *ngIf="!bridges.length">keine Bridges vorhanden</p>
+
+  <table class="table table-striped" *ngIf="bridges.length">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>IP-Adresse</th>
+        <th>MAC-Adresse</th>
+        <th>Name</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let b of bridges">
+        <td>{{ b.id }}</td>
+        <td>{{ b.internalipaddress }}</td>
+        <td>{{ b.macaddress }}</td>
+        <td>{{ b.name }}</td>
+        <td>
+          <button type="button" class="btn btn-default" (click)="addBridge(b)">Bridge hinzufügen</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <p *ngIf="bridges.length">
+    Die Menge der angezeigten Informationen ist abhängig von der Firmware der Bridge.
+  </p>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-default" (click)="cancel()">Abbrechen</button>
+</div>
