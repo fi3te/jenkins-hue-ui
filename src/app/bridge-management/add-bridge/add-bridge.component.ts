@@ -3,10 +3,13 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 
 import { DTO } from '../../generated-dtos.model';
 import BridgeCreateDTO = DTO.BridgeCreateDTO;
+import FoundBridgeDTO = DTO.FoundBridgeDTO;
 import { SessionService } from '../../service/session.service';
-import { FormControl, NgModel } from '@angular/forms';
+import { NgModel } from '@angular/forms';
 import { BridgeOwnershipService } from '../bridge-ownership.service';
 import { AlertService } from '../../service/alert.service';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { FoundBridgesModalComponent } from '../found-bridges-modal/found-bridges-modal.component';
 
 @Component({
   selector: 'app-add-bridge',
@@ -29,7 +32,8 @@ export class AddBridgeComponent implements OnInit {
     private bridgeService: BridgeService,
     private sessionService: SessionService,
     private bridgeOwnershipService: BridgeOwnershipService,
-    private alertService: AlertService
+    private alertService: AlertService,
+    private modalService: BsModalService
   ) {}
 
   public ngOnInit(): void {
@@ -37,20 +41,40 @@ export class AddBridgeComponent implements OnInit {
   }
 
   public createBridge(): void {
+    this.createBridgeFormless(this.ip);
+    this.resetForm();
+  }
+
+  public searchForBridges(): void {
+    this.bridgeService.findAvailable().subscribe((next: FoundBridgeDTO[]) => {
+      const initialState = {
+        bridges: next
+      };
+
+      const bsModalRef: BsModalRef = this.modalService.show(
+        FoundBridgesModalComponent,
+        { initialState, class: 'modal-lg' }
+      );
+
+      const subscription = this.modalService.onHide.subscribe(() => {
+        const selectedBridge: FoundBridgeDTO = bsModalRef.content.selectedBridge;
+        if (selectedBridge) {
+          this.createBridgeFormless(selectedBridge.internalipaddress);
+        }
+        subscription.unsubscribe();
+      });
+    });
+  }
+
+  private createBridgeFormless(ip: string): void {
     const bridgeCreateDTO: BridgeCreateDTO = {
-      ip: this.ip,
+      ip: ip,
       userId: this.userId
     };
     this.bridgeService.create(bridgeCreateDTO).subscribe(next => {
       this.bridgeOwnershipService.bridgeCreated();
       this.alertService.info('Bridge hinzugefügt!');
     });
-
-    this.resetForm();
-  }
-
-  public searchForBridges(): void {
-    // TODO
   }
 
   private resetForm(): void {
