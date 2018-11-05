@@ -15,10 +15,12 @@ import { ColorPickerModule } from 'ngx-color-picker';
 import { RemoveButtonComponent } from './remove-button/remove-button.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { ScenarioConfigGroupComponent } from './scenario-config-group/scenario-config-group.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   imports: [
     CommonModule,
+    SharedModule,
     BuildAssignmentRoutingModule,
     AccordionModule,
     TimepickerModule,

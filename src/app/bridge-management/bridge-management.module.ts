@@ -1,3 +1,4 @@
+import { SharedModule } from './../shared/shared.module';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
@@ -15,6 +16,7 @@ import { AddBridgeComponent } from './add-bridge/add-bridge.component';
   ],
   imports: [
     CommonModule,
+    SharedModule,
     FormsModule,
     BridgeManagementRoutingModule,
     ModalModule.forRoot()

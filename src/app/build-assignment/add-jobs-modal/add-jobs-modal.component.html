@@ -1,9 +1,4 @@
-<div class="modal-header">
-  <h4 class="modal-title pull-left">Jobs hinzufügen</h4>
-  <button type="button" class="close pull-right" aria-label="Close" (click)="cancel()">
-    <span aria-hidden="true">&times;</span>
-  </button>
-</div>
+<app-modal-header [title]="'Jobs hinzufügen'" (cancel)="cancel()"></app-modal-header>
 <div class="modal-body">
   <div class="form-group">
     <ng-select [items]="jobs" [multiple]="true" bindLabel="name" placeholder="Jobs auswählen..." [(ngModel)]="selectedJobs">
