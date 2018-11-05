@@ -39,6 +39,10 @@ export class SessionService {
     return this.principal.teamId;
   }
 
+  public getUserId(): number {
+    return this.principal.userId;
+  }
+
   public getPrincipal(): Observable<PrincipalDTO> {
     return this.universalService.getPrincipal().pipe(
       tap((next: any) => {
