@@ -1,4 +1,6 @@
+import { BridgeOwnershipService } from './../bridge-ownership.service';
 import { Component, OnInit } from '@angular/core';
+import { delay } from 'rxjs/operators';
 
 @Component({
   selector: 'app-bridge-list',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BridgeListComponent implements OnInit {
 
-  constructor() { }
+  constructor(private bridgeOwnershipService: BridgeOwnershipService) { }
 
-  ngOnInit() {
+  public ngOnInit(): void {
+    // delay for the HueSDK to connect to the bridge (is needed for a set hue user property)
+    this.bridgeOwnershipService.bridgeCreated$.pipe(delay(400)).subscribe(() => {
+      // TODO
+    });
   }
 
 }

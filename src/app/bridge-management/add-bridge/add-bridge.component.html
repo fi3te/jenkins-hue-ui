@@ -3,7 +3,7 @@
     <h4>Hue Bridge hinzufügen</h4>
   </div>
 
-  <form role="form" name="ipForm" class="needs-validation" novalidate (submit)="createBridge()">
+  <form role="form" name="ipForm" class="needs-validation" novalidate>
     <div class="card-body">
       <div class="form-group">
         <label><i class="fa" [ngClass]="{'fa-times-circle-o': bridgeIp.invalid && bridgeIp.dirty, 'fa-check': bridgeIp.valid}"></i> IP-Adresse:</label>
@@ -18,7 +18,7 @@
       </div>
     </div>
     <div class="card-footer">
-      <button type="submit" class="btn btn-success mr-1" [disabled]="bridgeIp.invalid">Anlegen</button>
+      <button type="button" class="btn btn-success mr-1" [disabled]="bridgeIp.invalid" (click)="createBridge()">Anlegen</button>
       <button type="button" class="btn btn-default" (click)="searchForBridges()" [disabled]="loadingBridges">Nach
         Bridges suchen</button>
     </div>
