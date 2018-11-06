@@ -4743,10 +4743,10 @@ ng2-charts@^1.6.0:
   dependencies:
     chart.js "^2.6.0"
 
-ng5-slider@^1.1.3:
-  version "1.1.3"
-  resolved "https://registry.yarnpkg.com/ng5-slider/-/ng5-slider-1.1.3.tgz#011e6997f3c8065daac1f274ff4bc63d7a7e01c0"
-  integrity sha512-6TPMgoeqkAXw5TrDi0vzigLdXAm9NBvFEJ5RwnNxUgtLAK2eHT0l+GYUtHVF7Ci9hruEhYwHu0XGkaGVZ3lzRw==
+ng5-slider@^1.1.5:
+  version "1.1.5"
+  resolved "https://registry.yarnpkg.com/ng5-slider/-/ng5-slider-1.1.5.tgz#f28225463747f7b6876d814392a8f64e892b4be7"
+  integrity sha512-pvuYZudLzPeK9iT8QhLJd5AwPs02aZFpIi337R5x91VceqCkuSibSfFkfzD08BASDKMzahXNlj/f4J0HK4ZEOg==
   dependencies:
     tslib "^1.7.1"
 

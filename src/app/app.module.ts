@@ -29,6 +29,7 @@ import { LoginComponent } from './login/login.component';
 import { AlertService } from './service/alert.service';
 import { SessionService } from './service/session.service';
 import { RegisterComponent } from './views/register/register.component';
+import { Ng5SliderModule } from 'ng5-slider';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
@@ -106,7 +107,8 @@ export function init(sessionService: SessionService) {
     AlertModule.forRoot(),
     HttpClientModule,
     HttpClientXsrfModule,
-    FormsModule
+    FormsModule,
+    Ng5SliderModule
   ],
   declarations: [
     AppComponent,
