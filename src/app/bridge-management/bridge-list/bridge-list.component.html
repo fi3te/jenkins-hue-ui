@@ -1,3 +1,73 @@
-<p>
-  bridge-list works!
-</p>
+<div class="card card-accent-secondary">
+  <div class="card-header">
+    <h4>Übersicht</h4>
+  </div>
+  <div class="card-body">
+
+    <div class="form-group">
+      <div class="input-group">
+
+          <div class="input-group-prepend">
+              <span class="input-group-text">
+                <i class="fa fa-search" *ngIf="!bridgeData.searching"></i>
+                <img *ngIf="bridgeData.searching" src="../../../assets/img/loading.gif" width="14px" height="14px">
+              </span>
+            </div>
+        <input type="text" class="form-control" placeholder="Suchen" [(ngModel)]="bridgeData.searchItem" (input)="bridgeData.computeSearch()">
+      </div>
+    </div>
+
+    <div class="form-group pull-left">
+      <label class="text-success">Anzahl: {{ bridgeData.count }}</label>
+    </div>
+
+    <div class="form-group pull-right">
+      <label class="text-success mr-1">{{ bridgeData.page+1 }}/{{ bridgeData.lastPage+1 }}</label>
+      <div class="btn-group" role="group">
+        <button [disabled]="!bridgeData.backPossible()" type="button" class="btn" (click)="bridgeData.back()">Zurück</button>
+        <button [disabled]="!bridgeData.forwardPossible()" type="button" class="btn" (click)="bridgeData.forward()">Weiter</button>
+      </div>
+    </div>
+
+    <div class="clearfix"></div>
+
+    <div class="form-group pull-right">
+      <select class="form-control" [(ngModel)]="bridgeData.pageSize" (change)="bridgeData.pageSizeHasChanged()">
+        <option [ngValue]="5">5</option>
+        <option [ngValue]="10">10</option>
+        <option [ngValue]="15">25</option>
+        <option [ngValue]="50">50</option>
+        <option [ngValue]="100">100</option>
+        <option [ngValue]="250">250</option>
+        <option [ngValue]="500">500</option>
+      </select>
+    </div>
+
+    <p [hidden]="bridgeData.count > 0">keine Bridges vorhanden</p>
+
+    <table class="table table-bordered table-striped" [hidden]="bridgeData.count < 1">
+      <thead>
+        <tr>
+          <th>IP</th>
+          <th>Hue-User</th>
+          <th>Besitzer</th>
+          <th>Status</th>
+          <th>Aktionen</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let b of bridgeData.dtos">
+          <td>{{ b.ip }}</td>
+          <td>{{ b.hueUserName }}</td>
+          <td>{{ b.user ? b.user.email : '-' }}</td>
+          <td *ngIf="b.state">{{ b.state }}</td>
+          <td *ngIf="!b.state">Antwortet nicht</td>
+          <td>
+            <button class="btn btn-sm btn-default" (click)="removeBridge(b)" *ngIf="(b.user.id === userId) || isAdmin">Entfernen</button>
+            <span *ngIf="b.user.id != userId && !isAdmin()">keine Berechtigung</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
