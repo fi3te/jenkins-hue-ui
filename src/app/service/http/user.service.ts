@@ -21,7 +21,7 @@ export class UserService {
     searchItem?: string
   ): Observable<UserDTO[]> {
     const options = searchItem ? {params: new HttpParams().set('searchItem', `${searchItem}`)} : undefined;
-    return this.httpClient.get<UserDTO[]>(`${REST_USERS}`);
+    return this.httpClient.get<UserDTO[]>(`${REST_USERS}/${page}/${size}`, options);
   }
 
   public count(searchItem?: string): Observable<number> {
