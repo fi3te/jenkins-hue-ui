@@ -25,7 +25,7 @@ export class TeamService {
     const options = searchItem
       ? { params: new HttpParams().set('searchItem', `${searchItem}`) }
       : undefined;
-    return this.httpClient.get<TeamUsersDTO[]>(`${REST_TEAMS}`);
+    return this.httpClient.get<TeamUsersDTO[]>(`${REST_TEAMS}/${page}/${size}`, options);
   }
 
   public count(searchItem?: string): Observable<number> {

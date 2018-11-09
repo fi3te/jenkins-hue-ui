@@ -28,7 +28,7 @@ export class BridgeService {
     const options = searchItem
       ? { params: new HttpParams().set('searchItem', `${searchItem}`) }
       : undefined;
-    return this.httpClient.get<BridgeDTO[]>(`${REST_BRIDGES}`);
+    return this.httpClient.get<BridgeDTO[]>(`${REST_BRIDGES}/${page}/${size}`, options);
   }
 
   public count(searchItem?: string): Observable<number> {
