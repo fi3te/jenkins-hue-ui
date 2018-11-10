@@ -45,7 +45,7 @@
 
     <p [hidden]="bridgeData.count > 0">keine Bridges vorhanden</p>
 
-    <table class="table table-bordered table-striped" [hidden]="bridgeData.count < 1">
+    <table class="table table-bordered table-striped" *ngIf="bridgeData.dtos.length">
       <thead>
         <tr>
           <th>IP</th>
