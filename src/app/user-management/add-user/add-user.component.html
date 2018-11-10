@@ -1,3 +1,24 @@
-<p>
-  add-user works!
-</p>
+<div class="card card-accent-primary">
+  <div class="card-header">
+    <h4>Benutzer hinzufügen</h4>
+  </div>
+
+  <form role="form" name="loginNameForm" class="needs-validation" novalidate>
+    <div class="card-body">
+      <div class="form-group">
+        <label><i class="fa" [ngClass]="{'fa-times-circle-o': loginName.invalid && loginName.dirty, 'fa-check': loginName.valid}"></i> Login:</label>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">
+              <i class="cui-user"></i>
+            </span>
+          </div>
+          <input type="text" class="form-control" [class.is-invalid]="loginName.invalid && loginName.dirty" [class.is-valid]="loginName.valid" name="login" placeholder="Login eingeben" #loginName="ngModel" [(ngModel)]="login" required="required">
+        </div>
+      </div>
+    </div>
+    <div class="card-footer">
+      <button type="button" class="btn btn-success mr-1" [disabled]="loginName.invalid" (click)="createUser()">Anlegen</button>
+    </div>
+  </form>
+</div>
