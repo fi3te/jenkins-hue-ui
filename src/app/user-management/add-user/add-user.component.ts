@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddUserComponent implements OnInit {
 
+  public login: string;
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  public createUser(): void {
+    // TODO
   }
 
 }
