@@ -6,6 +6,7 @@ import { UserManagementRoutingModule } from './user-management-routing.module';
 import { UserListComponent } from './user-list/user-list.component';
 import { SharedModule } from '../shared/shared.module';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { AddUserComponent } from './add-user/add-user.component';
 
 @NgModule({
   imports: [
@@ -14,7 +15,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     SharedModule,
     ModalModule.forRoot()
   ],
-  declarations: [UserManagementComponent, UserListComponent],
+  declarations: [UserManagementComponent, UserListComponent, AddUserComponent],
   entryComponents: [ChangeRolesModalComponent]
 })
 export class UserManagementModule { }
