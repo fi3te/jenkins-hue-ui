@@ -15,11 +15,11 @@ export class LampOwnershipService {
   public lampTaken$ = this._lampTaken$.asObservable();
   public lampReleased$ = this._lampReleased$.asObservable();
 
-  public lampTaken() {
+  public lampTaken(): void {
     this._lampTaken$.next();
   }
 
-  public lampReleased() {
+  public lampReleased(): void {
     this._lampReleased$.next();
   }
 }

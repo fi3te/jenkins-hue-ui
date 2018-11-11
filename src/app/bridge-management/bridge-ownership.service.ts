@@ -10,7 +10,7 @@ export class BridgeOwnershipService {
 
   public bridgeCreated$ = this._bridgeCreated$.asObservable();
 
-  public bridgeCreated() {
+  public bridgeCreated(): void {
     this._bridgeCreated$.next();
   }
 }
