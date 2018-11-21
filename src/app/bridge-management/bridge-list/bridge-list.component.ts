@@ -33,7 +33,6 @@ export class BridgeListComponent implements OnInit {
   public ngOnInit(): void {
     this.userId = this.sessionService.getUserId();
     this.isAdmin = this.sessionService.isAdmin();
-    this.sessionService.isAdmin();
     // delay for the HueSDK to connect to the bridge (is needed for a set hue user property)
     this.bridgeOwnershipService.bridgeCreated$
       .pipe(delay(400))
