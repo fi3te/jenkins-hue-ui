@@ -6,13 +6,12 @@
 
     <div class="form-group">
       <div class="input-group">
-
-          <div class="input-group-prepend">
-              <span class="input-group-text">
-                <i class="fa fa-search" *ngIf="!bridgeData.searching"></i>
-                <img *ngIf="bridgeData.searching" src="../../../assets/img/loading.gif" width="14px" height="14px">
-              </span>
-            </div>
+        <div class="input-group-prepend">
+          <span class="input-group-text">
+            <i class="fa fa-search" *ngIf="!bridgeData.searching"></i>
+            <img *ngIf="bridgeData.searching" src="../../../assets/img/loading.gif" width="14px" height="14px">
+          </span>
+        </div>
         <input type="text" class="form-control" placeholder="Suchen" [(ngModel)]="bridgeData.searchItem" (input)="bridgeData.computeSearch()">
       </div>
     </div>
