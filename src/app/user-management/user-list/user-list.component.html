@@ -1,3 +1,87 @@
-<p>
-  user-list works!
-</p>
+<div class="card card-accent-secondary">
+  <div class="card-header">
+    <h4>Übersicht</h4>
+  </div>
+  <div class="card-body">
+
+    <div class="form-group">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text">
+            <i class="fa fa-search" *ngIf="!userData.searching"></i>
+            <img *ngIf="userData.searching" src="../../../assets/img/loading.gif" width="14px" height="14px">
+          </span>
+        </div>
+        <input type="text" class="form-control" placeholder="Suchen" [(ngModel)]="userData.searchItem" (input)="userData.computeSearch()">
+      </div>
+    </div>
+
+    <div class="form-group pull-left">
+      <label class="text-success">Anzahl: {{ userData.count }}</label>
+    </div>
+
+    <div class="form-group pull-right">
+      <label class="text-success">{{ userData.page+1 }}/{{ userData.lastPage+1 }}</label>
+      <div class="btn-group" role="group">
+        <button [disabled]="!userData.backPossible()" type="button" class="btn" (click)="userData.back()">Zurück</button>
+        <button [disabled]="!userData.forwardPossible()" type="button" class="btn" (click)="userData.forward()">Weiter</button>
+      </div>
+    </div>
+
+    <div class="clearfix"></div>
+
+    <div class="form-group pull-right">
+      <select class="form-control" [(ngModel)]="userData.pageSize" (change)="userData.pageSizeHasChanged()">
+        <option [ngValue]="5">5</option>
+        <option [ngValue]="10">10</option>
+        <option [ngValue]="25">25</option>
+        <option [ngValue]="50">50</option>
+        <option [ngValue]="100">100</option>
+      </select>
+    </div>
+
+    <p [hidden]="userData.dtos.length > 0">keine Benutzer vorhanden</p>
+
+    <table class="table table-bordered table-striped" *ngIf="userData.dtos.length">
+      <thead>
+        <tr>
+          <th>Vorname</th>
+          <th>Nachname</th>
+          <th>E-Mail</th>
+          <th>Login</th>
+          <th>Team</th>
+          <th>Rollen</th>
+          <th>Aktionen</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let u of userData.dtos">
+          <td>
+            <span *ngIf="!u.forename">-</span>
+            <span *ngIf="u.forename">{{ u.forename }}</span>
+          </td>
+          <td>
+            <span *ngIf="!u.surname">-</span>
+            <span *ngIf="u.surname">{{ u.surname }}</span>
+          </td>
+          <td>
+            <span *ngIf="!u.email">-</span>
+            <span *ngIf="u.email">{{ u.email }}</span>
+          </td>
+          <td>{{ u.login }}</td>
+          <td>{{ u.team.name }}</td>
+          <td *ngIf="u.roles.length < 1">keine</td>
+          <td *ngIf="u.roles.length">
+            <p *ngFor="let r of u.roles">{{ r.text }}</p>
+          </td>
+          <td>
+            <button class="btn btn-sm btn-primary mr-1" (click)="changeRoles(u.id, u.roles)" *ngIf="isAdmin" [disabled]="loadingRoles()"><i class="fa fa-pencil"></i></button>
+            <button class="btn btn-sm btn-default mr-1" (click)="removeUser(u)" *ngIf="removingUserPossible(u)">Entfernen</button>
+            <span *ngIf="!removingUserPossible(u) && (u.id != userId)">keine Berechtigung</span>
+            <span *ngIf="!isAdmin && (u.id == userId)">-</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
