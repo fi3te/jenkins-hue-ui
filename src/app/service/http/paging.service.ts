@@ -1,7 +1,7 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
-import { debounceTime } from 'rxjs/operators';
+import { debounceTime, first, timeout, map } from 'rxjs/operators';
 
 import { REST_USERS } from './common/constants';
 
@@ -12,7 +12,8 @@ import { REST_USERS } from './common/constants';
 })
 export class PagingService<Type> {
   private url: string = REST_USERS;
-  private searchItemSubject: Subject<string>;
+  private searchItem$: Subject<string>;
+  private dtosReloaded$ = new Subject<void>();
 
   public count = 0;
   public page = 0;
@@ -23,6 +24,12 @@ export class PagingService<Type> {
   public searching = false;
 
   constructor(private httpClient: HttpClient) {}
+
+  public static getInstance<E>(httpClient: HttpClient, url: string): Observable<PagingService<E>> {
+    const instance = new PagingService<E>(httpClient);
+    instance.setUrl(url);
+    return instance.dtosReloaded$.pipe(first(), timeout(5000), map(x => instance));
+  }
 
   public setUrl(url: string): void {
     this.dtos = [];
@@ -79,20 +86,21 @@ export class PagingService<Type> {
   }
 
   public computeSearch(): void {
-    if (!this.searchItemSubject) {
-      this.searchItemSubject = new Subject<string>();
-      this.searchItemSubject.pipe(debounceTime(400)).subscribe(() => {
+    if (!this.searchItem$) {
+      this.searchItem$ = new Subject<string>();
+      this.searchItem$.pipe(debounceTime(400)).subscribe(() => {
         this.refresh();
       });
     }
     this.searching = true;
-    this.searchItemSubject.next(this.searchItem);
+    this.searchItem$.next(this.searchItem);
   }
 
   public reloadDTOs(): void {
     this.findDTOs().subscribe(
       next => {
         this.dtos = next;
+        this.dtosReloaded$.next();
         this.searching = false;
       },
       () => {
