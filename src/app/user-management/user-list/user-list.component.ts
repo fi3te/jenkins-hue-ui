@@ -10,6 +10,7 @@ import { UserManagementService } from '../user-management.service';
 import { SimpleEnum } from './../../service/model/simple-enum.model';
 
 import UserDTO = DTO.UserDTO;
+import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-user-list',
   templateUrl: './user-list.component.html',
@@ -27,16 +28,18 @@ export class UserListComponent implements OnInit {
     private userService: UserService,
     private sessionService: SessionService,
     private roleService: RoleService,
-    pagingService: PagingService<UserDTO>
-  ) {
-    pagingService.setUrl(REST_USERS);
-    this.userData = pagingService;
-  }
+    private route: ActivatedRoute
+  ) {}
 
   public ngOnInit(): void {
     this.teamId = this.sessionService.getTeamId();
     this.isAdmin = this.sessionService.isAdmin();
     this.userId = this.sessionService.getUserId();
+
+    this.route.data.subscribe((data: { pagingService: PagingService<UserDTO> }) => {
+      this.userData = data.pagingService;
+    });
+
     this.userManagementService.userCreated$.subscribe(() => {
       this.userData.refresh();
     });
