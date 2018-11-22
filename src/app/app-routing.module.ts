@@ -10,6 +10,7 @@ import { DefaultLayoutComponent } from './containers';
 import { RegisterComponent } from './views/register/register.component';
 import { LoginComponent } from './login/login.component';
 import { DashboardResolveGuard } from './guard/dashboard-resolve.guard';
+import { BridgeManagementResolveGuard } from './guard/bridge-management-resolve.guard';
 
 export const routes: Routes = [
   {
@@ -62,7 +63,10 @@ export const routes: Routes = [
       },
       {
         path: 'bridge-management',
-        loadChildren: './bridge-management/bridge-management.module#BridgeManagementModule'
+        loadChildren: './bridge-management/bridge-management.module#BridgeManagementModule',
+        resolve: {
+          pagingService: BridgeManagementResolveGuard
+        }
       },
       {
         path: 'user-management',
