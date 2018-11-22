@@ -5,10 +5,10 @@ import { DTO } from '../../generated-dtos.model';
 import { PagingService } from '../../service/http/paging.service';
 import { SessionService } from '../../service/session.service';
 import { BridgeService } from './../../service/http/bridge.service';
-import { REST_BRIDGES } from './../../service/http/common/constants';
 import { BridgeOwnershipService } from './../bridge-ownership.service';
 
 import BridgeDTO = DTO.BridgeDTO;
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-bridge-list',
@@ -22,17 +22,19 @@ export class BridgeListComponent implements OnInit {
 
   constructor(
     private bridgeOwnershipService: BridgeOwnershipService,
-    pagingService: PagingService<BridgeDTO>,
     private sessionService: SessionService,
+    private route: ActivatedRoute,
     private bridgeService: BridgeService
-  ) {
-    pagingService.setUrl(REST_BRIDGES);
-    this.bridgeData = pagingService;
-  }
+  ) {}
 
   public ngOnInit(): void {
     this.userId = this.sessionService.getUserId();
     this.isAdmin = this.sessionService.isAdmin();
+
+    this.route.data.subscribe((data: { pagingService: PagingService<BridgeDTO> }) => {
+      this.bridgeData = data.pagingService;
+    });
+
     // delay for the HueSDK to connect to the bridge (is needed for a set hue user property)
     this.bridgeOwnershipService.bridgeCreated$
       .pipe(delay(400))
