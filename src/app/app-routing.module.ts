@@ -1,3 +1,4 @@
+import { UserManagementResolveGuard } from './guard/user-management-resolve.guard';
 import { LampManagementResolveGuard } from './guard/lamp-management-resolve.guard';
 import { BuildAssignmentResolveGuard } from './guard/build-assignment-resolve.guard';
 import { AuthenticationGuard } from './guard/authentication.guard';
@@ -70,7 +71,10 @@ export const routes: Routes = [
       },
       {
         path: 'user-management',
-        loadChildren: './user-management/user-management.module#UserManagementModule'
+        loadChildren: './user-management/user-management.module#UserManagementModule',
+        resolve: {
+          pagingService: UserManagementResolveGuard
+        }
       },
       {
         path: 'team-management',
