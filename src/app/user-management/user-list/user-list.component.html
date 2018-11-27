@@ -75,7 +75,7 @@
             <p *ngFor="let r of u.roles">{{ r.text }}</p>
           </td>
           <td>
-            <button class="btn btn-sm btn-primary mr-1" (click)="changeRoles(u.id, u.roles)" *ngIf="isAdmin" [disabled]="loadingRoles()"><i class="fa fa-pencil"></i></button>
+            <button class="btn btn-sm btn-primary mr-1" (click)="changeRoles(u.id, u.roles)" *ngIf="isAdmin" [disabled]="loadingRoles"><i class="fa fa-pencil"></i></button>
             <button class="btn btn-sm btn-default mr-1" (click)="removeUser(u)" *ngIf="removingUserPossible(u)">Entfernen</button>
             <span *ngIf="!removingUserPossible(u) && (u.id != userId)">keine Berechtigung</span>
             <span *ngIf="!isAdmin && (u.id == userId)">-</span>
