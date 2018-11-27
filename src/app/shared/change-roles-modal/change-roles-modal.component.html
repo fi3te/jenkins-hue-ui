@@ -1,3 +1,11 @@
-<p>
-  change-roles-modal works!
-</p>
+<app-modal-header [title]="'Rollen ändern'" (cancel)="cancel()"></app-modal-header>
+<div class="modal-body">
+  <div class="form-group">
+    <ng-select [items]="roles" [multiple]="true" bindLabel="text" placeholder="Keine Rolle ausgewählt" [(ngModel)]="selectedRoles">
+    </ng-select>
+  </div>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-default" (click)="cancel()">Abbrechen</button>
+  <button type="button" class="btn btn-primary" (click)="save()">Speichern</button>
+</div>
