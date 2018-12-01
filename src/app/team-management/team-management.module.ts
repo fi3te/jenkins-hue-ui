@@ -7,6 +7,7 @@ import { TeamListComponent } from './team-list/team-list.component';
 import { SharedModule } from '../shared/shared.module';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { RenameModalComponent } from '../shared/rename-modal/rename-modal.component';
+import { AddTeamComponent } from './add-team/add-team.component';
 
 @NgModule({
   imports: [
@@ -15,7 +16,7 @@ import { RenameModalComponent } from '../shared/rename-modal/rename-modal.compon
     SharedModule,
     ModalModule.forRoot()
   ],
-  declarations: [TeamManagementComponent, TeamListComponent],
+  declarations: [TeamManagementComponent, TeamListComponent, AddTeamComponent],
   entryComponents: [
     RenameModalComponent, ChangeRolesModalComponent
   ]
