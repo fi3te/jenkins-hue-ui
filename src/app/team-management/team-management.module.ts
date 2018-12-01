@@ -8,13 +8,15 @@ import { SharedModule } from '../shared/shared.module';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { RenameModalComponent } from '../shared/rename-modal/rename-modal.component';
 import { AddTeamComponent } from './add-team/add-team.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
     CommonModule,
     TeamManagementRoutingModule,
     SharedModule,
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    FormsModule
   ],
   declarations: [TeamManagementComponent, TeamListComponent, AddTeamComponent],
   entryComponents: [
