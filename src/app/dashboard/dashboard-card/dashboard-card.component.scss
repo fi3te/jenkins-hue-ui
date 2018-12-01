@@ -1,0 +1,8 @@
+.icon {
+  display: inline-block;
+  transition: all .5s ease-in-out;
+}
+
+.card:hover .icon {
+  transform: scale(1.5) translate(0, 10px);
+}
