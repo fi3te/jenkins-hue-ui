@@ -1,7 +1,13 @@
+@import '../../scss/variables';
+
 .login-logo {
   font-size: 35px;
   text-align: center;
   margin-bottom: 25px;
   color: #444;
   text-decoration: none;
+
+  span {
+    color: $primary;
+  }
 }
