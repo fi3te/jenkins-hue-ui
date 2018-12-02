@@ -12,6 +12,7 @@ import { RegisterComponent } from './views/register/register.component';
 import { LoginComponent } from './login/login.component';
 import { DashboardResolveGuard } from './guard/dashboard-resolve.guard';
 import { BridgeManagementResolveGuard } from './guard/bridge-management-resolve.guard';
+import { TeamManagementResolveGuard } from './guard/team-management-resolve.guard';
 
 export const routes: Routes = [
   {
@@ -78,7 +79,10 @@ export const routes: Routes = [
       },
       {
         path: 'team-management',
-        loadChildren: './team-management/team-management.module#TeamManagementModule'
+        loadChildren: './team-management/team-management.module#TeamManagementModule',
+        resolve: {
+          pagingService: TeamManagementResolveGuard
+        }
       },
       {
         path: 'team-settings',
