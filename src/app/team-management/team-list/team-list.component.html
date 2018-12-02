@@ -21,7 +21,7 @@
     </div>
 
     <div class="form-group pull-right">
-      <label class="text-success">{{ teamData.page+1 }}/{{ teamData.lastPage+1 }}</label>
+      <label class="text-success mr-1">{{ teamData.page+1 }}/{{ teamData.lastPage+1 }}</label>
       <div class="btn-group" role="group">
         <button [disabled]="!teamData.backPossible()" type="button" class="btn" (click)="teamData.back()">Zurück</button>
         <button [disabled]="!teamData.forwardPossible()" type="button" class="btn" (click)="teamData.forward()">Weiter</button>
