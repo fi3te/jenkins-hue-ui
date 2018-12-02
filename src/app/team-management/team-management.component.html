@@ -1,4 +1,4 @@
 <div class="animated fadeIn">
-  <app-add-team></app-add-team>
+  <app-add-team *ngIf="isAdmin"></app-add-team>
   <app-team-list></app-team-list>
 </div>
