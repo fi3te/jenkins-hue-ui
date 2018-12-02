@@ -1,3 +1,110 @@
-<p>
-  team-list works!
-</p>
+<div class="card card-accent-secondary">
+  <div class="card-header">
+    <h4>Übersicht</h4>
+  </div>
+  <div class="card-body">
+
+    <div class="form-group">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text">
+            <i class="fa fa-search" *ngIf="!teamData.searching"></i>
+            <img *ngIf="teamData.searching" src="../../../assets/img/loading.gif" width="14px" height="14px">
+          </span>
+        </div>
+        <input type="text" class="form-control" placeholder="Suchen" [(ngModel)]="teamData.searchItem" (input)="teamData.computeSearch()">
+      </div>
+    </div>
+
+    <div class="form-group pull-left">
+      <label class="text-success">Anzahl: {{ teamData.count }}</label>
+    </div>
+
+    <div class="form-group pull-right">
+      <label class="text-success">{{ teamData.page+1 }}/{{ teamData.lastPage+1 }}</label>
+      <div class="btn-group" role="group">
+        <button [disabled]="!teamData.backPossible()" type="button" class="btn" (click)="teamData.back()">Zurück</button>
+        <button [disabled]="!teamData.forwardPossible()" type="button" class="btn" (click)="teamData.forward()">Weiter</button>
+      </div>
+    </div>
+
+    <div class="clearfix"></div>
+
+    <div class="form-group pull-right">
+      <select class="form-control" [(ngModel)]="teamData.pageSize" (change)="teamData.pageSizeHasChanged()">
+        <option [ngValue]="5">5</option>
+        <option [ngValue]="10">10</option>
+        <option [ngValue]="25">25</option>
+        <option [ngValue]="50">50</option>
+        <option [ngValue]="100">100</option>
+      </select>
+    </div>
+
+    <p [hidden]="teamData.dtos.length > 0">keine Teams vorhanden</p>
+
+    <table class="table table-bordered table-striped" [hidden]="teamData.dtos.length < 1" *ngIf="!isAdmin">
+      <thead>
+        <tr>
+          <th>Team</th>
+          <th>Größe</th>
+          <th>Aktionen</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let t of teamData.dtos">
+          <td>{{ t.name }}</td>
+          <td>{{ t.users.length }}</td>
+          <td>keine Berechtigung</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <table class="table table-bordered table-striped" [hidden]="teamData.dtos.length < 1" *ngIf="isAdmin">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Mitglieder</th>
+          <th>Größe</th>
+          <th>Aktionen</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let t of teamData.dtos">
+          <td>{{ t.name }}</td>
+          <td class="col-xs-6">
+            <button type="button" class="btn btn-sm btn-success" *ngIf="t.users.length < 1" (click)="createUser(t.id)"><i class="fa fa-plus"></i></button>
+
+            <table class="table table-condensed" style="table-layout: fixed; background-color: transparent;" *ngIf="t.users.length">
+              <thead>
+                <tr>
+                  <th>Login</th>
+                  <th>Rollen</th>
+                  <th>
+                    <button type="button" class="btn btn-sm btn-success" (click)="createUser(t.id)"><i class="fa fa-plus"></i></button>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let u of t.users">
+                  <td>{{ u.login }}</td>
+                  <td *ngIf="u.roles.length < 1">keine</td>
+                  <td *ngIf="u.roles.length">
+                    <p *ngFor="let r of u.roles">{{ r.text }}</p>
+                  </td>
+                  <td>
+                    <button class="btn btn-sm btn-primary" (click)="changeRoles(u.id, u.roles)" [disabled]="loadingRoles"><i class="fa fa-pencil"></i></button>
+                    <button type="button" class="btn btn-sm btn-default" (click)="removeUser(u.id)" *ngIf="removingUserPossible(u.id)">Entfernen</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+          <td>{{ t.users.length }}</td>
+          <td>
+            <button class="btn btn-sm btn-default" (click)="removeTeam(t.id)" *ngIf="removingTeamPossible(t.id)">Entfernen</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
