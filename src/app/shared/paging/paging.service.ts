@@ -3,13 +3,11 @@ import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { debounceTime, first, timeout, map } from 'rxjs/operators';
 
-import { REST_USERS } from './common/constants';
+import { REST_USERS } from '../../service/http/common/constants';
 
 // TODO remove service and use paging of library
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class PagingService<Type> {
   private url: string = REST_USERS;
   private searchItem$: Subject<string>;
