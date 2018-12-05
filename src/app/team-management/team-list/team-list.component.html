@@ -4,17 +4,7 @@
   </div>
   <div class="card-body">
 
-    <div class="form-group">
-      <div class="input-group">
-        <div class="input-group-prepend">
-          <span class="input-group-text">
-            <i class="fa fa-search" *ngIf="!teamData.searching"></i>
-            <img *ngIf="teamData.searching" src="../../../assets/img/loading.gif" width="14px" height="14px">
-          </span>
-        </div>
-        <input type="text" class="form-control" placeholder="Suchen" [(ngModel)]="teamData.searchItem" (input)="teamData.computeSearch()">
-      </div>
-    </div>
+    <app-paging-search-bar [pagingService]="teamData"></app-paging-search-bar>
 
     <div class="form-group pull-left">
       <label class="text-success">Anzahl: {{ teamData.count }}</label>

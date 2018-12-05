@@ -1,3 +1,4 @@
+import { PagingModule } from './../shared/paging/paging.module';
 import { ChangeRolesModalComponent } from './../shared/change-roles-modal/change-roles-modal.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -15,6 +16,7 @@ import { FormsModule } from '@angular/forms';
     CommonModule,
     TeamManagementRoutingModule,
     SharedModule,
+    PagingModule,
     ModalModule.forRoot(),
     FormsModule
   ],

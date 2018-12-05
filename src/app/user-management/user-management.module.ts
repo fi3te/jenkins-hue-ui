@@ -8,12 +8,14 @@ import { SharedModule } from '../shared/shared.module';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { AddUserComponent } from './add-user/add-user.component';
 import { FormsModule } from '@angular/forms';
+import { PagingModule } from '../shared/paging/paging.module';
 
 @NgModule({
   imports: [
     CommonModule,
     UserManagementRoutingModule,
     SharedModule,
+    PagingModule,
     FormsModule,
     ModalModule.forRoot()
   ],
