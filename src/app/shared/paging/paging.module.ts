@@ -1,13 +1,20 @@
+import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PagingService } from './paging.service';
-import { SearchBarComponent } from './search-bar/search-bar.component';
+import { PagingSearchBarComponent } from './paging-search-bar/paging-search-bar.component';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule
   ],
-  declarations: [SearchBarComponent],
+  declarations: [
+    PagingSearchBarComponent
+  ],
+  exports: [
+    PagingSearchBarComponent
+  ],
   providers: [
     PagingService
   ]

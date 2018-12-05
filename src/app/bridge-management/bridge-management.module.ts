@@ -9,6 +9,7 @@ import { BridgeManagementComponent } from './bridge-management.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { FoundBridgesModalComponent } from './found-bridges-modal/found-bridges-modal.component';
 import { AddBridgeComponent } from './add-bridge/add-bridge.component';
+import { PagingModule } from '../shared/paging/paging.module';
 
 @NgModule({
   entryComponents: [
@@ -17,6 +18,7 @@ import { AddBridgeComponent } from './add-bridge/add-bridge.component';
   imports: [
     CommonModule,
     SharedModule,
+    PagingModule,
     FormsModule,
     BridgeManagementRoutingModule,
     ModalModule.forRoot()
