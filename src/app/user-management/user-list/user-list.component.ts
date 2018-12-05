@@ -1,4 +1,3 @@
-import { AlertService } from './../../service/alert.service';
 import { Component, OnInit } from '@angular/core';
 
 import { DTO } from '../../generated-dtos.model';
@@ -11,10 +10,6 @@ import { SimpleEnum } from './../../service/model/simple-enum.model';
 
 import UserDTO = DTO.UserDTO;
 import { ActivatedRoute } from '@angular/router';
-import { BsModalService } from 'ngx-bootstrap/modal';
-import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
-import { ChangeRolesModalComponent } from '../../shared/change-roles-modal/change-roles-modal.component';
-import { UniversalService } from '../../service/http/universal.service';
 
 @Component({
   selector: 'app-user-list',
@@ -34,10 +29,7 @@ export class UserListComponent implements OnInit {
     private userService: UserService,
     private sessionService: SessionService,
     private roleService: RoleService,
-    private modalService: BsModalService,
-    private route: ActivatedRoute,
-    private alertService: AlertService,
-    private universalService: UniversalService
+    private route: ActivatedRoute
   ) {}
 
   public ngOnInit(): void {
