@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { delay } from 'rxjs/operators';
 
 import { DTO } from '../../generated-dtos.model';
-import { PagingService } from '../../service/http/paging.service';
+import { PagingService } from '../../shared/paging/paging.service';
 import { SessionService } from '../../service/session.service';
 import { BridgeService } from './../../service/http/bridge.service';
 import { BridgeOwnershipService } from './../bridge-ownership.service';

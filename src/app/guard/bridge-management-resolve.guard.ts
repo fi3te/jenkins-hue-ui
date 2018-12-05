@@ -4,7 +4,7 @@ import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/r
 import { Observable } from 'rxjs';
 
 import { REST_BRIDGES } from '../service/http/common/constants';
-import { PagingService } from '../service/http/paging.service';
+import { PagingService } from '../shared/paging/paging.service';
 import { DTO } from './../generated-dtos.model';
 
 import BridgeDTO = DTO.BridgeDTO;

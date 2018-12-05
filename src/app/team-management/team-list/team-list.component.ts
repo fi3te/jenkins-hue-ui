@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { DTO } from '../../generated-dtos.model';
 
 import TeamUsersDTO = DTO.TeamUsersDTO;
-import { PagingService } from '../../service/http/paging.service';
+import { PagingService } from '../../shared/paging/paging.service';
 import { ActivatedRoute } from '@angular/router';
 import { SessionService } from '../../service/session.service';
 import { SimpleEnum } from '../../service/model/simple-enum.model';
