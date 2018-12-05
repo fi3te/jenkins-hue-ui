@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { DTO } from '../../generated-dtos.model';
 import { PagingService } from '../../service/http/paging.service';
 import { UserService } from '../../service/http/user.service';
-import { RoleService } from '../../service/role.service';
+import { RoleService } from '../../shared/role.service';
 import { SessionService } from '../../service/session.service';
 import { UserManagementService } from '../user-management.service';
 import { SimpleEnum } from './../../service/model/simple-enum.model';
@@ -64,36 +64,10 @@ export class UserListComponent implements OnInit {
   }
 
   public changeRoles(id: number, currentRoles: SimpleEnum[]): void {
-    this.loadingRoles = true;
-    this.universalService.roles().subscribe((next: SimpleEnum[]) => {
-      this.loadingRoles = false;
-
-      const initialState = {
-        roles: next,
-        selectedRoles: currentRoles
-      };
-
-      const bsModalRef: BsModalRef = this.modalService.show(
-        ChangeRolesModalComponent,
-        { initialState }
-      );
-
-      const subscription = this.modalService.onHide.subscribe(() => {
-        const saved = bsModalRef.content.saved;
-        const roles = bsModalRef.content.selectedRoles;
-
-        if (saved) {
-          this.userService.update({
-            id, roles
-          }).subscribe(() => {
-            this.userData.refresh();
-            this.alertService.info('Rollen aktualisiert!');
-          });
-        }
-        subscription.unsubscribe();
-      });
+    this.roleService.changeRoles(id, currentRoles, (loading) => {
+      this.loadingRoles = loading;
     }, () => {
-      this.loadingRoles = false;
+      this.userData.refresh();
     });
   }
 
