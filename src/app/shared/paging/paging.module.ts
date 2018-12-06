@@ -4,7 +4,6 @@ import { CommonModule } from '@angular/common';
 import { PagingService } from './paging.service';
 import { PagingSearchBarComponent } from './paging-search-bar/paging-search-bar.component';
 import { PagingButtonBarComponent } from './paging-button-bar/paging-button-bar.component';
-import { PagingPageSizeSelectComponent } from './paging-page-size-select/paging-page-size-select.component';
 import { PagingBarComponent } from './paging-bar/paging-bar.component';
 
 @NgModule({
@@ -15,7 +14,6 @@ import { PagingBarComponent } from './paging-bar/paging-bar.component';
   declarations: [
     PagingSearchBarComponent,
     PagingButtonBarComponent,
-    PagingPageSizeSelectComponent,
     PagingBarComponent
   ],
   exports: [

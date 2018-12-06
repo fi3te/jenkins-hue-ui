@@ -1,0 +1,11 @@
+.jh-center-vertical {
+  display: flex;
+  align-items: center;
+}
+
+.jh-button-bar {
+  @extend .jh-center-vertical;
+
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
