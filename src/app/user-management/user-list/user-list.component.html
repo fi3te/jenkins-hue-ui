@@ -6,16 +6,7 @@
 
     <app-paging-search-bar [pagingService]="userData"></app-paging-search-bar>
     <app-paging-button-bar [pagingService]="userData"></app-paging-button-bar>
-
-    <div class="form-group pull-right">
-      <select class="form-control" [(ngModel)]="userData.pageSize" (change)="userData.pageSizeHasChanged()">
-        <option [ngValue]="5">5</option>
-        <option [ngValue]="10">10</option>
-        <option [ngValue]="25">25</option>
-        <option [ngValue]="50">50</option>
-        <option [ngValue]="100">100</option>
-      </select>
-    </div>
+    <app-paging-page-size-select [pagingService]="userData"></app-paging-page-size-select>
 
     <p [hidden]="userData.dtos.length > 0">keine Benutzer vorhanden</p>
 

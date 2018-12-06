@@ -6,16 +6,7 @@
 
     <app-paging-search-bar [pagingService]="teamData"></app-paging-search-bar>
     <app-paging-button-bar [pagingService]="teamData"></app-paging-button-bar>
-
-    <div class="form-group pull-right">
-      <select class="form-control" [(ngModel)]="teamData.pageSize" (change)="teamData.pageSizeHasChanged()">
-        <option [ngValue]="5">5</option>
-        <option [ngValue]="10">10</option>
-        <option [ngValue]="25">25</option>
-        <option [ngValue]="50">50</option>
-        <option [ngValue]="100">100</option>
-      </select>
-    </div>
+    <app-paging-page-size-select [pagingService]="teamData"></app-paging-page-size-select>
 
     <p [hidden]="teamData.dtos.length > 0">keine Teams vorhanden</p>
 
