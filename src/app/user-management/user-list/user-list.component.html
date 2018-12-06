@@ -3,10 +3,7 @@
     <h4>Übersicht</h4>
   </div>
   <div class="card-body">
-
-    <app-paging-search-bar [pagingService]="userData"></app-paging-search-bar>
-    <app-paging-button-bar [pagingService]="userData"></app-paging-button-bar>
-    <app-paging-page-size-select [pagingService]="userData"></app-paging-page-size-select>
+    <app-paging-bar [pagingService]="userData"></app-paging-bar>
 
     <p [hidden]="userData.dtos.length > 0">keine Benutzer vorhanden</p>
 
