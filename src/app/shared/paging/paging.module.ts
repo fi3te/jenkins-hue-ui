@@ -5,6 +5,7 @@ import { PagingService } from './paging.service';
 import { PagingSearchBarComponent } from './paging-search-bar/paging-search-bar.component';
 import { PagingButtonBarComponent } from './paging-button-bar/paging-button-bar.component';
 import { PagingPageSizeSelectComponent } from './paging-page-size-select/paging-page-size-select.component';
+import { PagingBarComponent } from './paging-bar/paging-bar.component';
 
 @NgModule({
   imports: [
@@ -14,12 +15,11 @@ import { PagingPageSizeSelectComponent } from './paging-page-size-select/paging-
   declarations: [
     PagingSearchBarComponent,
     PagingButtonBarComponent,
-    PagingPageSizeSelectComponent
+    PagingPageSizeSelectComponent,
+    PagingBarComponent
   ],
   exports: [
-    PagingSearchBarComponent,
-    PagingButtonBarComponent,
-    PagingPageSizeSelectComponent
+    PagingBarComponent
   ],
   providers: [
     PagingService

@@ -3,10 +3,7 @@
     <h4>Übersicht</h4>
   </div>
   <div class="card-body">
-
-    <app-paging-search-bar [pagingService]="teamData"></app-paging-search-bar>
-    <app-paging-button-bar [pagingService]="teamData"></app-paging-button-bar>
-    <app-paging-page-size-select [pagingService]="teamData"></app-paging-page-size-select>
+    <app-paging-bar [pagingService]="teamData"></app-paging-bar>
 
     <p [hidden]="teamData.dtos.length > 0">keine Teams vorhanden</p>
 

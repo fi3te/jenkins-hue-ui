@@ -3,10 +3,7 @@
     <h4>Übersicht</h4>
   </div>
   <div class="card-body">
-
-    <app-paging-search-bar [pagingService]="bridgeData"></app-paging-search-bar>
-    <app-paging-button-bar [pagingService]="bridgeData"></app-paging-button-bar>
-    <app-paging-page-size-select [pagingService]="bridgeData"></app-paging-page-size-select>
+    <app-paging-bar [pagingService]="bridgeData"></app-paging-bar>
 
     <p [hidden]="bridgeData.count > 0">keine Bridges vorhanden</p>
 
