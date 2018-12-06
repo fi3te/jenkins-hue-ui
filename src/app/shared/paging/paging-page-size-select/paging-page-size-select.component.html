@@ -1,0 +1,9 @@
+<div class="form-group pull-right">
+  <select class="form-control" [(ngModel)]="pagingService.pageSize" (change)="pagingService.pageSizeHasChanged()">
+    <option [ngValue]="5">5</option>
+    <option [ngValue]="10">10</option>
+    <option [ngValue]="25">25</option>
+    <option [ngValue]="50">50</option>
+    <option [ngValue]="100">100</option>
+  </select>
+</div>
