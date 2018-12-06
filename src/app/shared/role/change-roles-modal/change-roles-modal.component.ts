@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
-
-import { SimpleEnum } from './../../service/model/simple-enum.model';
+import { SimpleEnum } from '../../../service/model/simple-enum.model';
 
 @Component({
   selector: 'app-change-roles-modal',

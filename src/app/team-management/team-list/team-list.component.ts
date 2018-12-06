@@ -10,7 +10,7 @@ import { SessionService } from '../../service/session.service';
 import { SimpleEnum } from '../../service/model/simple-enum.model';
 import { TeamService } from '../../service/http/team.service';
 import { AlertService } from '../../service/alert.service';
-import { RoleService } from '../../shared/role.service';
+import { RoleService } from '../../shared/role/role.service';
 import { UserService } from '../../service/http/user.service';
 import { RenameModalComponent } from '../../shared/rename-modal/rename-modal.component';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';

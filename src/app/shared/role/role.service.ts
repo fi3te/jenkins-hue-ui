@@ -1,12 +1,12 @@
-import { UniversalService } from '../service/http/universal.service';
-import { AlertService } from '../service/alert.service';
+import { UniversalService } from '../../service/http/universal.service';
+import { AlertService } from '../../service/alert.service';
 import { Injectable } from '@angular/core';
 
-import { SimpleEnum } from '../service/model/simple-enum.model';
 import { ChangeRolesModalComponent } from './change-roles-modal/change-roles-modal.component';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
-import { UserService } from '../service/http/user.service';
+import { UserService } from '../../service/http/user.service';
+import { SimpleEnum } from '../../service/model/simple-enum.model';
 
 @Injectable()
 export class RoleService {
