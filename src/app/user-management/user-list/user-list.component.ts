@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { DTO } from '../../generated-dtos.model';
 import { PagingService } from '../../shared/paging/paging.service';
 import { UserService } from '../../service/http/user.service';
-import { RoleService } from '../../shared/role.service';
+import { RoleService } from '../../shared/role/role.service';
 import { SessionService } from '../../service/session.service';
 import { UserManagementService } from '../user-management.service';
 import { SimpleEnum } from './../../service/model/simple-enum.model';

@@ -1,5 +1,4 @@
 import { PagingModule } from './../shared/paging/paging.module';
-import { ChangeRolesModalComponent } from './../shared/change-roles-modal/change-roles-modal.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TeamManagementComponent } from './team-management.component';
@@ -10,6 +9,8 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { RenameModalComponent } from '../shared/rename-modal/rename-modal.component';
 import { AddTeamComponent } from './add-team/add-team.component';
 import { FormsModule } from '@angular/forms';
+import { RoleModule } from '../shared/role/role.module';
+import { ChangeRolesModalComponent } from '../shared/role/change-roles-modal/change-roles-modal.component';
 
 @NgModule({
   imports: [
@@ -17,6 +18,7 @@ import { FormsModule } from '@angular/forms';
     TeamManagementRoutingModule,
     SharedModule,
     PagingModule,
+    RoleModule,
     ModalModule.forRoot(),
     FormsModule
   ],
