@@ -6,3 +6,10 @@
 .card:hover .icon {
   transform: scale(1.25) translate(0, 10px);
 }
+
+.jh-card-text {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap
+}
