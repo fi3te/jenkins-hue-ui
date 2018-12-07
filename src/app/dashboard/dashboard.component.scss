@@ -1,0 +1,21 @@
+.row {
+  margin-right: -10px;
+  margin-left: -10px;
+}
+
+.jh-col {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+@media (max-width: 768px) {
+  .row {
+    margin-right: -5px;
+    margin-left: -5px;
+  }
+
+  .jh-col {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+}
