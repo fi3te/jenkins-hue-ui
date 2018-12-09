@@ -1,3 +1,19 @@
 <div class="animated fadeIn">
-  <p>color-test works!</p>
+  <div class="card card-accent-primary jh-color-test-card">
+    <div class="card-header">
+      <h4>Farbeinstellung testen</h4>
+    </div>
+    <div class="card-body">
+      <div class="form-group">
+        <label>Lampe(n)</label>
+        <ng-select [items]="lamps" [multiple]="true" bindLabel="name" placeholder="Wähle mindestens eine Lampe aus..." [(ngModel)]="lampTest.lamps">
+        </ng-select>
+      </div>
+      <app-scenario-config-settings [scenarioConfig]="lampTest.scenarioConfig"></app-scenario-config-settings>
+    </div>
+    <div class="card-footer">
+      <button type="button" class="btn btn-success mr-1" (click)="testScenario()">Testen</button>
+      <button type="button" class="btn btn-default" (click)="turnLampsOff()">Lampe(n) ausschalten</button>
+    </div>
+  </div>
 </div>
