@@ -13,6 +13,7 @@ import { LoginComponent } from './login/login.component';
 import { DashboardResolveGuard } from './guard/dashboard-resolve.guard';
 import { BridgeManagementResolveGuard } from './guard/bridge-management-resolve.guard';
 import { TeamManagementResolveGuard } from './guard/team-management-resolve.guard';
+import { TeamSettingsResolveGuard } from './guard/team-settings-resolve.guard';
 
 export const routes: Routes = [
   {
@@ -86,7 +87,10 @@ export const routes: Routes = [
       },
       {
         path: 'team-settings',
-        loadChildren: './team-settings/team-settings.module#TeamSettingsModule'
+        loadChildren: './team-settings/team-settings.module#TeamSettingsModule',
+        resolve: {
+          teamUsersDTO: TeamSettingsResolveGuard
+        }
       },
       {
         path: 'color-test',
