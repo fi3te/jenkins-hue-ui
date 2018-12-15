@@ -1,3 +1,40 @@
-<div class="animated fadeIn">
-  <p>team-settings works!</p>
+<ng-template #scenarioPriorityItemTemplate let-item="item" let-index="index">
+    <div class="jh-sortable-item">
+      <div class="jh-sortable-scenario-gradient" [style.background]="item.value.background"></div>
+      <span class="jh-sortable-scenario-text">{{ item.value.text }}</span>
+    </div>
+</ng-template>
+
+<div class="animated fadeIn jh-team-settings-container">
+  <div class="jh-team-settings-item">
+    <div class="card card-accent-primary">
+      <div class="card-header">
+        <h4>Prioritäten der Szenarien festlegen</h4>
+      </div>
+      <div class="card-body">
+        <bs-sortable
+          [(ngModel)]="teamUsersDTO.scenarioPriority"
+          [itemTemplate]="scenarioPriorityItemTemplate">
+        </bs-sortable>
+      </div>
+      <div class="card-footer">
+        <button type="button" class="btn btn-success" (click)="saveScenarioPriority()">Speichern</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="jh-team-settings-item">
+    <div class="card card-accent-secondary">
+      <div class="card-header">
+        <h4>Team umbenennen</h4>
+      </div>
+      <div class="card-body">
+        {{ teamUsersDTO.name }}
+      </div>
+      <div class="card-footer">
+        <button type="button" class="btn btn-success" (click)="renameTeam()">Umbenennen</button>
+      </div>
+    </div>
+  </div>
+
 </div>

@@ -1,0 +1,47 @@
+.jh-team-settings-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.jh-team-settings-item {
+  flex-basis: 100%;
+}
+
+@media (min-width: 992px) {
+  .jh-team-settings-item {
+    flex-basis: 50%;
+  }
+
+  .jh-team-settings-item:first-child {
+    padding-right: 10px;
+  }
+
+  .jh-team-settings-item:last-child {
+    padding-left: 10px;
+  }
+}
+
+// scenario priority selection
+
+.jh-sortable-item {
+  min-height: 40px;
+  margin-bottom: 5px;
+  padding-right: 20px;
+  padding-left: 20px;
+  border-radius: 5px;
+  border: solid 1px darkgrey;
+  display: flex;
+  align-items: center;
+}
+
+.jh-sortable-scenario-gradient {
+  flex: none;
+  border-radius: 5px;
+  width: 150px;
+  height: 25px;
+  margin-right: 10px;
+}
+
+.jh-sortable-scenario-text {
+  font-size: 18px;
+}
