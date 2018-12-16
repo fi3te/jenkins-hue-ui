@@ -7,7 +7,7 @@
           <i [ngClass]="icon"></i>
         </span>
       </div>
-      <input type="text" name="name" class="form-control" placeholder="Name eingeben" [(ngModel)]="name">
+      <input type="text" name="name" class="form-control" placeholder="Name eingeben" [(ngModel)]="name" (keydown.enter)="save()">
     </div><!-- /.input group -->
   </div><!-- /.form-group -->
 </div>
