@@ -1,7 +1,7 @@
 export const navItems = [
   {
     name: 'Dashboard',
-    url: '/dashboard2',
+    url: '/dashboard',
     icon: 'cui-dashboard'
   },
   {
@@ -158,23 +158,6 @@ export const navItems = [
         name: 'Simple Line Icons',
         url: '/icons/simple-line-icons',
         icon: 'icon-star'
-      }
-    ]
-  },
-  {
-    name: 'Notifications',
-    url: '/notifications',
-    icon: 'icon-bell',
-    children: [
-      {
-        name: 'Badges',
-        url: '/notifications/badges',
-        icon: 'icon-bell'
-      },
-      {
-        name: 'Modals',
-        url: '/notifications/modals',
-        icon: 'icon-bell'
       }
     ]
   },
