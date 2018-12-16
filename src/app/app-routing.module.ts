@@ -44,7 +44,7 @@ export const routes: Routes = [
     },
     children: [
       {
-        path: 'dashboard2',
+        path: 'dashboard',
         loadChildren: './dashboard/dashboard.module#DashboardModule',
         resolve: {
           dashboardInformationDTO: DashboardResolveGuard
@@ -109,16 +109,8 @@ export const routes: Routes = [
         loadChildren: './views/chartjs/chartjs.module#ChartJSModule'
       },
       {
-        path: 'dashboard',
-        loadChildren: './views/dashboard/dashboard.module#DashboardModule'
-      },
-      {
         path: 'icons',
         loadChildren: './views/icons/icons.module#IconsModule'
-      },
-      {
-        path: 'notifications',
-        loadChildren: './views/notifications/notifications.module#NotificationsModule'
       },
       {
         path: 'theme',

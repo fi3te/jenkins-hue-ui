@@ -21,7 +21,7 @@ export class LoginComponent {
   public login(): void {
     this.sessionService.login(this.credentials).subscribe(() => {
       this.sessionService.getPrincipal().subscribe(() => {
-        this.router.navigate(['dashboard2']);
+        this.router.navigate(['dashboard']);
       }, () => {
         this.sessionService.reloadPage();
       });
