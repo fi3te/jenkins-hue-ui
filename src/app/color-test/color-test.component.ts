@@ -20,9 +20,9 @@ export class ColorTestComponent implements OnInit {
       lampOn: true,
       onetimePulsationEnabled: true,
       onetimePulsationColorChangeEnabled: true,
-      onetimePulsationColorHex: '#F00',
+      onetimePulsationColorHex: '#f86c6b',
       colorChangeEnabled: true,
-      colorHex: '#0F0',
+      colorHex: '#ffc107',
       brightnessChangeEnabled: true,
       brightness: 254
     }
