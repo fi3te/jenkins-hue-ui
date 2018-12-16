@@ -28,7 +28,6 @@ import { DefaultLayoutComponent } from './containers';
 import { LoginComponent } from './login/login.component';
 import { AlertService } from './service/alert.service';
 import { SessionService } from './service/session.service';
-import { RegisterComponent } from './views/register/register.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
@@ -112,7 +111,6 @@ export function init(sessionService: SessionService) {
     AppComponent,
     ...APP_CONTAINERS,
     LoginComponent,
-    RegisterComponent,
     AlertContainerComponent
   ],
   providers: [
