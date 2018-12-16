@@ -16,9 +16,7 @@
         <input type="checkbox" class="switch-input" [(ngModel)]="scenarioConfig.onetimePulsationEnabled" autocomplete="off">
         <span class="switch-slider" data-checked="&#x2713;" data-unchecked="&#x2715;"></span>
       </label>
-      <label>Einmaliges Pulsieren:</label>
-      <span *ngIf="scenarioConfig.onetimePulsationEnabled">Ein</span>
-      <span *ngIf="!scenarioConfig.onetimePulsationEnabled">Aus</span>
+      <label>Einmaliges Pulsieren</label>
     </div>
     <div class="jh-box" *ngIf="scenarioConfig.onetimePulsationEnabled">
       <!-- Farbwechsel beim Pulsieren -->
@@ -28,9 +26,7 @@
             autocomplete="off">
           <span class="switch-slider" data-checked="&#x2713;" data-unchecked="&#x2715;"></span>
         </label>
-        <label>Farbiges Pulsieren:</label>
-        <span *ngIf="scenarioConfig.onetimePulsationColorChangeEnabled">Ein</span>
-        <span *ngIf="!scenarioConfig.onetimePulsationColorChangeEnabled">Aus</span>
+        <label>Farbiges Pulsieren</label>
       </div>
       <div class="jh-box" *ngIf="scenarioConfig.onetimePulsationColorChangeEnabled">
         <div class="input-group">
@@ -50,9 +46,7 @@
         <input type="checkbox" class="switch-input" [(ngModel)]="scenarioConfig.colorChangeEnabled" autocomplete="off">
         <span class="switch-slider" data-checked="&#x2713;" data-unchecked="&#x2715;"></span>
       </label>
-      <label>Farbwechsel:</label>
-      <span *ngIf="scenarioConfig.colorChangeEnabled">Ein</span>
-      <span *ngIf="!scenarioConfig.colorChangeEnabled">Aus</span>
+      <label>Farbwechsel</label>
     </div>
     <div class="jh-box" *ngIf="scenarioConfig.colorChangeEnabled">
       <div class="input-group">
@@ -71,10 +65,10 @@
         <input type="checkbox" class="switch-input" [(ngModel)]="scenarioConfig.brightnessChangeEnabled" autocomplete="off">
         <span class="switch-slider" data-checked="&#x2713;" data-unchecked="&#x2715;"></span>
       </label>
-      <label>Helligkeitswechsel:</label>
+      <label *ngIf="scenarioConfig.brightnessChangeEnabled">Helligkeitswechsel:</label>
+      <label *ngIf="!scenarioConfig.brightnessChangeEnabled">Helligkeitswechsel</label>
       <span *ngIf="scenarioConfig.brightnessChangeEnabled">{{ scenarioConfig.brightness / 254 * 100 | number :
         '1.0-0'}}%</span>
-      <span *ngIf="!scenarioConfig.brightnessChangeEnabled">Aus</span>
     </div>
     <div class="jh-box jh-slider" *ngIf="scenarioConfig.brightnessChangeEnabled">
       <ng5-slider [options]="sliderOptions" [(value)]="scenarioConfig.brightness"></ng5-slider>
