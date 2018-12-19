@@ -54,7 +54,7 @@
                   <td>{{ u.login }}</td>
                   <td *ngIf="u.roles.length < 1">keine</td>
                   <td *ngIf="u.roles.length">
-                    <p *ngFor="let r of u.roles">{{ r.text }}</p>
+                    <div *ngFor="let r of u.roles">{{ r.text }}</div>
                   </td>
                   <td>
                     <button class="btn btn-sm btn-primary mr-1" (click)="changeRoles(u.id, u.roles)" [disabled]="loadingRoles"><i class="fa fa-pencil"></i></button>

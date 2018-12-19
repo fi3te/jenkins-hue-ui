@@ -1,4 +1,15 @@
 .jh-inner-table {
   table-layout: fixed;
   background-color: transparent;
+  margin-bottom: unset;
+  border: none;
+
+  tr, th, td {
+    border: none;
+    background-color: transparent;
+  }
+
+  td {
+    border-top: 1px solid #c8ced3;
+  }
 }
