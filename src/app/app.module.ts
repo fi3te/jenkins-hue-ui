@@ -11,7 +11,7 @@ import {
 import { APP_INITIALIZER, Injectable, NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-import { AppAsideModule, AppBreadcrumbModule, AppFooterModule, AppHeaderModule, AppSidebarModule } from '@coreui/angular';
+import { AppAsideModule, AppFooterModule, AppHeaderModule, AppSidebarModule } from '@coreui/angular';
 import { ChartsModule } from 'ng2-charts/ng2-charts';
 import { AccordionModule } from 'ngx-bootstrap/accordion';
 import { AlertModule } from 'ngx-bootstrap/alert';
@@ -28,6 +28,7 @@ import { DefaultLayoutComponent } from './containers';
 import { LoginComponent } from './login/login.component';
 import { AlertService } from './service/alert.service';
 import { SessionService } from './service/session.service';
+import { PageTitleComponent } from './page-title/page-title.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
@@ -92,7 +93,6 @@ export function init(sessionService: SessionService) {
     BrowserModule,
     AppRoutingModule,
     AppAsideModule,
-    AppBreadcrumbModule.forRoot(),
     AppFooterModule,
     AppHeaderModule,
     AppSidebarModule,
@@ -111,7 +111,8 @@ export function init(sessionService: SessionService) {
     AppComponent,
     ...APP_CONTAINERS,
     LoginComponent,
-    AlertContainerComponent
+    AlertContainerComponent,
+    PageTitleComponent
   ],
   providers: [
     {
