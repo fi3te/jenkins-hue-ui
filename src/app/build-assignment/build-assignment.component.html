@@ -2,7 +2,7 @@
 
   <div *ngIf="lampDTOs?.length < 1">keine Lampen vorhanden</div>
 
-  <accordion [closeOthers]="true" >
+  <accordion [closeOthers]="true">
     <accordion-group *ngFor="let lampDTO of lampDTOs">
 
       <div accordion-heading class="jh-clickable-text">{{ lampDTO.name }}</div>
