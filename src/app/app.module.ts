@@ -11,6 +11,7 @@ import {
 import { APP_INITIALIZER, Injectable, NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppAsideModule, AppFooterModule, AppHeaderModule, AppSidebarModule } from '@coreui/angular';
 import { ChartsModule } from 'ng2-charts/ng2-charts';
 import { AccordionModule } from 'ngx-bootstrap/accordion';
@@ -91,6 +92,7 @@ export function init(sessionService: SessionService) {
 @NgModule({
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     AppAsideModule,
     AppFooterModule,

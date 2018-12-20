@@ -29,7 +29,6 @@ import { SharedModule } from '../shared/shared.module';
     Ng5SliderModule,
     ColorPickerModule,
     NgSelectModule,
-    CollapseModule.forRoot(),
   ],
   declarations: [
     AddJobsModalComponent,
