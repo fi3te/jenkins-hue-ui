@@ -36,7 +36,7 @@
       <tbody>
         <tr *ngFor="let t of teamData.dtos">
           <td>{{ t.name }}</td>
-          <td class="col-xs-6">
+          <td class="jh-inner-table-container">
             <button type="button" class="btn btn-sm btn-success" *ngIf="t.users.length < 1" (click)="createUser(t.id)"><i class="fa fa-plus"></i></button>
 
             <table class="table table-condensed jh-inner-table" *ngIf="t.users.length">
