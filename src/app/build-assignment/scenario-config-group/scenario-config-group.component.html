@@ -1,13 +1,13 @@
 <div class="box collapsed-box box-solid" *ngIf="configs.length">
     <div class="box-header">
       <div class="pull-right">
-        <button type="button" class="btn btn-sm {{ buttonColor }}" (click)="collapse.toggle()">
-          <i [class]="collapse.isCollapsed ? 'fa fa-plus' : 'fa fa-minus'"></i>
+        <button type="button" class="btn btn-sm {{ buttonColor }}" (click)="toggle()">
+          <i [class]="collapsed ? 'fa fa-plus' : 'fa fa-minus'"></i>
         </button>
       </div>
-      <h3 class="box-title jh-clickable-text" (click)="collapse.toggle()">{{ name }} ({{ configs.length }})</h3>
+      <h3 class="box-title jh-clickable-text" (click)="toggle()">{{ name }} ({{ configs.length }})</h3>
     </div><!-- /.box-header -->
-    <div class="box-body no-padding" #collapse="bs-collapse" [collapse]="true">
+    <div class="box-body no-padding jh-collapse" [@slideInOut]="collapsed">
       <div class="row">
         <div class="col-lg-3 col-md-6 col-sm-6 jh-scenario-config" *ngFor="let s of configs">
           <app-scenario-config [scenarioConfig]="s" (remove)="removeScenarioConfig($event)"></app-scenario-config>
