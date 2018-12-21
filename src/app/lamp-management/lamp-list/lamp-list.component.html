@@ -40,9 +40,9 @@
             <td>{{ l.workingEnd | date:'HH:mm' }} Uhr</td>
             <td>{{ l.jobs.length }}</td>
             <td>
-              <button class="btn btn-sm btn-primary mr-1" (click)="renameLamp(l)">Umbenennen</button>
-              <button class="btn btn-sm btn-success mr-1" (click)="pulseOnce(l)">Pulsieren lassen</button>
-              <button class="btn btn-sm btn-danger" (click)="releaseLamp(l)">Freigeben</button>
+              <button class="btn btn-sm btn-primary mr-1" (click)="pulseOnce(l)">Pulsieren lassen</button>
+              <button class="btn btn-sm btn-secondary mr-1" (click)="renameLamp(l)">Umbenennen</button>
+              <button class="btn btn-sm btn-secondary" (click)="releaseLamp(l)">Freigeben</button>
             </td>
           </tr>
         </tbody>
