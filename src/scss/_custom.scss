@@ -1,3 +1,7 @@
+html {
+  overflow-y:scroll;
+}
+
 .card-header {
   background-color: unset;
 }
@@ -11,7 +15,11 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
   font-weight: 400;
 }
 
-
+.main app-dashboard {
+  display: unset;
+  flex-direction: unset;
+  min-height: unset;
+}
 
 
 
@@ -19,6 +27,11 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 
 
 // TODO remove global styling
+
+.jh-collapse {
+  overflow: hidden;
+  padding: 0;
+}
 
 /*
  * animation for ng-view
