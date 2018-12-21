@@ -2,53 +2,56 @@
 
   <div *ngIf="lampDTOs?.length < 1">keine Lampen vorhanden</div>
 
-  <accordion [closeOthers]="true">
-    <accordion-group *ngFor="let lampDTO of lampDTOs">
+  <div class="card card-accent-primary" *ngFor="let lampDTO of lampDTOs">
+    <div class="card-header jh-clickable-text" (click)="accordionStateService.toggle(lampDTO)">
+      <h5>{{ lampDTO.name }}</h5>
+    </div>
+    <div class="card-body jh-collapse" [@slideInOut]="accordionStateService.isClosed(lampDTO)">
+      <div class="jh-build-assignment-item">
 
-      <div accordion-heading class="jh-clickable-text">{{ lampDTO.name }}</div>
+        <div class="form-group">
+          <label><u>Arbeitszeit</u></label>
+          <div class="input-group">
+            <timepicker [mousewheel]="false" [minuteStep]="15" [showMeridian]="false" [(ngModel)]="lampDTO.workingStart"></timepicker>
+            <timepicker [mousewheel]="false" [minuteStep]="15" [showMeridian]="false" [(ngModel)]="lampDTO.workingEnd"></timepicker>
+          </div>
+        </div><!-- /.form group -->
 
-      <div class="form-group">
-        <label><u>Arbeitszeit</u></label>
-        <div class="input-group">
-          <timepicker [mousewheel]="false" [minuteStep]="15" [showMeridian]="false" [(ngModel)]="lampDTO.workingStart"></timepicker>
-          <timepicker [mousewheel]="false" [minuteStep]="15" [showMeridian]="false" [(ngModel)]="lampDTO.workingEnd"></timepicker>
-        </div>
-      </div><!-- /.form group -->
+        <div class="form-group jh-gap-normal">
+          <label><u>Jobs</u></label>
+          <ul>
+            <li *ngFor="let job of lampDTO.jobs">
+              {{ job.name }}
+              <app-remove-button (click)="removeJob(lampDTO, job)"></app-remove-button>
+            </li>
+          </ul>
 
-      <div class="form-group jh-gap-normal">
-        <label><u>Jobs</u></label>
-        <ul>
-          <li *ngFor="let job of lampDTO.jobs">
-            {{ job.name }}
-            <app-remove-button (click)="removeJob(lampDTO, job)"></app-remove-button>
-          </li>
-        </ul>
-
-        <div class="input-group">
-          <button class="btn btn-default" (click)="addJob(lampDTO)" [disabled]="loading">Job hinzufügen</button>
-        </div>
-      </div><!-- /.form group -->
+          <div class="input-group">
+            <button class="btn btn-default" (click)="addJob(lampDTO)" [disabled]="loading">Job hinzufügen</button>
+          </div>
+        </div><!-- /.form group -->
 
 
-      <div class="form-group jh-gap-normal">
-        <label><u>Szenarien</u></label>
+        <div class="form-group jh-gap-normal">
+          <label><u>Szenarien</u></label>
 
-        <app-scenario-config-group [name]="'BUILDING'" [buttonColor]="'btn-primary'" [configs]="lampDTO.buildingConfigs"></app-scenario-config-group>
-        <app-scenario-config-group [name]="'FAILURE'" [buttonColor]="'btn-danger'" [configs]="lampDTO.failureConfigs"></app-scenario-config-group>
-        <app-scenario-config-group [name]="'UNSTABLE'" [buttonColor]="'btn-warning'" [configs]="lampDTO.unstableConfigs"></app-scenario-config-group>
-        <app-scenario-config-group [name]="'SUCCESS'" [buttonColor]="'btn-success'" [configs]="lampDTO.successConfigs"></app-scenario-config-group>
+          <app-scenario-config-group [name]="'BUILDING'" [buttonColor]="'btn-primary'" [configs]="lampDTO.buildingConfigs"></app-scenario-config-group>
+          <app-scenario-config-group [name]="'FAILURE'" [buttonColor]="'btn-danger'" [configs]="lampDTO.failureConfigs"></app-scenario-config-group>
+          <app-scenario-config-group [name]="'UNSTABLE'" [buttonColor]="'btn-warning'" [configs]="lampDTO.unstableConfigs"></app-scenario-config-group>
+          <app-scenario-config-group [name]="'SUCCESS'" [buttonColor]="'btn-success'" [configs]="lampDTO.successConfigs"></app-scenario-config-group>
 
-        <div class="input-group">
-          <button class="btn btn-default" (click)="addScenario(lampDTO)" [disabled]="loading">Szenario
-            hinzufügen</button>
-        </div><!-- /.input group -->
-      </div><!-- /.form group -->
+          <div class="input-group">
+            <button class="btn btn-default" (click)="addScenario(lampDTO)" [disabled]="loading">Szenario
+              hinzufügen</button>
+          </div><!-- /.input group -->
+        </div><!-- /.form group -->
 
-      <div class="form-group jh-gap-normal">
-        <button class="btn btn-success mr-1" (click)="saveLamp(lampDTO)">Speichern</button>
-        <button class="btn btn-default" (click)="resetLamp(lampDTO)">Zurücksetzen</button>
-      </div><!-- /.form group -->
-    </accordion-group>
-  </accordion>
+        <div class="form-group jh-gap-normal">
+          <button class="btn btn-success mr-1" (click)="saveLamp(lampDTO)">Speichern</button>
+          <button class="btn btn-default" (click)="resetLamp(lampDTO)">Zurücksetzen</button>
+        </div><!-- /.form group -->
+      </div>
+    </div>
+  </div>
 
 </div>

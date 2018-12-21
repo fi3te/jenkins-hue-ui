@@ -1,3 +1,4 @@
+import { AccordionStateService } from './accordion-state.service';
 import { Component, OnInit } from '@angular/core';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
@@ -19,11 +20,13 @@ import LampGroupedScenariosDTO = DTO.LampGroupedScenariosDTO;
 import TeamLampsDTO = DTO.TeamLampsDTO;
 import LampUpdateDTO = DTO.LampUpdateDTO;
 import { ActivatedRoute } from '@angular/router';
+import { Animations } from '../shared/animations';
 
 @Component({
   selector: 'app-build-assignment',
   templateUrl: './build-assignment.component.html',
-  styleUrls: ['./build-assignment.component.scss']
+  styleUrls: ['./build-assignment.component.scss'],
+  animations: [ Animations.slideInOut ]
 })
 export class BuildAssignmentComponent implements OnInit {
 
@@ -40,7 +43,8 @@ export class BuildAssignmentComponent implements OnInit {
     private universalService: UniversalService,
     private jenkinsService: JenkinsService,
     private alertService: AlertService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    public accordionStateService: AccordionStateService<string>
   ) {}
 
   public ngOnInit(): void {

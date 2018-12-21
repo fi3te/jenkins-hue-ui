@@ -1,10 +1,10 @@
+import { AccordionStateService } from './accordion-state.service';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BuildAssignmentComponent } from './build-assignment.component';
 import { BuildAssignmentRoutingModule } from './build-assignment-routing.module';
-import { AccordionModule } from 'ngx-bootstrap/accordion';
 import { TimepickerModule } from 'ngx-bootstrap/timepicker';
 import { AddJobsModalComponent } from './add-jobs-modal/add-jobs-modal.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
@@ -22,7 +22,6 @@ import { SharedModule } from '../shared/shared.module';
     CommonModule,
     SharedModule,
     BuildAssignmentRoutingModule,
-    AccordionModule,
     TimepickerModule,
     ModalModule.forRoot(),
     FormsModule,
@@ -38,6 +37,9 @@ import { SharedModule } from '../shared/shared.module';
     ScenarioConfigComponent,
     ScenarioConfigGroupComponent
   ],
-  entryComponents: [AddJobsModalComponent, AddScenariosModalComponent]
+  entryComponents: [AddJobsModalComponent, AddScenariosModalComponent],
+  providers: [
+    AccordionStateService
+  ]
 })
 export class BuildAssignmentModule { }

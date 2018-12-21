@@ -14,7 +14,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppAsideModule, AppFooterModule, AppHeaderModule, AppSidebarModule } from '@coreui/angular';
 import { ChartsModule } from 'ng2-charts/ng2-charts';
-import { AccordionModule } from 'ngx-bootstrap/accordion';
 import { AlertModule } from 'ngx-bootstrap/alert';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TabsModule } from 'ngx-bootstrap/tabs';
@@ -102,7 +101,6 @@ export function init(sessionService: SessionService) {
     BsDropdownModule.forRoot(),
     TabsModule.forRoot(),
     TimepickerModule.forRoot(),
-    AccordionModule.forRoot(),
     ChartsModule,
     AlertModule.forRoot(),
     HttpClientModule,
