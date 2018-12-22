@@ -43,6 +43,10 @@ export class SessionService {
     return this.principal.userId;
   }
 
+  public getUsername(): string {
+    return this.principal.username;
+  }
+
   public getPrincipal(): Observable<PrincipalDTO> {
     return this.universalService.getPrincipal().pipe(
       tap((next: any) => {
