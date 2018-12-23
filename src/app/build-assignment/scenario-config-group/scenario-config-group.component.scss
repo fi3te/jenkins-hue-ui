@@ -9,3 +9,9 @@
 .jh-scenario-config:last-child:not(:first-child) {
   padding-right: 15px;
 }
+
+@media (max-width: 575px) {
+  .jh-scenario-config {
+    padding: 0 15px;
+  }
+}
