@@ -13,7 +13,8 @@
               <i class="cui-people"></i>
             </span>
           </div>
-          <input type="text" class="form-control" [class.is-invalid]="teamName.invalid && teamName.dirty" [class.is-valid]="teamName.valid" name="name" placeholder="Name eingeben" #teamName="ngModel" [(ngModel)]="name" required="required">
+          <input type="text" class="form-control" [class.is-invalid]="teamName.invalid && teamName.dirty" [class.is-valid]="teamName.valid"
+          name="name" placeholder="Name eingeben" #teamName="ngModel" [(ngModel)]="name" required="required" (keyup.enter)="createTeam()">
         </div>
       </div>
     </div>

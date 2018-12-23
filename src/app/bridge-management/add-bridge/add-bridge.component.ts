@@ -41,8 +41,10 @@ export class AddBridgeComponent implements OnInit {
   }
 
   public createBridge(): void {
-    this.createBridgeFormless(this.ip);
-    this.resetForm();
+    if (this.ip && this.ipPattern.test(this.ip)) {
+      this.createBridgeFormless(this.ip);
+      this.resetForm();
+    }
   }
 
   public searchForBridges(): void {

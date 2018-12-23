@@ -13,7 +13,8 @@
               <i class="cui-globe"></i>
             </span>
           </div>
-          <input type="text" class="form-control" [class.is-invalid]="bridgeIp.invalid && bridgeIp.dirty" [class.is-valid]="bridgeIp.valid" name="ip" placeholder="IP-Adresse eingeben" #bridgeIp="ngModel" [(ngModel)]="ip" required="required" [pattern]="ipPattern">
+          <input type="text" class="form-control" [class.is-invalid]="bridgeIp.invalid && bridgeIp.dirty" [class.is-valid]="bridgeIp.valid"
+          name="ip" placeholder="IP-Adresse eingeben" #bridgeIp="ngModel" [(ngModel)]="ip" required="required" [pattern]="ipPattern" (keyup.enter)="createBridge()">
         </div>
       </div>
     </div>
