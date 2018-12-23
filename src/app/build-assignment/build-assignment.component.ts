@@ -7,7 +7,6 @@ import { DTO } from '../generated-dtos.model';
 import { JenkinsService } from '../service/http/jenkins.service';
 import { UniversalService } from '../service/http/universal.service';
 import { SimpleEnum } from '../service/model/simple-enum.model';
-import { SessionService } from '../service/session.service';
 import { AlertService } from './../service/alert.service';
 import { LampService } from './../service/http/lamp.service';
 import { AddJobsModalComponent } from './add-jobs-modal/add-jobs-modal.component';
@@ -21,12 +20,15 @@ import TeamLampsDTO = DTO.TeamLampsDTO;
 import LampUpdateDTO = DTO.LampUpdateDTO;
 import { ActivatedRoute } from '@angular/router';
 import { Animations } from '../shared/animations';
+import { NgbTimeNumberAdapter } from './ngb-time-number-adapter';
+import { NgbTimeAdapter } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-build-assignment',
   templateUrl: './build-assignment.component.html',
   styleUrls: ['./build-assignment.component.scss'],
-  animations: [ Animations.slideInOut ]
+  animations: [ Animations.slideInOut ],
+  providers: [{provide: NgbTimeAdapter, useClass: NgbTimeNumberAdapter}]
 })
 export class BuildAssignmentComponent implements OnInit {
 
@@ -34,11 +36,8 @@ export class BuildAssignmentComponent implements OnInit {
   public scenarioPriority: SimpleEnum[];
   public loading: boolean;
 
-  private teamId: number;
-
   constructor(
     private modalService: BsModalService,
-    private sessionService: SessionService,
     private lampService: LampService,
     private universalService: UniversalService,
     private jenkinsService: JenkinsService,
@@ -48,12 +47,10 @@ export class BuildAssignmentComponent implements OnInit {
   ) {}
 
   public ngOnInit(): void {
-    this.teamId = this.sessionService.getTeamId();
     this.route.data.subscribe(
       (data: { teamLampsDTO: TeamLampsDTO }) => {
         this.lampDTOs = data.teamLampsDTO.lamps;
         this.scenarioPriority = data.teamLampsDTO.scenarioPriority;
-        this.fix();
         this.sortScenarioConfigs();
       }
     );
@@ -137,7 +134,6 @@ export class BuildAssignmentComponent implements OnInit {
         lampDTO.name = next.name;
         lampDTO.workingStart = next.workingStart;
         lampDTO.workingEnd = next.workingEnd;
-        this.fix();
         lampDTO.jobs = next.jobs;
 
         lampDTO.buildingConfigs = next.buildingConfigs;
@@ -151,14 +147,6 @@ export class BuildAssignmentComponent implements OnInit {
       }, () => {
         this.loading = false;
       });
-  }
-
-  // TODO remove
-  private fix(): void {
-    for (const lamp of this.lampDTOs) {
-      lamp.workingStart = new Date(lamp.workingStart);
-      lamp.workingEnd = new Date(lamp.workingEnd);
-    }
   }
 
   private openAddJobsModal(
