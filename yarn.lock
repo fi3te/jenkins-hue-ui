@@ -336,6 +336,13 @@
   resolved "https://registry.yarnpkg.com/@coreui/icons/-/icons-0.3.0.tgz#d5bece91b1442a9543593d1146bc8042b18489e3"
   integrity sha512-RbBi5K5hUA8LUI9mM/i1BTaLjlyoS6kHwKbxWsH62+/j9L9WF8gAiJUhrNjMt1br8TY9RLeolyQys0E9480fIg==
 
+"@ng-bootstrap/ng-bootstrap@^3.3.1":
+  version "3.3.1"
+  resolved "https://registry.yarnpkg.com/@ng-bootstrap/ng-bootstrap/-/ng-bootstrap-3.3.1.tgz#435eebc57dd4a371d02f342f1e919d1c4bb522a2"
+  integrity sha512-awty+5Kil0i/xIV7SSmKa5YozU83EdIx2EenF2AUDTczSKhHNhRByo82rjtwIhshN25/ZEss4aSDhgILLI88fw==
+  dependencies:
+    tslib "^1.9.0"
+
 "@ng-select/ng-select@^2.11.0":
   version "2.11.0"
   resolved "https://registry.yarnpkg.com/@ng-select/ng-select/-/ng-select-2.11.0.tgz#53eeb457c364c9f829a95a8e27bb25a8eb3f3025"

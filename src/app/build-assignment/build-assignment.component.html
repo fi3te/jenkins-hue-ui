@@ -12,8 +12,8 @@
         <div class="form-group">
           <label><u>Arbeitszeit</u></label>
           <div class="input-group">
-            <timepicker [mousewheel]="false" [minuteStep]="15" [showMeridian]="false" [(ngModel)]="lampDTO.workingStart"></timepicker>
-            <timepicker [mousewheel]="false" [minuteStep]="15" [showMeridian]="false" [(ngModel)]="lampDTO.workingEnd"></timepicker>
+            <ngb-timepicker [minuteStep]="15" [meridian]="false" [(ngModel)]="lampDTO.workingStart"></ngb-timepicker>
+            <ngb-timepicker [minuteStep]="15" [meridian]="false" [(ngModel)]="lampDTO.workingEnd"></ngb-timepicker>
           </div>
         </div><!-- /.form group -->
 
