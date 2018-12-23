@@ -120,7 +120,6 @@ export class BuildAssignmentComponent implements OnInit {
 
   public saveLamp(lampDTO: TeamLampsDTO_LampDTO): void {
     const updateDTO: LampUpdateDTO = lampDTO;
-    updateDTO.teamId = this.teamId;
     this.loading = true;
     this.lampService.update(updateDTO).subscribe(() => {
       this.alertService.info('Einstellungen gespeichert!');
