@@ -32,11 +32,13 @@ export class AddUserComponent implements OnInit {
   }
 
   public createUser(): void {
-    this.userService.create({login: this.login, teamId: this.teamId}).subscribe(() => {
-      this.userManagementService.userCreated();
-      this.alertService.info('Benutzer hinzugefügt!');
-    });
-    this.login = '';
-    this.loginName.control.markAsPristine({onlySelf: true});
+    if (this.login) {
+      this.userService.create({login: this.login, teamId: this.teamId}).subscribe(() => {
+        this.userManagementService.userCreated();
+        this.alertService.info('Benutzer hinzugefügt!');
+      });
+      this.login = '';
+      this.loginName.control.markAsPristine({onlySelf: true});
+    }
   }
 }

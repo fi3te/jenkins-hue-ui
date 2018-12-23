@@ -8,7 +8,6 @@ import { REST_BRIDGES } from './common/constants';
 import FoundBridgeDTO = DTO.FoundBridgeDTO;
 import BridgeDTO = DTO.BridgeDTO;
 import BridgeCreateDTO = DTO.BridgeCreateDTO;
-import BridgeUpdateDTO = DTO.BridgeUpdateDTO;
 
 @Injectable({
   providedIn: 'root'
@@ -40,10 +39,6 @@ export class BridgeService {
 
   public create(bridgeCreateDTO: BridgeCreateDTO): Observable<BridgeDTO> {
     return this.httpClient.post(`${REST_BRIDGES}/create`, bridgeCreateDTO);
-  }
-
-  public update(bridgeUpdateDTO: BridgeUpdateDTO): Observable<BridgeDTO> {
-    return this.httpClient.post(`${REST_BRIDGES}/update`, bridgeUpdateDTO);
   }
 
   public remove(id: number): Observable<any> {

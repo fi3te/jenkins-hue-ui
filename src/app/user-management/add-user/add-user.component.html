@@ -13,7 +13,8 @@
               <i class="cui-user"></i>
             </span>
           </div>
-          <input type="text" class="form-control" [class.is-invalid]="loginName.invalid && loginName.dirty" [class.is-valid]="loginName.valid" name="login" placeholder="Login eingeben" #loginName="ngModel" [(ngModel)]="login" required="required">
+          <input type="text" class="form-control" [class.is-invalid]="loginName.invalid && loginName.dirty" [class.is-valid]="loginName.valid" 
+          name="login" placeholder="Login eingeben" #loginName="ngModel" [(ngModel)]="login" required="required" (keyup.enter)="createUser()">
         </div>
       </div>
     </div>

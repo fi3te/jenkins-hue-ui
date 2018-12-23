@@ -23,11 +23,13 @@ export class AddTeamComponent {
   ) { }
 
   public createTeam(): void {
-    this.teamService.create({name: this.name}).subscribe(() => {
-      this.teamManagementService.teamCreated();
-      this.alertService.info('Team hinzugefügt!');
-    });
-    this.name = '';
-    this.teamName.control.markAsPristine({onlySelf: true});
+    if (this.name) {
+      this.teamService.create({name: this.name}).subscribe(() => {
+        this.teamManagementService.teamCreated();
+        this.alertService.info('Team hinzugefügt!');
+      });
+      this.name = '';
+      this.teamName.control.markAsPristine({onlySelf: true});
+    }
   }
 }
