@@ -87,14 +87,6 @@ export const routes: Routes = [
       {
         path: 'color-test',
         loadChildren: './color-test/color-test.module#ColorTestModule'
-      },
-      {
-        path: 'base',
-        loadChildren: './views/base/base.module#BaseModule'
-      },
-      {
-        path: 'theme',
-        loadChildren: './views/theme/theme.module#ThemeModule'
       }
     ]
   }
