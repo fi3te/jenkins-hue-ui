@@ -208,7 +208,7 @@ export class BuildAssignmentComponent implements OnInit {
         }
 
         for (const s of selectedScenarios) {
-          const newScenario = { config: {}, scenario: s };
+          const newScenario: ScenarioConfigDTO = { scenario: s };
           if (s.name.startsWith('BUILDING')) {
             lampDTO.buildingConfigs.push(newScenario);
           } else if (s.name.startsWith('FAILURE')) {
