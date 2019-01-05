@@ -72,17 +72,7 @@ export class ErrorResponseInterceptor implements HttpInterceptor {
 
 export function init(sessionService: SessionService) {
   return () => {
-    // TODO live
-    // sessionService.fetchPrincipal();
-
-    // TODO demo
-    sessionService.getPrincipal().subscribe(null, () => {
-      const credentials = {
-        username: 'a',
-        password: 'a'
-      };
-      sessionService.silentLogin(credentials);
-    });
+    sessionService.fetchPrincipal();
   };
 }
 
