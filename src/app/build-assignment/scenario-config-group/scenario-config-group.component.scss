@@ -1,17 +1,17 @@
-.jh-scenario-config {
+.jh-scenario-config-group {
   padding: 0;
 }
 
-.jh-scenario-config:first-child {
+.jh-scenario-config-group:first-child {
   padding-left: 15px;
 }
 
-.jh-scenario-config:last-child:not(:first-child) {
+.jh-scenario-config-group:last-child:not(:first-child) {
   padding-right: 15px;
 }
 
 @media (max-width: 575px) {
-  .jh-scenario-config {
+  .jh-scenario-config-group {
     padding: 0 15px;
   }
 }

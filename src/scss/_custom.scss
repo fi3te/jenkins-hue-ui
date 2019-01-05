@@ -29,41 +29,12 @@ th {
   font-weight: 500;
 }
 
-
-
-
-
-
-// TODO remove global styling
+.jh-clickable-text {
+  cursor: pointer;
+  user-select: none;
+}
 
 .jh-collapse {
   overflow: hidden;
   padding: 0;
-}
-
-
-
-
-.jh-box {
-  padding: 10px;
-}
-
-.jh-box-border {
-  margin: 4px;
-  padding: 10px;
-  border: 1px solid #e3e3e3;
-  border-radius: 4px;
-}
-
-.jh-scenario-config {
-  min-height: 335px;
-}
-
-.jh-gap-normal {
-  margin-top: 48px;
-}
-
-.jh-clickable-text {
-  cursor: pointer;
-  user-select: none;
 }

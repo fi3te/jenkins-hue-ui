@@ -1,77 +1,80 @@
-<div class="jh-switch-row">
-  <label class="switch switch-sm switch-label switch-pill switch-outline-primary-alt mr-2">
-    <input type="checkbox" class="switch-input" [(ngModel)]="scenarioConfig.lampOn" autocomplete="off">
-    <span class="switch-slider" data-checked="&#x2713;" data-unchecked="&#x2715;"></span>
-  </label>
-  <label>Lampe:</label>
-  <span *ngIf="scenarioConfig.lampOn">Ein</span>
-  <span *ngIf="!scenarioConfig.lampOn">Aus</span>
-</div>
-<div class="jh-box jh-scenario-config">
+<div>
+  <div class="jh-switch-row">
+    <label class="switch switch-sm switch-label switch-pill switch-outline-primary-alt mr-2">
+      <input type="checkbox" class="switch-input" [(ngModel)]="scenarioConfig.lampOn" autocomplete="off">
+      <span class="switch-slider" data-checked="&#x2713;" data-unchecked="&#x2715;"></span>
+    </label>
+    <label>Lampe:</label>
+    <span *ngIf="scenarioConfig.lampOn">Ein</span>
+    <span *ngIf="!scenarioConfig.lampOn">Aus</span>
+  </div>
+  <div class="jh-box jh-scenario-config">
 
-  <div [hidden]="!scenarioConfig.lampOn">
+    <div [hidden]="!scenarioConfig.lampOn">
 
-    <div class="jh-switch-row">
-      <label class="switch switch-sm switch-label switch-pill switch-outline-primary-alt mr-2">
-        <input type="checkbox" class="switch-input" [(ngModel)]="scenarioConfig.onetimePulsationEnabled" autocomplete="off">
-        <span class="switch-slider" data-checked="&#x2713;" data-unchecked="&#x2715;"></span>
-      </label>
-      <label>Einmaliges Pulsieren</label>
-    </div>
-    <div class="jh-box" *ngIf="scenarioConfig.onetimePulsationEnabled">
-      <!-- Farbwechsel beim Pulsieren -->
       <div class="jh-switch-row">
         <label class="switch switch-sm switch-label switch-pill switch-outline-primary-alt mr-2">
-          <input type="checkbox" class="switch-input" [(ngModel)]="scenarioConfig.onetimePulsationColorChangeEnabled"
-            autocomplete="off" (change)="checkOnetimePulsationColor()">
+          <input type="checkbox" class="switch-input" [(ngModel)]="scenarioConfig.onetimePulsationEnabled" autocomplete="off">
           <span class="switch-slider" data-checked="&#x2713;" data-unchecked="&#x2715;"></span>
         </label>
-        <label>Farbiges Pulsieren</label>
+        <label>Einmaliges Pulsieren</label>
       </div>
-      <div class="jh-box" *ngIf="scenarioConfig.onetimePulsationColorChangeEnabled">
-        <div class="input-group">
-          <input class="form-control jh-color-input" [(colorPicker)]="scenarioConfig.onetimePulsationColorHex" [cpOutputFormat]="'hex'"
-            [cpAlphaChannel]="'disabled'" [value]="scenarioConfig.onetimePulsationColorHex">
-          <div class="input-group-append">
-            <span class="input-group-text">
-              <div class="jh-color-indicator" [style.background]="scenarioConfig.onetimePulsationColorHex"></div>
-            </span>
-          </div>
-        </div><!-- /.input group -->
-      </div>
-    </div>
-
-    <div class="jh-switch-row">
-      <label class="switch switch-sm switch-label switch-pill switch-outline-primary-alt mr-2">
-        <input type="checkbox" class="switch-input" [(ngModel)]="scenarioConfig.colorChangeEnabled" autocomplete="off" (change)="checkColor()">
-        <span class="switch-slider" data-checked="&#x2713;" data-unchecked="&#x2715;"></span>
-      </label>
-      <label>Farbwechsel</label>
-    </div>
-    <div class="jh-box" *ngIf="scenarioConfig.colorChangeEnabled">
-      <div class="input-group">
-        <input class="form-control jh-color-input" [(colorPicker)]="scenarioConfig.colorHex" [cpOutputFormat]="'hex'"
-          [cpAlphaChannel]="'disabled'" [value]="scenarioConfig.colorHex">
-        <div class="input-group-append">
-          <span class="input-group-text">
-            <div class="jh-color-indicator" [style.background]="scenarioConfig.colorHex"></div>
-          </span>
+      <div class="jh-box" *ngIf="scenarioConfig.onetimePulsationEnabled">
+        <!-- Farbwechsel beim Pulsieren -->
+        <div class="jh-switch-row">
+          <label class="switch switch-sm switch-label switch-pill switch-outline-primary-alt mr-2">
+            <input type="checkbox" class="switch-input" [(ngModel)]="scenarioConfig.onetimePulsationColorChangeEnabled"
+              autocomplete="off" (change)="checkOnetimePulsationColor()">
+            <span class="switch-slider" data-checked="&#x2713;" data-unchecked="&#x2715;"></span>
+          </label>
+          <label>Farbiges Pulsieren</label>
+        </div>
+        <div class="jh-box" *ngIf="scenarioConfig.onetimePulsationColorChangeEnabled">
+          <div class="input-group">
+            <input class="form-control jh-color-input" [(colorPicker)]="scenarioConfig.onetimePulsationColorHex" [cpOutputFormat]="'hex'"
+              [cpAlphaChannel]="'disabled'" [value]="scenarioConfig.onetimePulsationColorHex">
+            <div class="input-group-append">
+              <span class="input-group-text">
+                <div class="jh-color-indicator" [style.background]="scenarioConfig.onetimePulsationColorHex"></div>
+              </span>
+            </div>
+          </div><!-- /.input group -->
         </div>
       </div>
-    </div>
 
-    <div class="jh-switch-row">
-      <label class="switch switch-sm switch-label switch-pill switch-outline-primary-alt mr-2">
-        <input type="checkbox" class="switch-input" [(ngModel)]="scenarioConfig.brightnessChangeEnabled" autocomplete="off" (change)="checkBrightness()">
-        <span class="switch-slider" data-checked="&#x2713;" data-unchecked="&#x2715;"></span>
-      </label>
-      <label *ngIf="scenarioConfig.brightnessChangeEnabled">Helligkeitswechsel:</label>
-      <label *ngIf="!scenarioConfig.brightnessChangeEnabled">Helligkeitswechsel</label>
-      <span *ngIf="scenarioConfig.brightnessChangeEnabled">{{ scenarioConfig.brightness / 254 * 100 | number :
-        '1.0-0'}}%</span>
-    </div>
-    <div class="jh-box jh-slider" *ngIf="scenarioConfig.brightnessChangeEnabled">
-      <ng5-slider [options]="sliderOptions" [(value)]="scenarioConfig.brightness"></ng5-slider>
+      <div class="jh-switch-row">
+        <label class="switch switch-sm switch-label switch-pill switch-outline-primary-alt mr-2">
+          <input type="checkbox" class="switch-input" [(ngModel)]="scenarioConfig.colorChangeEnabled" autocomplete="off" (change)="checkColor()">
+          <span class="switch-slider" data-checked="&#x2713;" data-unchecked="&#x2715;"></span>
+        </label>
+        <label>Farbwechsel</label>
+      </div>
+      <div class="jh-box" *ngIf="scenarioConfig.colorChangeEnabled">
+        <div class="input-group">
+          <input class="form-control jh-color-input" [(colorPicker)]="scenarioConfig.colorHex" [cpOutputFormat]="'hex'"
+            [cpAlphaChannel]="'disabled'" [value]="scenarioConfig.colorHex">
+          <div class="input-group-append">
+            <span class="input-group-text">
+              <div class="jh-color-indicator" [style.background]="scenarioConfig.colorHex"></div>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="jh-switch-row">
+        <label class="switch switch-sm switch-label switch-pill switch-outline-primary-alt mr-2">
+          <input type="checkbox" class="switch-input" [(ngModel)]="scenarioConfig.brightnessChangeEnabled" autocomplete="off" (change)="checkBrightness()">
+          <span class="switch-slider" data-checked="&#x2713;" data-unchecked="&#x2715;"></span>
+        </label>
+        <label *ngIf="scenarioConfig.brightnessChangeEnabled">Helligkeitswechsel:</label>
+        <label *ngIf="!scenarioConfig.brightnessChangeEnabled">Helligkeitswechsel</label>
+        <span *ngIf="scenarioConfig.brightnessChangeEnabled">{{ scenarioConfig.brightness / 254 * 100 | number :
+          '1.0-0'}}%</span>
+      </div>
+      <div class="jh-box jh-slider" *ngIf="scenarioConfig.brightnessChangeEnabled">
+        <ng5-slider [options]="sliderOptions" [(value)]="scenarioConfig.brightness"></ng5-slider>
+      </div>
     </div>
   </div>
 </div>
+
