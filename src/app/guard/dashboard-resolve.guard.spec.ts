@@ -1,11 +1,13 @@
 import { TestBed, async, inject } from '@angular/core/testing';
 
 import { DashboardResolveGuard } from './dashboard-resolve.guard';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 
 describe('DashboardResolveGuard', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [DashboardResolveGuard]
+      imports: [HttpClientModule],
+      providers: [DashboardResolveGuard, HttpClient]
     });
   });
 

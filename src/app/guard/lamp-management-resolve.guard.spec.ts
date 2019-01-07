@@ -1,3 +1,4 @@
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { TestBed, async, inject } from '@angular/core/testing';
 
 import { LampManagementResolveGuard } from './lamp-management-resolve.guard';
@@ -5,7 +6,8 @@ import { LampManagementResolveGuard } from './lamp-management-resolve.guard';
 describe('LampManagementResolveGuard', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [LampManagementResolveGuard]
+      imports: [HttpClientModule],
+      providers: [LampManagementResolveGuard, HttpClient]
     });
   });
 

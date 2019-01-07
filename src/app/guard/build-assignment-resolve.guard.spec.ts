@@ -1,3 +1,4 @@
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { TestBed, async, inject } from '@angular/core/testing';
 
 import { BuildAssignmentResolveGuard } from './build-assignment-resolve.guard';
@@ -5,7 +6,8 @@ import { BuildAssignmentResolveGuard } from './build-assignment-resolve.guard';
 describe('BuildAssignmentResolveGuard', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [BuildAssignmentResolveGuard]
+      imports: [HttpClientModule],
+      providers: [BuildAssignmentResolveGuard, HttpClient]
     });
   });
 
