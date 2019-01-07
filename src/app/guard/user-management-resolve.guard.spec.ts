@@ -1,3 +1,4 @@
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { TestBed, async, inject } from '@angular/core/testing';
 
 import { UserManagementResolveGuard } from './user-management-resolve.guard';
@@ -5,7 +6,8 @@ import { UserManagementResolveGuard } from './user-management-resolve.guard';
 describe('UserManagementResolveGuard', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [UserManagementResolveGuard]
+      imports: [HttpClientModule],
+      providers: [UserManagementResolveGuard, HttpClient]
     });
   });
 

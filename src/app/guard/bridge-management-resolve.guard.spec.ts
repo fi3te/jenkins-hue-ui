@@ -1,3 +1,4 @@
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { TestBed, async, inject } from '@angular/core/testing';
 
 import { BridgeManagementResolveGuard } from './bridge-management-resolve.guard';
@@ -5,7 +6,8 @@ import { BridgeManagementResolveGuard } from './bridge-management-resolve.guard'
 describe('BridgeManagementResolveGuard', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [BridgeManagementResolveGuard]
+      imports: [HttpClientModule],
+      providers: [BridgeManagementResolveGuard, HttpClient]
     });
   });
 

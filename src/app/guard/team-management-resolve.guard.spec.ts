@@ -1,3 +1,4 @@
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { TestBed, async, inject } from '@angular/core/testing';
 
 import { TeamManagementResolveGuard } from './team-management-resolve.guard';
@@ -5,7 +6,8 @@ import { TeamManagementResolveGuard } from './team-management-resolve.guard';
 describe('TeamManagementResolveGuard', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [TeamManagementResolveGuard]
+      imports: [HttpClientModule],
+      providers: [TeamManagementResolveGuard, HttpClient]
     });
   });
 
