@@ -1,3 +1,4 @@
+import { FormsModule } from '@angular/forms';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PagingButtonBarComponent } from './paging-button-bar.component';
@@ -8,7 +9,8 @@ describe('PagingButtonBarComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PagingButtonBarComponent ]
+      declarations: [ PagingButtonBarComponent ],
+      imports: [ FormsModule ]
     })
     .compileComponents();
   }));
