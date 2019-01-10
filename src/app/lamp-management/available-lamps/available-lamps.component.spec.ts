@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AvailableLampsComponent } from './available-lamps.component';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 describe('AvailableLampsComponent', () => {
   let component: AvailableLampsComponent;
@@ -8,7 +9,9 @@ describe('AvailableLampsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AvailableLampsComponent ]
+      declarations: [ AvailableLampsComponent ],
+      imports: [ HttpClientModule ],
+      providers: [ HttpClient ]
     })
     .compileComponents();
   }));
