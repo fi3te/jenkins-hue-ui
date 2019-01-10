@@ -2,10 +2,10 @@
   <div class="input-group">
     <div class="input-group-prepend">
       <span class="input-group-text">
-        <i class="fa fa-search" *ngIf="!pagingService.searching"></i>
-        <img *ngIf="pagingService.searching" src="../../../../assets/img/loading.gif" width="14px" height="14px">
+        <i class="fa fa-search" *ngIf="!pagingService?.searching"></i>
+        <img *ngIf="pagingService?.searching" src="../../../../assets/img/loading.gif" width="14px" height="14px">
       </span>
     </div>
-    <input type="text" class="form-control" placeholder="Suchen" [(ngModel)]="pagingService.searchItem" (input)="pagingService.computeSearch()">
+    <input type="text" class="form-control" placeholder="Suchen" [ngModel]="pagingService?.searchItem" (ngModelChange)="pagingService.searchItem = $event" (input)="pagingService.computeSearch()">
   </div>
 </div>

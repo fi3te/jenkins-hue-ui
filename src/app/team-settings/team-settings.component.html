@@ -13,7 +13,8 @@
       </div>
       <div class="card-body">
         <bs-sortable
-          [(ngModel)]="teamUsersDTO.scenarioPriority"
+          [ngModel]="teamUsersDTO?.scenarioPriority"
+          (ngModelChange)="teamUsersDTO.scenarioPriority = $event"
           [itemTemplate]="scenarioPriorityItemTemplate">
         </bs-sortable>
       </div>
@@ -29,7 +30,7 @@
         <h4>Team umbenennen</h4>
       </div>
       <div class="card-body">
-        {{ teamUsersDTO.name }}
+        {{ teamUsersDTO?.name }}
       </div>
       <div class="card-footer">
         <button type="button" class="btn btn-primary" (click)="renameTeam()">Umbenennen</button>

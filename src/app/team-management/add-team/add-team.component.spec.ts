@@ -1,3 +1,5 @@
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AddTeamComponent } from './add-team.component';
@@ -8,7 +10,9 @@ describe('AddTeamComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AddTeamComponent ]
+      declarations: [ AddTeamComponent ],
+      imports: [ FormsModule, HttpClientModule ],
+      providers: [ HttpClient ]
     })
     .compileComponents();
   }));

@@ -1,13 +1,13 @@
 <div class="jh-button-bar">
   <div class="form-group">
-    <span class="text-success mr-1 jh-paging-text">Anzahl: {{ pagingService.count }}</span>
+    <span class="text-success mr-1 jh-paging-text">Anzahl: {{ pagingService?.count }}</span>
   </div>
 
   <div class="form-group jh-center-vertical">
-    <span class="text-success mr-1 jh-paging-text">{{ pagingService.page+1 }}/{{ pagingService.lastPage+1 }}</span>
+    <span class="text-success mr-1 jh-paging-text">{{ pagingService?.page + 1 }}/{{ pagingService?.lastPage + 1 }}</span>
 
     <div class="mr-1">
-      <select class="form-control" [(ngModel)]="pagingService.pageSize" (change)="pagingService.pageSizeHasChanged()">
+      <select class="form-control" [ngModel]="pagingService?.pageSize" (ngModelChange)="pagingService.pageSize = $event" (change)="pagingService.pageSizeHasChanged()">
         <option [ngValue]="5">5</option>
         <option [ngValue]="10">10</option>
         <option [ngValue]="25">25</option>
@@ -17,8 +17,8 @@
     </div>
 
     <div class="btn-group" role="group">
-      <button [disabled]="!pagingService.backPossible()" type="button" class="btn" (click)="pagingService.back()">Zurück</button>
-      <button [disabled]="!pagingService.forwardPossible()" type="button" class="btn" (click)="pagingService.forward()">Weiter</button>
+      <button [disabled]="!pagingService?.backPossible()" type="button" class="btn" (click)="pagingService.back()">Zurück</button>
+      <button [disabled]="!pagingService?.forwardPossible()" type="button" class="btn" (click)="pagingService.forward()">Weiter</button>
     </div>
   </div>
 </div>
