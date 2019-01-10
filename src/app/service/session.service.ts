@@ -36,15 +36,15 @@ export class SessionService {
   }
 
   public getTeamId(): number {
-    return this.principal.teamId;
+    return this.principal ? this.principal.teamId : undefined;
   }
 
   public getUserId(): number {
-    return this.principal.userId;
+    return this.principal ? this.principal.userId : undefined;
   }
 
   public getUsername(): string {
-    return this.principal.username;
+    return this.principal ? this.principal.username : undefined;
   }
 
   public getPrincipal(): Observable<PrincipalDTO> {
