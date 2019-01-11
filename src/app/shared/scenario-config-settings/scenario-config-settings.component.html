@@ -1,25 +1,25 @@
 <div>
   <div class="jh-switch-row">
     <label class="switch switch-sm switch-label switch-pill switch-outline-primary-alt mr-2">
-      <input type="checkbox" class="switch-input" [(ngModel)]="scenarioConfig.lampOn" autocomplete="off">
+      <input type="checkbox" class="switch-input" [ngModel]="scenarioConfig?.lampOn" (ngModelChange)="scenarioConfig.lampOn = $event" autocomplete="off">
       <span class="switch-slider" data-checked="&#x2713;" data-unchecked="&#x2715;"></span>
     </label>
     <label>Lampe:</label>
-    <span *ngIf="scenarioConfig.lampOn">Ein</span>
-    <span *ngIf="!scenarioConfig.lampOn">Aus</span>
+    <span *ngIf="scenarioConfig?.lampOn">Ein</span>
+    <span *ngIf="!scenarioConfig?.lampOn">Aus</span>
   </div>
   <div class="jh-box jh-scenario-config">
 
-    <div [hidden]="!scenarioConfig.lampOn">
+    <div [hidden]="!scenarioConfig?.lampOn">
 
       <div class="jh-switch-row">
         <label class="switch switch-sm switch-label switch-pill switch-outline-primary-alt mr-2">
-          <input type="checkbox" class="switch-input" [(ngModel)]="scenarioConfig.onetimePulsationEnabled" autocomplete="off">
+          <input type="checkbox" class="switch-input" [ngModel]="scenarioConfig?.onetimePulsationEnabled" (ngModelChange)="scenarioConfig.onetimePulsationEnabled = $event" autocomplete="off">
           <span class="switch-slider" data-checked="&#x2713;" data-unchecked="&#x2715;"></span>
         </label>
         <label>Einmaliges Pulsieren</label>
       </div>
-      <div class="jh-box" *ngIf="scenarioConfig.onetimePulsationEnabled">
+      <div class="jh-box" *ngIf="scenarioConfig?.onetimePulsationEnabled">
         <!-- Farbwechsel beim Pulsieren -->
         <div class="jh-switch-row">
           <label class="switch switch-sm switch-label switch-pill switch-outline-primary-alt mr-2">
@@ -44,12 +44,12 @@
 
       <div class="jh-switch-row">
         <label class="switch switch-sm switch-label switch-pill switch-outline-primary-alt mr-2">
-          <input type="checkbox" class="switch-input" [(ngModel)]="scenarioConfig.colorChangeEnabled" autocomplete="off" (change)="checkColor()">
+          <input type="checkbox" class="switch-input" [ngModel]="scenarioConfig?.colorChangeEnabled" (ngModelChange)="scenarioConfig.colorChangeEnabled = $event" autocomplete="off" (change)="checkColor()">
           <span class="switch-slider" data-checked="&#x2713;" data-unchecked="&#x2715;"></span>
         </label>
         <label>Farbwechsel</label>
       </div>
-      <div class="jh-box" *ngIf="scenarioConfig.colorChangeEnabled">
+      <div class="jh-box" *ngIf="scenarioConfig?.colorChangeEnabled">
         <div class="input-group">
           <input class="form-control jh-color-input" [(colorPicker)]="scenarioConfig.colorHex" [cpOutputFormat]="'hex'"
             [cpAlphaChannel]="'disabled'" [value]="scenarioConfig.colorHex">
@@ -63,15 +63,15 @@
 
       <div class="jh-switch-row">
         <label class="switch switch-sm switch-label switch-pill switch-outline-primary-alt mr-2">
-          <input type="checkbox" class="switch-input" [(ngModel)]="scenarioConfig.brightnessChangeEnabled" autocomplete="off" (change)="checkBrightness()">
+          <input type="checkbox" class="switch-input" [ngModel]="scenarioConfig?.brightnessChangeEnabled" (ngModelChange)="scenarioConfig.brightnessChangeEnabled = $event" autocomplete="off" (change)="checkBrightness()">
           <span class="switch-slider" data-checked="&#x2713;" data-unchecked="&#x2715;"></span>
         </label>
-        <label *ngIf="scenarioConfig.brightnessChangeEnabled">Helligkeitswechsel:</label>
-        <label *ngIf="!scenarioConfig.brightnessChangeEnabled">Helligkeitswechsel</label>
-        <span *ngIf="scenarioConfig.brightnessChangeEnabled">{{ scenarioConfig.brightness / 254 * 100 | number :
+        <label *ngIf="scenarioConfig?.brightnessChangeEnabled">Helligkeitswechsel:</label>
+        <label *ngIf="!scenarioConfig?.brightnessChangeEnabled">Helligkeitswechsel</label>
+        <span *ngIf="scenarioConfig?.brightnessChangeEnabled">{{ scenarioConfig.brightness / 254 * 100 | number :
           '1.0-0'}}%</span>
       </div>
-      <div class="jh-box jh-slider" *ngIf="scenarioConfig.brightnessChangeEnabled">
+      <div class="jh-box jh-slider" *ngIf="scenarioConfig?.brightnessChangeEnabled">
         <ng5-slider [options]="sliderOptions" [(value)]="scenarioConfig.brightness"></ng5-slider>
       </div>
     </div>

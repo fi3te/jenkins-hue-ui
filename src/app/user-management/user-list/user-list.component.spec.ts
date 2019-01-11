@@ -1,6 +1,11 @@
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { UserListComponent } from './user-list.component';
+import { PagingModule } from '../../shared/paging/paging.module';
+import { RoleService } from '../../shared/role/role.service';
+import { BsModalService, ModalModule } from 'ngx-bootstrap/modal';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('UserListComponent', () => {
   let component: UserListComponent;
@@ -8,7 +13,9 @@ describe('UserListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ UserListComponent ]
+      declarations: [ UserListComponent ],
+      imports: [ PagingModule, HttpClientModule, ModalModule.forRoot(), RouterTestingModule ],
+      providers: [ HttpClient, RoleService, BsModalService ]
     })
     .compileComponents();
   }));

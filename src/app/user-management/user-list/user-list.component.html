@@ -5,9 +5,9 @@
   <div class="card-body">
     <app-paging-bar [pagingService]="userData"></app-paging-bar>
 
-    <p [hidden]="userData.dtos.length > 0">keine Benutzer vorhanden</p>
+    <p [hidden]="userData?.dtos.length > 0">keine Benutzer vorhanden</p>
 
-    <table class="table table-bordered table-striped" *ngIf="userData.dtos.length">
+    <table class="table table-bordered table-striped" *ngIf="userData?.dtos.length">
       <thead>
         <tr>
           <th>Vorname</th>
@@ -20,7 +20,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let u of userData.dtos">
+        <tr *ngFor="let u of userData?.dtos">
           <td>
             <span *ngIf="!u.forename">-</span>
             <span *ngIf="u.forename">{{ u.forename }}</span>
