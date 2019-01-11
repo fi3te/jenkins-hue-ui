@@ -1,6 +1,9 @@
+import { FormsModule } from '@angular/forms';
+import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { RenameModalComponent } from './rename-modal.component';
+import { ModalHeaderComponent } from '../modal-building-block/modal-header/modal-header.component';
 
 describe('RenameModalComponent', () => {
   let component: RenameModalComponent;
@@ -8,7 +11,9 @@ describe('RenameModalComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ RenameModalComponent ]
+      declarations: [ RenameModalComponent, ModalHeaderComponent ],
+      imports: [ FormsModule ],
+      providers: [ BsModalRef ]
     })
     .compileComponents();
   }));
