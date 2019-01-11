@@ -1,6 +1,8 @@
+import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { FoundBridgesModalComponent } from './found-bridges-modal.component';
+import { ModalHeaderComponent } from '../../shared/modal-building-block/modal-header/modal-header.component';
 
 describe('FoundBridgesModalComponent', () => {
   let component: FoundBridgesModalComponent;
@@ -8,7 +10,8 @@ describe('FoundBridgesModalComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FoundBridgesModalComponent ]
+      declarations: [ FoundBridgesModalComponent, ModalHeaderComponent ],
+      providers: [ BsModalRef ]
     })
     .compileComponents();
   }));

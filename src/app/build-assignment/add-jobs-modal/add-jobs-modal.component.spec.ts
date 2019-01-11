@@ -1,6 +1,10 @@
+import { BsModalRef } from 'ngx-bootstrap/modal';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AddJobsModalComponent } from './add-jobs-modal.component';
+import { ModalHeaderComponent } from '../../shared/modal-building-block/modal-header/modal-header.component';
+import { NgSelectModule } from '@ng-select/ng-select';
+import { FormsModule } from '@angular/forms';
 
 describe('AddJobsModalComponent', () => {
   let component: AddJobsModalComponent;
@@ -8,7 +12,9 @@ describe('AddJobsModalComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AddJobsModalComponent ]
+      declarations: [ AddJobsModalComponent, ModalHeaderComponent ],
+      imports: [ FormsModule, NgSelectModule ],
+      providers: [ BsModalRef ]
     })
     .compileComponents();
   }));

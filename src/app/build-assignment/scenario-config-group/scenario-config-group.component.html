@@ -1,11 +1,11 @@
-<div class="box collapsed-box box-solid" *ngIf="configs.length">
+<div class="box collapsed-box box-solid" *ngIf="configs?.length">
     <div class="box-header">
       <div class="pull-right">
         <button type="button" class="btn btn-sm {{ buttonColor }}" (click)="toggle()">
           <i [class]="collapsed ? 'fa fa-plus' : 'fa fa-minus'"></i>
         </button>
       </div>
-      <h3 class="box-title jh-clickable-text" (click)="toggle()">{{ name }} ({{ configs.length }})</h3>
+      <h3 class="box-title jh-clickable-text" (click)="toggle()">{{ name }} ({{ configs?.length }})</h3>
     </div><!-- /.box-header -->
     <div class="box-body no-padding jh-collapse" [@slideInOut]="collapsed">
       <div class="row">

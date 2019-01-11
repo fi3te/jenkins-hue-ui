@@ -5,9 +5,9 @@
   <div class="card-body">
     <app-paging-bar [pagingService]="bridgeData"></app-paging-bar>
 
-    <p [hidden]="bridgeData.count > 0">keine Bridges vorhanden</p>
+    <p [hidden]="bridgeData?.count > 0">keine Bridges vorhanden</p>
 
-    <table class="table table-bordered table-striped" *ngIf="bridgeData.dtos.length">
+    <table class="table table-bordered table-striped" *ngIf="bridgeData?.dtos.length">
       <thead>
         <tr>
           <th>IP</th>
@@ -18,7 +18,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let b of bridgeData.dtos">
+        <tr *ngFor="let b of bridgeData?.dtos">
           <td>{{ b.ip }}</td>
           <td>{{ b.hueUserName }}</td>
           <td>{{ b.user ? b.user.email : '-' }}</td>
