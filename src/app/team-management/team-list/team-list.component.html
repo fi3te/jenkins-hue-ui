@@ -5,9 +5,9 @@
   <div class="card-body">
     <app-paging-bar [pagingService]="teamData"></app-paging-bar>
 
-    <p [hidden]="teamData.dtos.length > 0">keine Teams vorhanden</p>
+    <p [hidden]="teamData?.dtos.length > 0">keine Teams vorhanden</p>
 
-    <table class="table table-bordered table-striped" [hidden]="teamData.dtos.length < 1" *ngIf="!isAdmin">
+    <table class="table table-bordered table-striped" [hidden]="teamData?.dtos.length < 1" *ngIf="!isAdmin">
       <thead>
         <tr>
           <th>Team</th>
@@ -16,7 +16,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let t of teamData.dtos">
+        <tr *ngFor="let t of teamData?.dtos">
           <td>{{ t.name }}</td>
           <td>{{ t.users.length }}</td>
           <td>keine Berechtigung</td>
@@ -24,7 +24,7 @@
       </tbody>
     </table>
 
-    <table class="table table-bordered table-striped" [hidden]="teamData.dtos.length < 1" *ngIf="isAdmin">
+    <table class="table table-bordered table-striped" [hidden]="teamData?.dtos.length < 1" *ngIf="isAdmin">
       <thead>
         <tr>
           <th>Name</th>
@@ -34,7 +34,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let t of teamData.dtos">
+        <tr *ngFor="let t of teamData?.dtos">
           <td>{{ t.name }}</td>
           <td class="jh-inner-table-container">
             <button type="button" class="btn btn-sm btn-success" *ngIf="t.users.length < 1" (click)="createUser(t.id)"><i class="fa fa-plus"></i></button>

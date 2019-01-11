@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AlertContainerComponent } from './alert-container.component';
+import { AlertModule } from 'ngx-bootstrap/alert';
 
 describe('AlertContainerComponent', () => {
   let component: AlertContainerComponent;
@@ -8,7 +9,8 @@ describe('AlertContainerComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AlertContainerComponent ]
+      declarations: [ AlertContainerComponent ],
+      imports: [ AlertModule.forRoot() ]
     })
     .compileComponents();
   }));
