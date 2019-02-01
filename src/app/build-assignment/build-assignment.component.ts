@@ -1,7 +1,7 @@
 import { AccordionStateService } from './accordion-state.service';
 import { Component, OnInit } from '@angular/core';
 import { BsModalService } from 'ngx-bootstrap/modal';
-import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
+import { BsModalRef } from 'ngx-bootstrap/modal';
 
 import { DTO } from '../generated-dtos.model';
 import { JenkinsService } from '../service/http/jenkins.service';

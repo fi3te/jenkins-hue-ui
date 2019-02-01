@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 import { DTO } from '../../generated-dtos.model';
 import FoundBridgeDTO = DTO.FoundBridgeDTO;
-import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
+import { BsModalRef } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-found-bridges-modal',
