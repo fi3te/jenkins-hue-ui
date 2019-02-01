@@ -1,5 +1,5 @@
 import { FormsModule } from '@angular/forms';
-import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
+import { BsModalRef } from 'ngx-bootstrap/modal';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { RenameModalComponent } from './rename-modal.component';

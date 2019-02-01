@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 
 import { ChangeRolesModalComponent } from './change-roles-modal/change-roles-modal.component';
 import { BsModalService } from 'ngx-bootstrap/modal';
-import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
+import { BsModalRef } from 'ngx-bootstrap/modal';
 import { UserService } from '../../service/http/user.service';
 import { SimpleEnum } from '../../service/model/simple-enum.model';
 

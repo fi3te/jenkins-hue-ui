@@ -1,4 +1,4 @@
-import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
+import { BsModalRef } from 'ngx-bootstrap/modal';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 

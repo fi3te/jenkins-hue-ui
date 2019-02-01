@@ -1,12 +1,12 @@
-import { ActivatedRoute } from '@angular/router';
-import { AlertService } from './../service/alert.service';
-import { TeamService } from './../service/http/team.service';
 import { Component, OnInit } from '@angular/core';
-import { BsModalService } from 'ngx-bootstrap/modal/bs-modal.service';
-import { RenameModalComponent } from '../shared/rename-modal/rename-modal.component';
-import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
+import { ActivatedRoute } from '@angular/router';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 
 import { DTO } from '../generated-dtos.model';
+import { RenameModalComponent } from '../shared/rename-modal/rename-modal.component';
+import { AlertService } from './../service/alert.service';
+import { TeamService } from './../service/http/team.service';
+
 import TeamUsersDTO = DTO.TeamUsersDTO;
 
 @Component({
