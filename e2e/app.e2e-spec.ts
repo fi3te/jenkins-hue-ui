@@ -1,14 +1,14 @@
-import { CoreUIPage } from './app.po';
+import { JenkinsHueUiPage } from './app.po';
 
-describe('core-ui App', function() {
-  let page: CoreUIPage;
+describe('jenkins-hue-ui App', function() {
+  let page: JenkinsHueUiPage;
 
   beforeEach(() => {
-    page = new CoreUIPage();
+    page = new JenkinsHueUiPage();
   });
 
-  it('should display footer containing creativeLabs', () => {
+  it('should display login page', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toContain('creativeLabs');
+    expect(page.getLoginButtonText()).toContain('Login');
   });
 });
