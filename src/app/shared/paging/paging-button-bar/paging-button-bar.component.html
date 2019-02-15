@@ -17,8 +17,8 @@
     </div>
 
     <div class="btn-group" role="group">
-      <button [disabled]="!pagingService?.backPossible()" type="button" class="btn" (click)="pagingService.back()">Zurück</button>
-      <button [disabled]="!pagingService?.forwardPossible()" type="button" class="btn" (click)="pagingService.forward()">Weiter</button>
+      <button [disabled]="!pagingService?.backPossible()" type="button" class="btn btn-light" (click)="pagingService.back()">Zurück</button>
+      <button [disabled]="!pagingService?.forwardPossible()" type="button" class="btn btn-light" (click)="pagingService.forward()">Weiter</button>
     </div>
   </div>
 </div>
