@@ -1,11 +1,11 @@
 import { browser, element, by } from 'protractor';
 
-export class CoreUIPage {
+export class JenkinsHueUiPage {
   navigateTo() {
     return browser.get('/');
   }
 
-  getParagraphText() {
-    return element(by.tagName('footer')).getText();
+  getLoginButtonText() {
+    return element(by.tagName('button')).getText();
   }
 }
