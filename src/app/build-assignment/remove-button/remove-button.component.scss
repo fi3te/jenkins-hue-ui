@@ -1,4 +1,5 @@
 button {
+  background: transparent;
   border: 1px solid transparent;
   border-radius: 3px;
   box-shadow: none;
@@ -11,6 +12,5 @@ button {
   padding: 3px 3px;
   text-align: center;
   touch-action: manipulation;
-  vertical-align: middle;
   white-space: nowrap;
 }

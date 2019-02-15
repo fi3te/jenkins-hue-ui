@@ -25,7 +25,7 @@
           <td *ngIf="b.state">{{ b.state }}</td>
           <td *ngIf="!b.state">Antwortet nicht</td>
           <td>
-            <button class="btn btn-sm btn-default" (click)="removeBridge(b)" *ngIf="(b.user.id === userId) || isAdmin">Entfernen</button>
+            <button class="btn btn-sm btn-light" (click)="removeBridge(b)" *ngIf="(b.user.id === userId) || isAdmin">Entfernen</button>
             <span *ngIf="b.user.id != userId && !isAdmin()">keine Berechtigung</span>
           </td>
         </tr>
