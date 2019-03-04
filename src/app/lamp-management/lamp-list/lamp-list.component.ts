@@ -36,7 +36,9 @@ export class LampListComponent implements OnInit {
   public ngOnInit(): void {
     this.teamId = this.sessionService.getTeamId();
     this.route.data.subscribe((data: { teamLampsDTO: TeamLampsDTO }) => {
-      this.setTeamLamps(data.teamLampsDTO.lamps);
+      if (data && data.teamLampsDTO) {
+        this.setTeamLamps(data.teamLampsDTO.lamps);
+      }
     });
     this.lampOwnershipService.lampTaken$.subscribe(() => {
       this.fetchTeamLamps();
