@@ -1,4 +1,4 @@
-import { BsModalService } from 'ngx-bootstrap/modal/bs-modal.service';
+import { BsModalService } from 'ngx-bootstrap/modal';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
 
