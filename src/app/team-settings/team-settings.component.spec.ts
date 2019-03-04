@@ -1,5 +1,5 @@
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { BsModalService } from 'ngx-bootstrap/modal/bs-modal.service';
+import { BsModalService } from 'ngx-bootstrap/modal';
 import { FormsModule } from '@angular/forms';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
