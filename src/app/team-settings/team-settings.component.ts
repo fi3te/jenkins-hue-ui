@@ -27,8 +27,10 @@ export class TeamSettingsComponent implements OnInit {
 
   public ngOnInit(): void {
     this.route.data.subscribe((data: { teamUsersDTO: TeamUsersDTO }) => {
-      this.teamUsersDTO = data.teamUsersDTO;
-      this.updateScenarioPriorityBackgroundColor();
+      if (data && data.teamUsersDTO) {
+        this.teamUsersDTO = data.teamUsersDTO;
+        this.updateScenarioPriorityBackgroundColor();
+      }
     });
   }
 

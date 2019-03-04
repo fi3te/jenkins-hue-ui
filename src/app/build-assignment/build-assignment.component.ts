@@ -49,9 +49,11 @@ export class BuildAssignmentComponent implements OnInit {
   public ngOnInit(): void {
     this.route.data.subscribe(
       (data: { teamLampsDTO: TeamLampsDTO }) => {
-        this.lampDTOs = data.teamLampsDTO.lamps;
-        this.scenarioPriority = data.teamLampsDTO.scenarioPriority;
-        this.sortScenarioConfigs();
+        if (data && data.teamLampsDTO) {
+          this.lampDTOs = data.teamLampsDTO.lamps;
+          this.scenarioPriority = data.teamLampsDTO.scenarioPriority;
+          this.sortScenarioConfigs();
+        }
       }
     );
   }
