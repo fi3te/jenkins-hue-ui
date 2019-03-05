@@ -2,6 +2,8 @@
 
 🚧 UNDER DEVELOPMENT 🚧
 
+![screenshot1](https://github.com/fi3te/jenkins-hue-ui/blob/jenkins-hue-ui-development/doc/screenshot1.png)
+
 1) docker-compose.yml with an in-memory database
 ```
 version: '3'
