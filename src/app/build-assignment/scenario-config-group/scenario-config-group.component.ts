@@ -9,7 +9,7 @@ import ScenarioConfigDTO = DTO.ScenarioConfigDTO;
   selector: 'app-scenario-config-group',
   templateUrl: './scenario-config-group.component.html',
   styleUrls: ['./scenario-config-group.component.scss'],
-  animations: [ Animations.slideInOut ]
+  animations: [ Animations.slideInOutWithOverflow ]
 })
 export class ScenarioConfigGroupComponent {
   @Input()
