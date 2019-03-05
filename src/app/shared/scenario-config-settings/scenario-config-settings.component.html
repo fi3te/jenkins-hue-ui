@@ -32,7 +32,7 @@
         <div class="jh-box" *ngIf="scenarioConfig.onetimePulsationColorChangeEnabled">
           <div class="input-group">
             <input class="form-control jh-color-input" [(colorPicker)]="scenarioConfig.onetimePulsationColorHex" [cpOutputFormat]="'hex'"
-              [cpAlphaChannel]="'disabled'" [value]="scenarioConfig.onetimePulsationColorHex">
+              [cpAlphaChannel]="'disabled'" [cpPosition]="'bottom'" [value]="scenarioConfig.onetimePulsationColorHex">
             <div class="input-group-append">
               <span class="input-group-text">
                 <div class="jh-color-indicator" [style.background]="scenarioConfig.onetimePulsationColorHex"></div>
@@ -52,7 +52,7 @@
       <div class="jh-box" *ngIf="scenarioConfig?.colorChangeEnabled">
         <div class="input-group">
           <input class="form-control jh-color-input" [(colorPicker)]="scenarioConfig.colorHex" [cpOutputFormat]="'hex'"
-            [cpAlphaChannel]="'disabled'" [value]="scenarioConfig.colorHex">
+            [cpAlphaChannel]="'disabled'" [cpPosition]="'bottom'" [value]="scenarioConfig.colorHex">
           <div class="input-group-append">
             <span class="input-group-text">
               <div class="jh-color-indicator" [style.background]="scenarioConfig.colorHex"></div>
