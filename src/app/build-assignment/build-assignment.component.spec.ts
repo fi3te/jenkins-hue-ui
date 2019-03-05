@@ -12,7 +12,7 @@ import { NgbTimepickerModule } from '@ng-bootstrap/ng-bootstrap';
 import { RemoveButtonComponent } from './remove-button/remove-button.component';
 import { ScenarioConfigComponent } from './scenario-config/scenario-config.component';
 import { ScenarioConfigSettingsComponent } from '../shared/scenario-config-settings/scenario-config-settings.component';
-import { Ng5SliderModule } from 'ng5-slider';
+import { SliderComponent } from '../shared/scenario-config-settings/slider/slider.component';
 
 describe('BuildAssignmentComponent', () => {
   let component: BuildAssignmentComponent;
@@ -25,13 +25,13 @@ describe('BuildAssignmentComponent', () => {
         RemoveButtonComponent,
         ScenarioConfigGroupComponent,
         ScenarioConfigComponent,
-        ScenarioConfigSettingsComponent
+        ScenarioConfigSettingsComponent,
+        SliderComponent
       ],
       imports: [
         FormsModule,
         NgbTimepickerModule,
         ColorPickerModule,
-        Ng5SliderModule,
         ModalModule.forRoot(),
         HttpClientModule,
         RouterTestingModule

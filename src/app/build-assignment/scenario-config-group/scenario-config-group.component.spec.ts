@@ -6,7 +6,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ScenarioConfigGroupComponent } from './scenario-config-group.component';
 import { ScenarioConfigComponent } from '../scenario-config/scenario-config.component';
 import { RemoveButtonComponent } from '../remove-button/remove-button.component';
-import { Ng5SliderModule } from 'ng5-slider';
+import { SliderComponent } from '../../shared/scenario-config-settings/slider/slider.component';
 
 describe('ScenarioConfigGroupComponent', () => {
   let component: ScenarioConfigGroupComponent;
@@ -14,8 +14,14 @@ describe('ScenarioConfigGroupComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ScenarioConfigGroupComponent, ScenarioConfigComponent, ScenarioConfigSettingsComponent, RemoveButtonComponent ],
-      imports: [ FormsModule, ColorPickerModule, Ng5SliderModule ]
+      declarations: [
+        ScenarioConfigGroupComponent,
+        ScenarioConfigComponent,
+        ScenarioConfigSettingsComponent,
+        RemoveButtonComponent,
+        SliderComponent
+      ],
+      imports: [ FormsModule, ColorPickerModule ]
     })
     .compileComponents();
   }));

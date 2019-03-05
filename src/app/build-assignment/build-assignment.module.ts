@@ -8,7 +8,6 @@ import { AddJobsModalComponent } from './add-jobs-modal/add-jobs-modal.component
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { AddScenariosModalComponent } from './add-scenarios-modal/add-scenarios-modal.component';
 import { ScenarioConfigComponent } from './scenario-config/scenario-config.component';
-import { Ng5SliderModule } from 'ng5-slider';
 import { ColorPickerModule } from 'ngx-color-picker';
 import { RemoveButtonComponent } from './remove-button/remove-button.component';
 import { NgSelectModule } from '@ng-select/ng-select';
@@ -23,7 +22,6 @@ import { NgbTimepickerModule } from '@ng-bootstrap/ng-bootstrap';
     BuildAssignmentRoutingModule,
     ModalModule.forRoot(),
     FormsModule,
-    Ng5SliderModule,
     ColorPickerModule,
     NgSelectModule,
     NgbTimepickerModule
