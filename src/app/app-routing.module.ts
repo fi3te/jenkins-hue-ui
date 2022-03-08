@@ -37,56 +37,56 @@ export const routes: Routes = [
     children: [
       {
         path: 'dashboard',
-        loadChildren: './dashboard/dashboard.module#DashboardModule',
+        loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule),
         resolve: {
           dashboardInformationDTO: DashboardResolveGuard
         }
       },
       {
         path: 'build-assignment',
-        loadChildren: './build-assignment/build-assignment.module#BuildAssignmentModule',
+        loadChildren: () => import('./build-assignment/build-assignment.module').then(m => m.BuildAssignmentModule),
         resolve: {
           teamLampsDTO: BuildAssignmentResolveGuard
         }
       },
       {
         path: 'lamp-management',
-        loadChildren: './lamp-management/lamp-management.module#LampManagementModule',
+        loadChildren: () => import('./lamp-management/lamp-management.module').then(m => m.LampManagementModule),
         resolve: {
           teamLampsDTO: LampManagementResolveGuard
         }
       },
       {
         path: 'bridge-management',
-        loadChildren: './bridge-management/bridge-management.module#BridgeManagementModule',
+        loadChildren: () => import('./bridge-management/bridge-management.module').then(m => m.BridgeManagementModule),
         resolve: {
           pagingService: BridgeManagementResolveGuard
         }
       },
       {
         path: 'user-management',
-        loadChildren: './user-management/user-management.module#UserManagementModule',
+        loadChildren: () => import('./user-management/user-management.module').then(m => m.UserManagementModule),
         resolve: {
           pagingService: UserManagementResolveGuard
         }
       },
       {
         path: 'team-management',
-        loadChildren: './team-management/team-management.module#TeamManagementModule',
+        loadChildren: () => import('./team-management/team-management.module').then(m => m.TeamManagementModule),
         resolve: {
           pagingService: TeamManagementResolveGuard
         }
       },
       {
         path: 'team-settings',
-        loadChildren: './team-settings/team-settings.module#TeamSettingsModule',
+        loadChildren: () => import('./team-settings/team-settings.module').then(m => m.TeamSettingsModule),
         resolve: {
           teamUsersDTO: TeamSettingsResolveGuard
         }
       },
       {
         path: 'color-test',
-        loadChildren: './color-test/color-test.module#ColorTestModule'
+        loadChildren: () => import('./color-test/color-test.module').then(m => m.ColorTestModule)
       }
     ]
   }
