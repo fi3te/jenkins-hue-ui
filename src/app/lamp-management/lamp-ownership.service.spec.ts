@@ -6,7 +6,7 @@ describe('LampOwnershipService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: LampOwnershipService = TestBed.get(LampOwnershipService);
+    const service: LampOwnershipService = TestBed.inject(LampOwnershipService);
     expect(service).toBeTruthy();
   });
 });

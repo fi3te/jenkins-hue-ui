@@ -10,7 +10,7 @@ describe('PagingService', () => {
   }));
 
   it('should be created', () => {
-    const service: PagingService<any> = TestBed.get(PagingService);
+    const service: PagingService<any> = TestBed.inject(PagingService);
     expect(service).toBeTruthy();
   });
 });

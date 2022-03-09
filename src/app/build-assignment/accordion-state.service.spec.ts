@@ -8,7 +8,7 @@ describe('AccordionStateService', () => {
   }));
 
   it('should be created', () => {
-    const service: AccordionStateService<void> = TestBed.get(AccordionStateService);
+    const service: AccordionStateService<void> = TestBed.inject(AccordionStateService);
     expect(service).toBeTruthy();
   });
 });

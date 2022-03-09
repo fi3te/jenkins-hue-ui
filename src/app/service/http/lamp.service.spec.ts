@@ -10,7 +10,7 @@ describe('LampService', () => {
   }));
 
   it('should be created', () => {
-    const service: LampService = TestBed.get(LampService);
+    const service: LampService = TestBed.inject(LampService);
     expect(service).toBeTruthy();
   });
 });

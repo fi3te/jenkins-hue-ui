@@ -10,7 +10,7 @@ describe('UniversalService', () => {
   }));
 
   it('should be created', () => {
-    const service: UniversalService = TestBed.get(UniversalService);
+    const service: UniversalService = TestBed.inject(UniversalService);
     expect(service).toBeTruthy();
   });
 });

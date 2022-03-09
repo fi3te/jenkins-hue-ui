@@ -10,7 +10,7 @@ describe('JenkinsService', () => {
   }));
 
   it('should be created', () => {
-    const service: JenkinsService = TestBed.get(JenkinsService);
+    const service: JenkinsService = TestBed.inject(JenkinsService);
     expect(service).toBeTruthy();
   });
 });
