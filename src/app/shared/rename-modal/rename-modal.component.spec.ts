@@ -1,6 +1,6 @@
 import { FormsModule } from '@angular/forms';
 import { BsModalRef } from 'ngx-bootstrap/modal';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { RenameModalComponent } from './rename-modal.component';
 import { ModalHeaderComponent } from '../modal-building-block/modal-header/modal-header.component';
@@ -9,7 +9,7 @@ describe('RenameModalComponent', () => {
   let component: RenameModalComponent;
   let fixture: ComponentFixture<RenameModalComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ RenameModalComponent, ModalHeaderComponent ],
       imports: [ FormsModule ],

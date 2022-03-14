@@ -5,7 +5,7 @@ import { BsModalService, ModalModule } from 'ngx-bootstrap/modal';
 import { ColorPickerModule } from 'ngx-color-picker';
 import { ScenarioConfigGroupComponent } from './scenario-config-group/scenario-config-group.component';
 import { FormsModule } from '@angular/forms';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { BuildAssignmentComponent } from './build-assignment.component';
 import { NgbTimepickerModule } from '@ng-bootstrap/ng-bootstrap';
@@ -18,7 +18,7 @@ describe('BuildAssignmentComponent', () => {
   let component: BuildAssignmentComponent;
   let fixture: ComponentFixture<BuildAssignmentComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [
         BuildAssignmentComponent,

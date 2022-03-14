@@ -1,7 +1,7 @@
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { FormsModule } from '@angular/forms';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { TeamSettingsComponent } from './team-settings.component';
 import { SortableModule } from 'ngx-bootstrap/sortable';
@@ -12,7 +12,7 @@ describe('TeamSettingsComponent', () => {
   let component: TeamSettingsComponent;
   let fixture: ComponentFixture<TeamSettingsComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ TeamSettingsComponent ],
       imports: [

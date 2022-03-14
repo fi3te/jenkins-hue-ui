@@ -1,7 +1,7 @@
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { TeamListComponent } from './team-list.component';
 import { PagingBarComponent } from '../../shared/paging/paging-bar/paging-bar.component';
@@ -15,7 +15,7 @@ describe('TeamListComponent', () => {
   let component: TeamListComponent;
   let fixture: ComponentFixture<TeamListComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ TeamListComponent, PagingBarComponent, PagingSearchBarComponent, PagingButtonBarComponent ],
       imports: [ FormsModule, HttpClientModule, RouterTestingModule, ModalModule.forRoot() ],

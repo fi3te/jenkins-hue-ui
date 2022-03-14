@@ -1,7 +1,7 @@
 import { ColorPickerModule } from 'ngx-color-picker';
 import { FormsModule } from '@angular/forms';
 import { ScenarioConfigSettingsComponent } from './../../shared/scenario-config-settings/scenario-config-settings.component';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { ScenarioConfigGroupComponent } from './scenario-config-group.component';
 import { ScenarioConfigComponent } from '../scenario-config/scenario-config.component';
@@ -12,7 +12,7 @@ describe('ScenarioConfigGroupComponent', () => {
   let component: ScenarioConfigGroupComponent;
   let fixture: ComponentFixture<ScenarioConfigGroupComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [
         ScenarioConfigGroupComponent,

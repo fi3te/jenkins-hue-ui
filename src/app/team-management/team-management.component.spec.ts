@@ -5,7 +5,7 @@ import { PagingSearchBarComponent } from './../shared/paging/paging-search-bar/p
 import { PagingBarComponent } from './../shared/paging/paging-bar/paging-bar.component';
 import { FormsModule } from '@angular/forms';
 import { AddTeamComponent } from './add-team/add-team.component';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { TeamManagementComponent } from './team-management.component';
 import { TeamListComponent } from './team-list/team-list.component';
@@ -16,7 +16,7 @@ describe('TeamManagementComponent', () => {
   let component: TeamManagementComponent;
   let fixture: ComponentFixture<TeamManagementComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [
         TeamManagementComponent,

@@ -5,7 +5,7 @@ import { PagingSearchBarComponent } from './../shared/paging/paging-search-bar/p
 import { PagingBarComponent } from './../shared/paging/paging-bar/paging-bar.component';
 import { FormsModule } from '@angular/forms';
 import { AddUserComponent } from './add-user/add-user.component';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { UserManagementComponent } from './user-management.component';
 import { UserListComponent } from './user-list/user-list.component';
@@ -16,7 +16,7 @@ describe('UserManagementComponent', () => {
   let component: UserManagementComponent;
   let fixture: ComponentFixture<UserManagementComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [
         UserManagementComponent,

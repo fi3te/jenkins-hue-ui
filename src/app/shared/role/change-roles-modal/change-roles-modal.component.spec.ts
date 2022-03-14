@@ -1,6 +1,6 @@
 import { BsModalRef } from 'ngx-bootstrap/modal';
 import { FormsModule } from '@angular/forms';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { ChangeRolesModalComponent } from './change-roles-modal.component';
 import { ModalHeaderComponent } from '../../modal-building-block/modal-header/modal-header.component';
@@ -10,7 +10,7 @@ describe('ChangeRolesModalComponent', () => {
   let component: ChangeRolesModalComponent;
   let fixture: ComponentFixture<ChangeRolesModalComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [
         ChangeRolesModalComponent,

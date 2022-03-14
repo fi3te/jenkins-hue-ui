@@ -6,7 +6,7 @@ import { PagingBarComponent } from './../shared/paging/paging-bar/paging-bar.com
 import { FormsModule } from '@angular/forms';
 import { BridgeListComponent } from './bridge-list/bridge-list.component';
 import { AddBridgeComponent } from './add-bridge/add-bridge.component';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { BridgeManagementComponent } from './bridge-management.component';
 import { RouterTestingModule } from '@angular/router/testing';
@@ -15,7 +15,7 @@ describe('BridgeManagementComponent', () => {
   let component: BridgeManagementComponent;
   let fixture: ComponentFixture<BridgeManagementComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [
         BridgeManagementComponent,
