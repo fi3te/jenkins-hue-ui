@@ -16,27 +16,26 @@ import { SharedModule } from '../shared/shared.module';
 import { NgbTimepickerModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    SharedModule,
-    BuildAssignmentRoutingModule,
-    ModalModule.forRoot(),
-    FormsModule,
-    ColorPickerModule,
-    NgSelectModule,
-    NgbTimepickerModule
-  ],
-  declarations: [
-    AddJobsModalComponent,
-    AddScenariosModalComponent,
-    BuildAssignmentComponent,
-    RemoveButtonComponent,
-    ScenarioConfigComponent,
-    ScenarioConfigGroupComponent
-  ],
-  entryComponents: [AddJobsModalComponent, AddScenariosModalComponent],
-  providers: [
-    AccordionStateService
-  ]
+    imports: [
+        CommonModule,
+        SharedModule,
+        BuildAssignmentRoutingModule,
+        ModalModule.forRoot(),
+        FormsModule,
+        ColorPickerModule,
+        NgSelectModule,
+        NgbTimepickerModule
+    ],
+    declarations: [
+        AddJobsModalComponent,
+        AddScenariosModalComponent,
+        BuildAssignmentComponent,
+        RemoveButtonComponent,
+        ScenarioConfigComponent,
+        ScenarioConfigGroupComponent
+    ],
+    providers: [
+        AccordionStateService
+    ]
 })
 export class BuildAssignmentModule { }

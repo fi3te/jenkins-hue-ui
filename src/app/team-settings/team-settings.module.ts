@@ -9,17 +9,14 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { SortableModule } from 'ngx-bootstrap/sortable';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    TeamSettingsRoutingModule,
-    SharedModule,
-    ModalModule.forRoot(),
-    SortableModule.forRoot()
-  ],
-  declarations: [TeamSettingsComponent],
-  entryComponents: [
-    RenameModalComponent
-  ]
+    imports: [
+        CommonModule,
+        FormsModule,
+        TeamSettingsRoutingModule,
+        SharedModule,
+        ModalModule.forRoot(),
+        SortableModule.forRoot()
+    ],
+    declarations: [TeamSettingsComponent]
 })
 export class TeamSettingsModule { }

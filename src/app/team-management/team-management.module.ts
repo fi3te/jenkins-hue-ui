@@ -13,18 +13,15 @@ import { RoleModule } from '../shared/role/role.module';
 import { ChangeRolesModalComponent } from '../shared/role/change-roles-modal/change-roles-modal.component';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    TeamManagementRoutingModule,
-    SharedModule,
-    PagingModule,
-    RoleModule,
-    ModalModule.forRoot(),
-    FormsModule
-  ],
-  declarations: [TeamManagementComponent, TeamListComponent, AddTeamComponent],
-  entryComponents: [
-    RenameModalComponent, ChangeRolesModalComponent
-  ]
+    imports: [
+        CommonModule,
+        TeamManagementRoutingModule,
+        SharedModule,
+        PagingModule,
+        RoleModule,
+        ModalModule.forRoot(),
+        FormsModule
+    ],
+    declarations: [TeamManagementComponent, TeamListComponent, AddTeamComponent]
 })
 export class TeamManagementModule { }

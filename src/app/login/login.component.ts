@@ -26,7 +26,7 @@ export class LoginComponent {
         this.sessionService.reloadPage();
       });
     }, (error: HttpErrorResponse) => {
-      if (error.error.message.indexOf('Access Denied') > -1) {
+      if (error.message.indexOf('Forbidden') > -1) {
         this.failedAttempts++;
         this.alertService.danger(`Benutzername/Passwort falsch! (Fehlversuche: ${this.failedAttempts})`);
       } else {

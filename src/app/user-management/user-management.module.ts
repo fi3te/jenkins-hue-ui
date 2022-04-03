@@ -12,18 +12,15 @@ import { ChangeRolesModalComponent } from '../shared/role/change-roles-modal/cha
 import { RoleModule } from '../shared/role/role.module';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    UserManagementRoutingModule,
-    SharedModule,
-    PagingModule,
-    RoleModule,
-    FormsModule,
-    ModalModule.forRoot()
-  ],
-  declarations: [UserManagementComponent, UserListComponent, AddUserComponent],
-  entryComponents: [
-    ChangeRolesModalComponent
-  ]
+    imports: [
+        CommonModule,
+        UserManagementRoutingModule,
+        SharedModule,
+        PagingModule,
+        RoleModule,
+        FormsModule,
+        ModalModule.forRoot()
+    ],
+    declarations: [UserManagementComponent, UserListComponent, AddUserComponent]
 })
 export class UserManagementModule { }

@@ -12,23 +12,19 @@ import { AddBridgeComponent } from './add-bridge/add-bridge.component';
 import { PagingModule } from '../shared/paging/paging.module';
 
 @NgModule({
-  entryComponents: [
-    FoundBridgesModalComponent
-  ],
-  imports: [
-    CommonModule,
-    SharedModule,
-    PagingModule,
-    FormsModule,
-    BridgeManagementRoutingModule,
-    ModalModule.forRoot()
-  ],
-  declarations: [
-    BridgeManagementComponent,
-    BridgeListComponent,
-    FoundBridgesModalComponent,
-    AddBridgeComponent
-  ],
-
+    imports: [
+        CommonModule,
+        SharedModule,
+        PagingModule,
+        FormsModule,
+        BridgeManagementRoutingModule,
+        ModalModule.forRoot()
+    ],
+    declarations: [
+        BridgeManagementComponent,
+        BridgeListComponent,
+        FoundBridgesModalComponent,
+        AddBridgeComponent
+    ]
 })
 export class BridgeManagementModule {}

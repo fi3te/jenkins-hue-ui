@@ -10,16 +10,13 @@ import { LampListComponent } from './lamp-list/lamp-list.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    LampManagementRoutingModule,
-    SharedModule,
-    FormsModule,
-    ModalModule.forRoot()
-  ],
-  declarations: [LampManagementComponent, AvailableLampsComponent, LampListComponent],
-  entryComponents: [
-    RenameModalComponent
-  ]
+    imports: [
+        CommonModule,
+        LampManagementRoutingModule,
+        SharedModule,
+        FormsModule,
+        ModalModule.forRoot()
+    ],
+    declarations: [LampManagementComponent, AvailableLampsComponent, LampListComponent]
 })
 export class LampManagementModule { }
