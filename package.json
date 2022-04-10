@@ -19,7 +19,8 @@
     "build": "ng build --configuration production --aot",
     "test": "ng test --source-map=false",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "webdriver-update": "webdriver-manager update"
   },
   "private": true,
   "dependencies": {
@@ -38,15 +39,13 @@
     "@ng-bootstrap/ng-bootstrap": "^11.0.0",
     "@ng-select/ng-select": "^8.1.1",
     "bootstrap": "^4.6.1",
-    "core-js": "^2.6.5",
-    "flag-icon-css": "^3.3.0",
+    "core-js": "^3.21.1",
     "font-awesome": "^4.7.0",
-    "mutationobserver-shim": "^0.3.3",
     "ngx-bootstrap": "^8.0.0",
     "ngx-color-picker": "^12.0.1",
     "ngx-perfect-scrollbar": "^10.1.1",
     "rxjs": "^6.6.7",
-    "simple-line-icons": "^2.4.1",
+    "simple-line-icons": "^2.5.5",
     "tslib": "^2.3.1",
     "zone.js": "~0.11.5"
   },
