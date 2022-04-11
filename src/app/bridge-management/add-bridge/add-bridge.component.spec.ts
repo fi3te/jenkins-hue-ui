@@ -3,7 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { AddBridgeComponent } from './add-bridge.component';
-import { BsModalService, ModalModule } from 'ngx-bootstrap/modal';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 describe('AddBridgeComponent', () => {
   let component: AddBridgeComponent;
@@ -12,8 +12,8 @@ describe('AddBridgeComponent', () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ AddBridgeComponent ],
-      imports: [ FormsModule, HttpClientModule, ModalModule.forRoot() ],
-      providers: [ HttpClient, BsModalService ]
+      imports: [ FormsModule, HttpClientModule ],
+      providers: [ HttpClient, NgbModal ]
     })
     .compileComponents();
   }));

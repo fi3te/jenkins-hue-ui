@@ -1,5 +1,4 @@
-import { BsModalService, ModalModule } from 'ngx-bootstrap/modal';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { AvailableLampsComponent } from './available-lamps/available-lamps.component';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
@@ -7,6 +6,7 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { LampManagementComponent } from './lamp-management.component';
 import { LampListComponent } from './lamp-list/lamp-list.component';
 import { RouterTestingModule } from '@angular/router/testing';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 describe('LampManagementComponent', () => {
   let component: LampManagementComponent;
@@ -22,12 +22,11 @@ describe('LampManagementComponent', () => {
       imports: [
         FormsModule,
         HttpClientModule,
-        ModalModule.forRoot(),
         RouterTestingModule
       ],
       providers: [
         HttpClient,
-        BsModalService
+        NgbModal
       ]
     })
     .compileComponents();

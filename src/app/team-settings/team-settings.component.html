@@ -1,22 +1,21 @@
-<ng-template #scenarioPriorityItemTemplate let-item="item" let-index="index">
-    <div class="jh-sortable-item">
-      <div class="jh-sortable-scenario-gradient" [style.background]="item.value.background"></div>
-      <span class="jh-sortable-scenario-text">{{ item.value.text }}</span>
-    </div>
-</ng-template>
-
 <div class="animated fadeIn jh-team-settings-container">
   <div class="jh-team-settings-item">
     <div class="card card-accent-secondary">
       <div class="card-header">
         <h4>Prioritäten der Szenarien festlegen</h4>
       </div>
-      <div class="card-body">
-        <bs-sortable
-          [ngModel]="teamUsersDTO?.scenarioPriority"
-          (ngModelChange)="teamUsersDTO.scenarioPriority = $event"
-          [itemTemplate]="scenarioPriorityItemTemplate">
-        </bs-sortable>
+      <div class="card-body" *ngIf="teamUsersDTO">
+        <div cdkDropList (cdkDropListDropped)="drop($event)">
+          <div *ngFor="let item of teamUsersDTO?.scenarioPriority" cdkDrag>
+            <div *cdkDragPlaceholder>
+              <div class="jh-sortable-item"></div>
+            </div>
+            <div class="jh-sortable-item">
+              <div class="jh-sortable-scenario-gradient" [style.background]="item?.background"></div>
+              <span class="jh-sortable-scenario-text">{{ item?.text }}</span>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="card-footer">
         <button type="button" class="btn btn-primary" (click)="saveScenarioPriority()">Speichern</button>

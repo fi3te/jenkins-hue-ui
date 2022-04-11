@@ -1,33 +1,31 @@
 import { AccordionStateService } from './accordion-state.service';
 import { Component, OnInit } from '@angular/core';
-import { BsModalService } from 'ngx-bootstrap/modal';
-import { BsModalRef } from 'ngx-bootstrap/modal';
 
 import { DTO } from '../generated-dtos.model';
 import { JenkinsService } from '../service/http/jenkins.service';
 import { UniversalService } from '../service/http/universal.service';
 import { SimpleEnum } from '../service/model/simple-enum.model';
-import { AlertService } from './../service/alert.service';
-import { LampService } from './../service/http/lamp.service';
+import { AlertService } from '../service/alert.service';
+import { LampService } from '../service/http/lamp.service';
 import { AddJobsModalComponent } from './add-jobs-modal/add-jobs-modal.component';
 import { AddScenariosModalComponent } from './add-scenarios-modal/add-scenarios-modal.component';
-
+import { ActivatedRoute } from '@angular/router';
+import { Animations } from '../shared/animations';
+import { NgbTimeNumberAdapter } from './ngb-time-number-adapter';
+import { NgbModal, NgbTimeAdapter } from '@ng-bootstrap/ng-bootstrap';
+import { modalErrorHandler } from '../shared/util';
 import TeamLampsDTO_LampDTO = DTO.TeamLampsDTO_LampDTO;
 import ScenarioConfigDTO = DTO.ScenarioConfigDTO;
 import JenkinsJobNamesDTO_JobDTO = DTO.JenkinsJobNamesDTO_JobDTO;
 import LampGroupedScenariosDTO = DTO.LampGroupedScenariosDTO;
 import TeamLampsDTO = DTO.TeamLampsDTO;
 import LampUpdateDTO = DTO.LampUpdateDTO;
-import { ActivatedRoute } from '@angular/router';
-import { Animations } from '../shared/animations';
-import { NgbTimeNumberAdapter } from './ngb-time-number-adapter';
-import { NgbTimeAdapter } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-build-assignment',
   templateUrl: './build-assignment.component.html',
   styleUrls: ['./build-assignment.component.scss'],
-  animations: [ Animations.slideInOut ],
+  animations: [Animations.slideInOut],
   providers: [{provide: NgbTimeAdapter, useClass: NgbTimeNumberAdapter}]
 })
 export class BuildAssignmentComponent implements OnInit {
@@ -37,14 +35,15 @@ export class BuildAssignmentComponent implements OnInit {
   public loading: boolean;
 
   constructor(
-    private modalService: BsModalService,
+    private modalService: NgbModal,
     private lampService: LampService,
     private universalService: UniversalService,
     private jenkinsService: JenkinsService,
     private alertService: AlertService,
     private route: ActivatedRoute,
     public accordionStateService: AccordionStateService<string>
-  ) {}
+  ) {
+  }
 
   public ngOnInit(): void {
     this.route.data.subscribe(
@@ -155,18 +154,9 @@ export class BuildAssignmentComponent implements OnInit {
     lampDTO: TeamLampsDTO_LampDTO,
     selectableJobs: JenkinsJobNamesDTO_JobDTO[]
   ): void {
-    const initialState = {
-      jobs: selectableJobs
-    };
-
-    const bsModalRef: BsModalRef = this.modalService.show(
-      AddJobsModalComponent,
-      { initialState }
-    );
-
-    const subscription = this.modalService.onHide.subscribe(() => {
-      const selectedJobs = bsModalRef.content.selectedJobs;
-
+    const ngbModalRef = this.modalService.open(AddJobsModalComponent);
+    ngbModalRef.componentInstance.jobs = selectableJobs;
+    ngbModalRef.result.then((selectedJobs: JenkinsJobNamesDTO_JobDTO[]) => {
       if (selectedJobs && selectedJobs.length) {
         if (!lampDTO.jobs || !lampDTO.jobs.length) {
           lampDTO.jobs = selectedJobs;
@@ -174,27 +164,16 @@ export class BuildAssignmentComponent implements OnInit {
           lampDTO.jobs.push.apply(lampDTO.jobs, selectedJobs);
         }
       }
-
-      subscription.unsubscribe();
-    });
+    }).catch(modalErrorHandler);
   }
 
   private openAddScenariosModal(
     lampDTO: TeamLampsDTO_LampDTO,
     selectableScenarios: SimpleEnum[]
   ): void {
-    const initialState = {
-      scenarios: selectableScenarios
-    };
-
-    const bsModalRef: BsModalRef = this.modalService.show(
-      AddScenariosModalComponent,
-      { initialState }
-    );
-
-    const subscription = this.modalService.onHide.subscribe(() => {
-      const selectedScenarios = bsModalRef.content.selectedScenarios;
-
+    const ngbModalRef = this.modalService.open(AddScenariosModalComponent);
+    ngbModalRef.componentInstance.scenarios = selectableScenarios;
+    ngbModalRef.result.then((selectedScenarios: SimpleEnum[]) => {
       if (selectedScenarios && selectedScenarios.length) {
         if (!lampDTO.buildingConfigs) {
           lampDTO.buildingConfigs = [];
@@ -210,7 +189,7 @@ export class BuildAssignmentComponent implements OnInit {
         }
 
         for (const s of selectedScenarios) {
-          const newScenario: ScenarioConfigDTO = { scenario: s };
+          const newScenario: ScenarioConfigDTO = {scenario: s};
           if (s.name.startsWith('BUILDING')) {
             lampDTO.buildingConfigs.push(newScenario);
           } else if (s.name.startsWith('FAILURE')) {
@@ -223,9 +202,7 @@ export class BuildAssignmentComponent implements OnInit {
         }
         this.sortScenarioConfigs();
       }
-
-      subscription.unsubscribe();
-    });
+    }).catch(modalErrorHandler);
   }
 
   private sortScenarioConfigs(): void {

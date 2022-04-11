@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 
 import { DTO } from '../../generated-dtos.model';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import FoundBridgeDTO = DTO.FoundBridgeDTO;
-import { BsModalRef } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-found-bridges-modal',
@@ -15,14 +15,15 @@ export class FoundBridgesModalComponent {
 
   public selectedBridge: FoundBridgeDTO;
 
-  constructor(public bsModalRef: BsModalRef) { }
+  constructor(private activeModal: NgbActiveModal) {
+  }
 
   public addBridge(bridge: FoundBridgeDTO) {
     this.selectedBridge = bridge;
-    this.bsModalRef.hide();
+    this.activeModal.close(this.selectedBridge);
   }
 
   public cancel(): void {
-    this.bsModalRef.hide();
+    this.activeModal.dismiss();
   }
 }

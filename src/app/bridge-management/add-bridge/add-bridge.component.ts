@@ -1,15 +1,16 @@
-import { BridgeService } from './../../service/http/bridge.service';
+import { BridgeService } from '../../service/http/bridge.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 
 import { DTO } from '../../generated-dtos.model';
-import BridgeCreateDTO = DTO.BridgeCreateDTO;
-import FoundBridgeDTO = DTO.FoundBridgeDTO;
 import { SessionService } from '../../service/session.service';
 import { NgModel } from '@angular/forms';
 import { BridgeOwnershipService } from '../bridge-ownership.service';
 import { AlertService } from '../../service/alert.service';
-import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { FoundBridgesModalComponent } from '../found-bridges-modal/found-bridges-modal.component';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import BridgeCreateDTO = DTO.BridgeCreateDTO;
+import FoundBridgeDTO = DTO.FoundBridgeDTO;
+import { modalErrorHandler } from '../../shared/util';
 
 @Component({
   selector: 'app-add-bridge',
@@ -33,8 +34,9 @@ export class AddBridgeComponent implements OnInit {
     private sessionService: SessionService,
     private bridgeOwnershipService: BridgeOwnershipService,
     private alertService: AlertService,
-    private modalService: BsModalService
-  ) {}
+    private modalService: NgbModal
+  ) {
+  }
 
   public ngOnInit(): void {
     this.userId = this.sessionService.getUserId();
@@ -49,22 +51,15 @@ export class AddBridgeComponent implements OnInit {
 
   public searchForBridges(): void {
     this.bridgeService.findAvailable().subscribe((next: FoundBridgeDTO[]) => {
-      const initialState = {
-        bridges: next
-      };
-
-      const bsModalRef: BsModalRef = this.modalService.show(
-        FoundBridgesModalComponent,
-        { initialState, class: 'modal-lg' }
-      );
-
-      const subscription = this.modalService.onHide.subscribe(() => {
-        const selectedBridge: FoundBridgeDTO = bsModalRef.content.selectedBridge;
+      const ngbModalRef = this.modalService.open(FoundBridgesModalComponent, {
+        size: 'lg'
+      });
+      ngbModalRef.componentInstance.bridges = next;
+      ngbModalRef.result.then((selectedBridge?: FoundBridgeDTO) => {
         if (selectedBridge) {
           this.createBridgeFormless(selectedBridge.internalipaddress);
         }
-        subscription.unsubscribe();
-      });
+      }).catch(modalErrorHandler);
     });
   }
 

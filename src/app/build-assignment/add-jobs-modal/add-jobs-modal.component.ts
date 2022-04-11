@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { BsModalRef } from 'ngx-bootstrap/modal';
 
 import { DTO } from '../../generated-dtos.model';
 
 import JenkinsJobNamesDTO_JobDTO = DTO.JenkinsJobNamesDTO_JobDTO;
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-add-jobs-modal',
@@ -14,14 +14,14 @@ export class AddJobsModalComponent {
   public jobs: JenkinsJobNamesDTO_JobDTO[];
   public selectedJobs: JenkinsJobNamesDTO_JobDTO[];
 
-  constructor(public bsModalRef: BsModalRef) {}
+  constructor(private activeModal: NgbActiveModal) {
+  }
 
   public cancel(): void {
-    this.selectedJobs = [];
-    this.bsModalRef.hide();
+    this.activeModal.dismiss();
   }
 
   public addJobs(): void {
-    this.bsModalRef.hide();
+    this.activeModal.close(this.selectedJobs);
   }
 }

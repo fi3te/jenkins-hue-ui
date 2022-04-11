@@ -1,10 +1,10 @@
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { LampListComponent } from './lamp-list.component';
-import { BsModalService, ModalModule } from 'ngx-bootstrap/modal';
 import { RouterTestingModule } from '@angular/router/testing';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 describe('LampListComponent', () => {
   let component: LampListComponent;
@@ -13,8 +13,8 @@ describe('LampListComponent', () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ LampListComponent ],
-      imports: [ FormsModule, HttpClientModule, ModalModule.forRoot(), RouterTestingModule ],
-      providers: [ HttpClient, BsModalService ]
+      imports: [ FormsModule, HttpClientModule, RouterTestingModule ],
+      providers: [ HttpClient, NgbModal ]
     })
     .compileComponents();
   }));

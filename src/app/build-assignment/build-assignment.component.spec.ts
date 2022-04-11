@@ -1,14 +1,13 @@
 import { AccordionStateService } from './accordion-state.service';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { BsModalService, ModalModule } from 'ngx-bootstrap/modal';
 import { ColorPickerModule } from 'ngx-color-picker';
 import { ScenarioConfigGroupComponent } from './scenario-config-group/scenario-config-group.component';
 import { FormsModule } from '@angular/forms';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { BuildAssignmentComponent } from './build-assignment.component';
-import { NgbTimepickerModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, NgbTimepickerModule } from '@ng-bootstrap/ng-bootstrap';
 import { RemoveButtonComponent } from './remove-button/remove-button.component';
 import { ScenarioConfigComponent } from './scenario-config/scenario-config.component';
 import { ScenarioConfigSettingsComponent } from '../shared/scenario-config-settings/scenario-config-settings.component';
@@ -32,12 +31,11 @@ describe('BuildAssignmentComponent', () => {
         FormsModule,
         NgbTimepickerModule,
         ColorPickerModule,
-        ModalModule.forRoot(),
         HttpClientModule,
         RouterTestingModule
       ],
       providers: [
-        BsModalService,
+        NgbModal,
         HttpClient,
         AccordionStateService
       ]

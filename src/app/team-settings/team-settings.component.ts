@@ -1,13 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 
 import { DTO } from '../generated-dtos.model';
 import { RenameModalComponent } from '../shared/rename-modal/rename-modal.component';
-import { AlertService } from './../service/alert.service';
-import { TeamService } from './../service/http/team.service';
+import { AlertService } from '../service/alert.service';
+import { TeamService } from '../service/http/team.service';
 
 import TeamUsersDTO = DTO.TeamUsersDTO;
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
+import { modalErrorHandler } from '../shared/util';
 
 @Component({
   selector: 'app-team-settings',
@@ -19,7 +21,7 @@ export class TeamSettingsComponent implements OnInit {
   public teamUsersDTO: TeamUsersDTO;
 
   constructor(
-    private modalService: BsModalService,
+    private modalService: NgbModal,
     private route: ActivatedRoute,
     private teamService: TeamService,
     private alertservice: AlertService
@@ -41,30 +43,24 @@ export class TeamSettingsComponent implements OnInit {
   }
 
   public renameTeam(): void {
-    const initialState = {
-      title: 'Team umbenennen',
-      icon: 'cui-people',
-      name: this.teamUsersDTO.name
-    };
-
-    const bsModalRef: BsModalRef = this.modalService.show(
-      RenameModalComponent,
-      { initialState }
-    );
-
-    const subscription = this.modalService.onHide.subscribe(() => {
-      const saved = bsModalRef.content.saved;
-      const name = bsModalRef.content.name;
-      if (saved && name) {
+    const ngbModalRef = this.modalService.open(RenameModalComponent);
+    ngbModalRef.componentInstance.title = 'Team umbenennen';
+    ngbModalRef.componentInstance.icon = 'cui-people';
+    ngbModalRef.componentInstance.name = this.teamUsersDTO.name;
+    ngbModalRef.result.then((name?: string) => {
+      if (name) {
         this.teamService.rename({ id: this.teamUsersDTO.id, name: name }).subscribe((next) => {
           this.teamUsersDTO.name = next.name;
           this.alertservice.info('Team umbenannt!');
         });
-      } else if (saved) {
+      } else {
         this.alertservice.warning('Eingabe ungültig!');
       }
-      subscription.unsubscribe();
-    });
+    }).catch(modalErrorHandler);
+  }
+
+  public drop(event: CdkDragDrop<any[]>) {
+    moveItemInArray(this.teamUsersDTO?.scenarioPriority, event.previousIndex, event.currentIndex);
   }
 
   private updateScenarioPriorityBackgroundColor(): void {

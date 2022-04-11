@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { BsModalRef } from 'ngx-bootstrap/modal';
 import { SimpleEnum } from '../../../service/model/simple-enum.model';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-change-roles-modal',
@@ -13,14 +13,14 @@ export class ChangeRolesModalComponent {
   public selectedRoles: SimpleEnum[];
   public saved: boolean;
 
-  constructor(public bsModalRef: BsModalRef) {}
+  constructor(private activeModal: NgbActiveModal) {
+  }
 
   public cancel(): void {
-    this.bsModalRef.hide();
+    this.activeModal.dismiss();
   }
 
   public save(): void {
-    this.saved = true;
-    this.bsModalRef.hide();
+    this.activeModal.close(this.selectedRoles);
   }
 }

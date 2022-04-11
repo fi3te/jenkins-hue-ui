@@ -5,7 +5,6 @@ import { CommonModule } from '@angular/common';
 import { BuildAssignmentComponent } from './build-assignment.component';
 import { BuildAssignmentRoutingModule } from './build-assignment-routing.module';
 import { AddJobsModalComponent } from './add-jobs-modal/add-jobs-modal.component';
-import { ModalModule } from 'ngx-bootstrap/modal';
 import { AddScenariosModalComponent } from './add-scenarios-modal/add-scenarios-modal.component';
 import { ScenarioConfigComponent } from './scenario-config/scenario-config.component';
 import { ColorPickerModule } from 'ngx-color-picker';
@@ -13,29 +12,31 @@ import { RemoveButtonComponent } from './remove-button/remove-button.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { ScenarioConfigGroupComponent } from './scenario-config-group/scenario-config-group.component';
 import { SharedModule } from '../shared/shared.module';
-import { NgbTimepickerModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, NgbModalConfig, NgbTimepickerModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
-    imports: [
-        CommonModule,
-        SharedModule,
-        BuildAssignmentRoutingModule,
-        ModalModule.forRoot(),
-        FormsModule,
-        ColorPickerModule,
-        NgSelectModule,
-        NgbTimepickerModule
-    ],
-    declarations: [
-        AddJobsModalComponent,
-        AddScenariosModalComponent,
-        BuildAssignmentComponent,
-        RemoveButtonComponent,
-        ScenarioConfigComponent,
-        ScenarioConfigGroupComponent
-    ],
-    providers: [
-        AccordionStateService
-    ]
+  imports: [
+    CommonModule,
+    SharedModule,
+    BuildAssignmentRoutingModule,
+    FormsModule,
+    ColorPickerModule,
+    NgSelectModule,
+    NgbTimepickerModule
+  ],
+  declarations: [
+    AddJobsModalComponent,
+    AddScenariosModalComponent,
+    BuildAssignmentComponent,
+    RemoveButtonComponent,
+    ScenarioConfigComponent,
+    ScenarioConfigGroupComponent
+  ],
+  providers: [
+    AccordionStateService,
+    NgbModalConfig,
+    NgbModal
+  ]
 })
-export class BuildAssignmentModule { }
+export class BuildAssignmentModule {
+}

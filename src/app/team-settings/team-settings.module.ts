@@ -1,22 +1,25 @@
 import { FormsModule } from '@angular/forms';
-import { RenameModalComponent } from './../shared/rename-modal/rename-modal.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TeamSettingsComponent } from './team-settings.component';
 import { TeamSettingsRoutingModule } from './team-settings-routing.module';
 import { SharedModule } from '../shared/shared.module';
-import { ModalModule } from 'ngx-bootstrap/modal';
-import { SortableModule } from 'ngx-bootstrap/sortable';
+import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 @NgModule({
-    imports: [
-        CommonModule,
-        FormsModule,
-        TeamSettingsRoutingModule,
-        SharedModule,
-        ModalModule.forRoot(),
-        SortableModule.forRoot()
-    ],
-    declarations: [TeamSettingsComponent]
+  imports: [
+    CommonModule,
+    FormsModule,
+    TeamSettingsRoutingModule,
+    SharedModule,
+    DragDropModule
+  ],
+  declarations: [TeamSettingsComponent],
+  providers: [
+    NgbModalConfig,
+    NgbModal
+  ]
 })
-export class TeamSettingsModule { }
+export class TeamSettingsModule {
+}

@@ -1,4 +1,4 @@
-import { TeamManagementService } from './../team-management.service';
+import { TeamManagementService } from '../team-management.service';
 import { Component, OnInit } from '@angular/core';
 
 import { DTO } from '../../generated-dtos.model';
@@ -13,8 +13,8 @@ import { AlertService } from '../../service/alert.service';
 import { RoleService } from '../../shared/role/role.service';
 import { UserService } from '../../service/http/user.service';
 import { RenameModalComponent } from '../../shared/rename-modal/rename-modal.component';
-import { BsModalRef } from 'ngx-bootstrap/modal';
-import { BsModalService } from 'ngx-bootstrap/modal';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { modalErrorHandler } from '../../shared/util';
 
 @Component({
   selector: 'app-team-list',
@@ -34,12 +34,13 @@ export class TeamListComponent implements OnInit {
     private sessionService: SessionService,
     private route: ActivatedRoute,
     private teamManagementService: TeamManagementService,
-    private modalService: BsModalService,
+    private modalService: NgbModal,
     private teamService: TeamService,
     private userService: UserService,
     private roleService: RoleService,
     private alertService: AlertService
-  ) { }
+  ) {
+  }
 
   public ngOnInit(): void {
     this.isAdmin = this.sessionService.isAdmin();
@@ -56,29 +57,19 @@ export class TeamListComponent implements OnInit {
   }
 
   public createUser(teamId: number): void {
-    const initialState = {
-      title: 'Benutzer hinzufügen',
-      icon: 'cui-user'
-    };
-
-    const bsModalRef: BsModalRef = this.modalService.show(
-      RenameModalComponent,
-      { initialState }
-    );
-
-    const subscription = this.modalService.onHide.subscribe(() => {
-      const saved = bsModalRef.content.saved;
-      const name = bsModalRef.content.name;
-      if (saved && name) {
+    const ngbModalRef = this.modalService.open(RenameModalComponent);
+    ngbModalRef.componentInstance.title = 'Benutzer hinzufügen';
+    ngbModalRef.componentInstance.icon = 'cui-user';
+    ngbModalRef.result.then((name?: string) => {
+      if (name) {
         this.userService.create({login: name, teamId}).subscribe(() => {
           this.teamData.refresh();
           this.alertService.info('Benutzer hinzugefügt!');
         });
-      } else if (saved) {
+      } else {
         this.alertService.warning('Eingabe ungültig!');
       }
-      subscription.unsubscribe();
-    });
+    }).catch(modalErrorHandler);
   }
 
   public changeRoles(userId: number, currentRoles: SimpleEnum[]): void {

@@ -1,6 +1,6 @@
 import { Router } from '@angular/router';
-import { AlertService } from './../service/alert.service';
-import { SessionService } from './../service/session.service';
+import { AlertService } from '../service/alert.service';
+import { SessionService } from '../service/session.service';
 import { Component } from '@angular/core';
 import { Credentials } from '../service/model/credentials.model';
 import { HttpErrorResponse } from '@angular/common/http';
