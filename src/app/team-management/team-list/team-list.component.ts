@@ -59,7 +59,7 @@ export class TeamListComponent implements OnInit {
   public createUser(teamId: number): void {
     const ngbModalRef = this.modalService.open(RenameModalComponent);
     ngbModalRef.componentInstance.title = 'Benutzer hinzufügen';
-    ngbModalRef.componentInstance.icon = 'cui-user';
+    ngbModalRef.componentInstance.icon = 'cil-user';
     ngbModalRef.result.then((name?: string) => {
       if (name) {
         this.userService.create({login: name, teamId}).subscribe(() => {

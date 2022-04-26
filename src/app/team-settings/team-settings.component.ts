@@ -45,7 +45,7 @@ export class TeamSettingsComponent implements OnInit {
   public renameTeam(): void {
     const ngbModalRef = this.modalService.open(RenameModalComponent);
     ngbModalRef.componentInstance.title = 'Team umbenennen';
-    ngbModalRef.componentInstance.icon = 'cui-people';
+    ngbModalRef.componentInstance.icon = 'cil-people';
     ngbModalRef.componentInstance.name = this.teamUsersDTO.name;
     ngbModalRef.result.then((name?: string) => {
       if (name) {

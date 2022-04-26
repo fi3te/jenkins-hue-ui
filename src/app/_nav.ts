@@ -2,7 +2,7 @@ export const navItems = [
   {
     name: 'Dashboard',
     url: '/dashboard',
-    icon: 'cui-dashboard'
+    icon: 'cil-view-quilt'
   },
   {
     name: 'Buildzuweisung',
@@ -17,26 +17,26 @@ export const navItems = [
   {
     name: 'Bridgeverwaltung',
     url: '/bridge-management',
-    icon: 'cui-globe'
+    icon: 'cil-router'
   },
   {
     name: 'Benutzerverwaltung',
     url: '/user-management',
-    icon: 'cui-user'
+    icon: 'cil-user'
   },
   {
     name: 'Teamverwaltung',
     url: '/team-management',
-    icon: 'cui-people'
+    icon: 'cil-people'
   },
   {
     name: 'Teameinstellungen',
     url: '/team-settings',
-    icon: 'cui-settings'
+    icon: 'cil-settings'
   },
   {
     name: 'Farbentest',
     url: '/color-test',
-    icon: 'cui-brush'
+    icon: 'cil-brush'
   }
 ];
