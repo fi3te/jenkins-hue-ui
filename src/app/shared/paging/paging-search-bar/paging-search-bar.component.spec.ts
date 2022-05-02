@@ -1,5 +1,5 @@
 import { FormsModule } from '@angular/forms';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { PagingSearchBarComponent } from './paging-search-bar.component';
 
@@ -7,7 +7,7 @@ describe('PagingSearchBarComponent', () => {
   let component: PagingSearchBarComponent;
   let fixture: ComponentFixture<PagingSearchBarComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ PagingSearchBarComponent ],
       imports: [ FormsModule ]

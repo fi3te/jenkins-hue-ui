@@ -13,7 +13,7 @@ export class AddTeamComponent {
 
   public name: string;
 
-  @ViewChild('teamName')
+  @ViewChild('teamName', {static: false})
   public teamName: NgModel;
 
   constructor(

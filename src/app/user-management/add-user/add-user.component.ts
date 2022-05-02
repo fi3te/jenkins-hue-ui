@@ -15,7 +15,7 @@ export class AddUserComponent implements OnInit {
 
   public login: string;
 
-  @ViewChild('loginName')
+  @ViewChild('loginName', {static: false})
   public loginName: NgModel;
 
   private teamId: number;

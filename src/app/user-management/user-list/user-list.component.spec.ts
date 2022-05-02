@@ -1,21 +1,21 @@
-import { HttpClientModule, HttpClient } from '@angular/common/http';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { UserListComponent } from './user-list.component';
 import { PagingModule } from '../../shared/paging/paging.module';
 import { RoleService } from '../../shared/role/role.service';
-import { BsModalService, ModalModule } from 'ngx-bootstrap/modal';
 import { RouterTestingModule } from '@angular/router/testing';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 describe('UserListComponent', () => {
   let component: UserListComponent;
   let fixture: ComponentFixture<UserListComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ UserListComponent ],
-      imports: [ PagingModule, HttpClientModule, ModalModule.forRoot(), RouterTestingModule ],
-      providers: [ HttpClient, RoleService, BsModalService ]
+      imports: [ PagingModule, HttpClientModule, RouterTestingModule ],
+      providers: [ HttpClient, RoleService, NgbModal ]
     })
     .compileComponents();
   }));

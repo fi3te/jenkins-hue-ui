@@ -1,20 +1,20 @@
-import { BsModalRef } from 'ngx-bootstrap/modal';
 import { NgSelectModule } from '@ng-select/ng-select';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { AddScenariosModalComponent } from './add-scenarios-modal.component';
 import { ModalHeaderComponent } from '../../shared/modal-building-block/modal-header/modal-header.component';
 import { FormsModule } from '@angular/forms';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 describe('AddScenariosModalComponent', () => {
   let component: AddScenariosModalComponent;
   let fixture: ComponentFixture<AddScenariosModalComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ AddScenariosModalComponent, ModalHeaderComponent ],
       imports: [ FormsModule, NgSelectModule ],
-      providers: [ BsModalRef ]
+      providers: [ NgbActiveModal ]
     })
     .compileComponents();
   }));

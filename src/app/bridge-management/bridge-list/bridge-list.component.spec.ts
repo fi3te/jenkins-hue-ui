@@ -1,6 +1,6 @@
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { BridgeListComponent } from './bridge-list.component';
 import { PagingBarComponent } from '../../shared/paging/paging-bar/paging-bar.component';
@@ -12,7 +12,7 @@ describe('BridgeListComponent', () => {
   let component: BridgeListComponent;
   let fixture: ComponentFixture<BridgeListComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [
         BridgeListComponent,

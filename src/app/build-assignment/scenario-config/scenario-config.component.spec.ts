@@ -1,7 +1,7 @@
 import { ColorPickerModule } from 'ngx-color-picker';
 import { FormsModule } from '@angular/forms';
 import { ScenarioConfigSettingsComponent } from './../../shared/scenario-config-settings/scenario-config-settings.component';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { ScenarioConfigComponent } from './scenario-config.component';
 import { RemoveButtonComponent } from '../remove-button/remove-button.component';
@@ -11,7 +11,7 @@ describe('ScenarioConfigComponent', () => {
   let component: ScenarioConfigComponent;
   let fixture: ComponentFixture<ScenarioConfigComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ ScenarioConfigComponent, RemoveButtonComponent, ScenarioConfigSettingsComponent, SliderComponent ],
       imports: [ FormsModule, ColorPickerModule ]

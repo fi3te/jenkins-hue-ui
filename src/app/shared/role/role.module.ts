@@ -5,6 +5,7 @@ import { ChangeRolesModalComponent } from './change-roles-modal/change-roles-mod
 import { RoleService } from './role.service';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { ModalBuildingBlockModule } from '../modal-building-block/modal-building-block.module';
+import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   imports: [
@@ -20,7 +21,10 @@ import { ModalBuildingBlockModule } from '../modal-building-block/modal-building
     ChangeRolesModalComponent
   ],
   providers: [
-    RoleService
+    RoleService,
+    NgbModalConfig,
+    NgbModal
   ]
 })
-export class RoleModule { }
+export class RoleModule {
+}

@@ -6,7 +6,7 @@ describe('BridgeOwnershipService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: BridgeOwnershipService = TestBed.get(BridgeOwnershipService);
+    const service: BridgeOwnershipService = TestBed.inject(BridgeOwnershipService);
     expect(service).toBeTruthy();
   });
 });

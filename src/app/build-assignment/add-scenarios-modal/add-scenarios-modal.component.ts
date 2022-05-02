@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { BsModalRef } from 'ngx-bootstrap/modal';
 import { SimpleEnum } from '../../service/model/simple-enum.model';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-add-scenarios-modal',
@@ -12,15 +12,14 @@ export class AddScenariosModalComponent {
   public scenarios: SimpleEnum[];
   public selectedScenarios: SimpleEnum[];
 
-  constructor(public bsModalRef: BsModalRef) { }
+  constructor(private activeModal: NgbActiveModal) {
+  }
 
   public cancel(): void {
-    this.selectedScenarios = [];
-    this.bsModalRef.hide();
+    this.activeModal.dismiss();
   }
 
   public addScenarios(): void {
-    this.bsModalRef.hide();
+    this.activeModal.close(this.selectedScenarios);
   }
-
 }

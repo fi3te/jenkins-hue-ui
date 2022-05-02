@@ -6,7 +6,7 @@ describe('TeamManagementService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: TeamManagementService = TestBed.get(TeamManagementService);
+    const service: TeamManagementService = TestBed.inject(TeamManagementService);
     expect(service).toBeTruthy();
   });
 });

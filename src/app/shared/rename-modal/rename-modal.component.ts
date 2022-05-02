@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { BsModalRef } from 'ngx-bootstrap/modal';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-rename-modal',
@@ -11,16 +11,14 @@ export class RenameModalComponent {
   public title: string;
   public icon: string;
   public name: string;
-  public saved: boolean;
 
-  constructor(public bsModalRef: BsModalRef) { }
+  constructor(private activeModal: NgbActiveModal) { }
 
   public cancel(): void {
-    this.bsModalRef.hide();
+    this.activeModal.dismiss();
   }
 
   public save(): void {
-    this.saved = true;
-    this.bsModalRef.hide();
+    this.activeModal.close(this.name);
   }
 }

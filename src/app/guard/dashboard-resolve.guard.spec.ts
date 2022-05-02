@@ -1,4 +1,4 @@
-import { TestBed, async, inject } from '@angular/core/testing';
+import { TestBed, inject, waitForAsync } from '@angular/core/testing';
 
 import { DashboardResolveGuard } from './dashboard-resolve.guard';
 import { HttpClientModule, HttpClient } from '@angular/common/http';

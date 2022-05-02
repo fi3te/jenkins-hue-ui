@@ -10,7 +10,7 @@ describe('TeamService', () => {
   }));
 
   it('should be created', () => {
-    const service: TeamService = TestBed.get(TeamService);
+    const service: TeamService = TestBed.inject(TeamService);
     expect(service).toBeTruthy();
   });
 });

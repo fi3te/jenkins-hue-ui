@@ -1,6 +1,6 @@
-import { SessionService } from './../../service/session.service';
+import { SessionService } from '../../service/session.service';
 import { Component } from '@angular/core';
-import { navItems } from './../../_nav';
+import { navItems } from '../../_nav';
 
 @Component({
   selector: 'app-dashboard',

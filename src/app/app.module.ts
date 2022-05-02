@@ -13,10 +13,6 @@ import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppAsideModule, AppFooterModule, AppHeaderModule, AppSidebarModule } from '@coreui/angular';
-import { AlertModule } from 'ngx-bootstrap/alert';
-import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
-import { TabsModule } from 'ngx-bootstrap/tabs';
-import { TimepickerModule } from 'ngx-bootstrap/timepicker';
 import { PerfectScrollbarConfigInterface, PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { tap } from 'rxjs/operators';
 
@@ -28,6 +24,7 @@ import { LoginComponent } from './login/login.component';
 import { AlertService } from './service/alert.service';
 import { SessionService } from './service/session.service';
 import { PageTitleComponent } from './page-title/page-title.component';
+import { NgbAlertModule, NgbDropdown, NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
@@ -87,13 +84,11 @@ export function init(sessionService: SessionService) {
     AppHeaderModule,
     AppSidebarModule,
     PerfectScrollbarModule,
-    BsDropdownModule.forRoot(),
-    TabsModule.forRoot(),
-    TimepickerModule.forRoot(),
-    AlertModule.forRoot(),
     HttpClientModule,
     HttpClientXsrfModule,
-    FormsModule
+    FormsModule,
+    NgbAlertModule,
+    NgbDropdownModule
   ],
   declarations: [
     AppComponent,
@@ -119,7 +114,8 @@ export function init(sessionService: SessionService) {
       useFactory: init,
       deps: [SessionService],
       multi: true
-    }
+    },
+    NgbDropdown
   ],
   bootstrap: [AppComponent]
 })

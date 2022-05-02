@@ -1,17 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { BsModalService } from 'ngx-bootstrap/modal';
-import { BsModalRef } from 'ngx-bootstrap/modal';
 
 import { LampService } from '../../service/http/lamp.service';
 import { SessionService } from '../../service/session.service';
 import { RenameModalComponent } from '../../shared/rename-modal/rename-modal.component';
-import { DTO } from './../../generated-dtos.model';
-import { AlertService } from './../../service/alert.service';
-import { LampOwnershipService } from './../lamp-ownership.service';
-
+import { DTO } from '../../generated-dtos.model';
+import { AlertService } from '../../service/alert.service';
+import { LampOwnershipService } from '../lamp-ownership.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import TeamLampsDTO = DTO.TeamLampsDTO;
 import TeamLampsDTO_LampDTO = DTO.TeamLampsDTO_LampDTO;
+import { modalErrorHandler } from '../../shared/util';
 
 @Component({
   selector: 'app-lamp-list',
@@ -28,10 +27,11 @@ export class LampListComponent implements OnInit {
     private sessionService: SessionService,
     private lampService: LampService,
     private alertService: AlertService,
-    private modalService: BsModalService,
+    private modalService: NgbModal,
     private route: ActivatedRoute,
     private lampOwnershipService: LampOwnershipService
-  ) {}
+  ) {
+  }
 
   public ngOnInit(): void {
     this.teamId = this.sessionService.getTeamId();
@@ -59,30 +59,20 @@ export class LampListComponent implements OnInit {
   }
 
   public renameLamp(lamp: TeamLampsDTO_LampDTO) {
-    const initialState = {
-      title: 'Lampe umbenennen',
-      icon: 'icon-bulb',
-      name: lamp.name
-    };
-
-    const bsModalRef: BsModalRef = this.modalService.show(
-      RenameModalComponent,
-      { initialState }
-    );
-
-    const subscription = this.modalService.onHide.subscribe(() => {
-      const saved = bsModalRef.content.saved;
-      const name = bsModalRef.content.name;
-      if (saved && name) {
-        this.lampService.rename({ id: lamp.id, name: name }).subscribe(() => {
+    const ngbModalRef = this.modalService.open(RenameModalComponent);
+    ngbModalRef.componentInstance.title = 'Lampe umbenennen';
+    ngbModalRef.componentInstance.icon = 'icon-bulb';
+    ngbModalRef.componentInstance.name = lamp.name;
+    ngbModalRef.result.then((name?: string) => {
+      if (name) {
+        this.lampService.rename({id: lamp.id, name: name}).subscribe(() => {
           lamp.name = name;
           this.alertService.info('Lampe umbenannt!');
         });
-      } else if (saved) {
+      } else {
         this.alertService.warning('Eingabe ungültig!');
       }
-      subscription.unsubscribe();
-    });
+    }).catch(modalErrorHandler);
   }
 
   public pulseOnce(lamp: TeamLampsDTO_LampDTO) {
