@@ -13,7 +13,6 @@
           <th>Hue-ID</th>
           <th>Name</th>
           <th>Typ</th>
-          <th>Hersteller</th>
           <th>Aktionen</th>
         </tr>
       </thead>
@@ -22,7 +21,6 @@
           <td>{{ l.uniqueId }}</td>
           <td>{{ l.name }}</td>
           <td>{{ l.type }}</td>
-          <td>{{ l.manufacturerName }}</td>
           <td>
             <button class="btn btn-sm btn-light mr-1" (click)="pulseOnce(l)">Pulsieren lassen</button>
             <button class="btn btn-sm btn-light" (click)="takeLamp(l)" [disabled]="isTaking">Übernehmen</button>

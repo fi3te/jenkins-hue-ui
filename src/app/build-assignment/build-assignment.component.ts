@@ -1,5 +1,5 @@
 import { AccordionStateService } from './accordion-state.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, Injectable, OnInit } from '@angular/core';
 
 import { DTO } from '../generated-dtos.model';
 import { JenkinsService } from '../service/http/jenkins.service';
@@ -11,8 +11,7 @@ import { AddJobsModalComponent } from './add-jobs-modal/add-jobs-modal.component
 import { AddScenariosModalComponent } from './add-scenarios-modal/add-scenarios-modal.component';
 import { ActivatedRoute } from '@angular/router';
 import { Animations } from '../shared/animations';
-import { NgbTimeNumberAdapter } from './ngb-time-number-adapter';
-import { NgbModal, NgbTimeAdapter } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, NgbTimeAdapter, NgbTimeStruct } from '@ng-bootstrap/ng-bootstrap';
 import { modalErrorHandler } from '../shared/util';
 import TeamLampsDTO_LampDTO = DTO.TeamLampsDTO_LampDTO;
 import ScenarioConfigDTO = DTO.ScenarioConfigDTO;
@@ -21,12 +20,33 @@ import LampGroupedScenariosDTO = DTO.LampGroupedScenariosDTO;
 import TeamLampsDTO = DTO.TeamLampsDTO;
 import LampUpdateDTO = DTO.LampUpdateDTO;
 
+const twoDigits = (i: number): string => (i < 10 ? `0${i}` : `${i}`);
+
+@Injectable()
+export class NgbIsoTimeAdapter extends NgbTimeAdapter<string> {
+  fromModel(value: string | null): NgbTimeStruct | null {
+    if (!value) {
+      return null;
+    }
+    const components = value.split(':');
+    return {
+      hour: parseInt(components[0], 10),
+      minute: parseInt(components[1], 10),
+      second: parseInt(components[2], 10),
+    };
+  }
+
+  toModel(time: NgbTimeStruct | null): string | null {
+    return time != null ? `${twoDigits(time.hour)}:${twoDigits(time.minute)}:${twoDigits(time.second)}` : null;
+  }
+}
+
 @Component({
   selector: 'app-build-assignment',
   templateUrl: './build-assignment.component.html',
   styleUrls: ['./build-assignment.component.scss'],
   animations: [Animations.slideInOut],
-  providers: [{provide: NgbTimeAdapter, useClass: NgbTimeNumberAdapter}]
+  providers: [{provide: NgbTimeAdapter, useClass: NgbIsoTimeAdapter}]
 })
 export class BuildAssignmentComponent implements OnInit {
 

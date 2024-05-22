@@ -36,8 +36,8 @@
           <tr *ngFor="let l of filteredLamps">
             <td>{{ l.hueUniqueId }}</td>
             <td>{{ l.name }}</td>
-            <td>{{ l.workingStart | date:'HH:mm' }} Uhr</td>
-            <td>{{ l.workingEnd | date:'HH:mm' }} Uhr</td>
+            <td>{{ l.workingStart }}</td>
+            <td>{{ l.workingEnd }}</td>
             <td>{{ l.jobs.length }}</td>
             <td>
               <button class="btn btn-sm btn-primary mr-1" (click)="pulseOnce(l)">Pulsieren lassen</button>

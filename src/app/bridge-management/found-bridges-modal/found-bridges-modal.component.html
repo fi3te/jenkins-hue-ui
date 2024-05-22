@@ -5,7 +5,6 @@
   <table class="table table-striped" *ngIf="bridges.length">
     <thead>
       <tr>
-        <th>ID</th>
         <th>IP-Adresse</th>
         <th>MAC-Adresse</th>
         <th>Name</th>
@@ -14,9 +13,8 @@
     </thead>
     <tbody>
       <tr *ngFor="let b of bridges">
-        <td>{{ b.id }}</td>
-        <td>{{ b.internalipaddress }}</td>
-        <td>{{ b.macaddress }}</td>
+        <td>{{ b.ip }}</td>
+        <td>{{ b.mac }}</td>
         <td>{{ b.name }}</td>
         <td>
           <button type="button" class="btn btn-light" (click)="addBridge(b)">Bridge hinzufügen</button>

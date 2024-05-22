@@ -57,7 +57,7 @@ export class AddBridgeComponent implements OnInit {
       ngbModalRef.componentInstance.bridges = next;
       ngbModalRef.result.then((selectedBridge?: FoundBridgeDTO) => {
         if (selectedBridge) {
-          this.createBridgeFormless(selectedBridge.internalipaddress);
+          this.createBridgeFormless(selectedBridge.ip);
         }
       }).catch(modalErrorHandler);
     });
