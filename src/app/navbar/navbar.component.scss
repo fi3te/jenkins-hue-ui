@@ -1,0 +1,35 @@
+@import "scss/variables";
+
+.jh-navbar {
+  position: absolute;
+  width: 100%;
+  padding-left: 0;
+
+  ul {
+    margin-left: auto;
+  }
+}
+
+@media (max-width: 991px) {
+  .jh-navbar {
+    justify-content: space-between;
+
+    ul {
+      margin-left: unset;
+    }
+  }
+}
+
+.jh-navbar-toggler {
+  border: none;
+  outline: none;
+  width: $sidebarItemSize;
+}
+
+.dropdown-toggle::after {
+  content: unset !important;
+}
+
+.dropdown-menu {
+  position: absolute;
+}

@@ -1,0 +1,56 @@
+@import 'scss/variables';
+
+.jh-sidebar {
+  height: 100%;
+  background-color: var(--gray-dark);
+  padding: 0 0 1px 0;
+}
+
+.jh-item {
+  z-index: 99999;
+  width: 100%;
+  height: $sidebarItemSize;
+  color: var(--white);
+  cursor: pointer;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: -1px;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+.jh-item:hover {
+  background: var(--blue);
+
+  .jh-item-icon {
+    color: var(--white);
+  }
+}
+
+.jh-item-active {
+  background-color: #3f454a;
+
+  .jh-item-icon {
+    color: var(--blue);
+  }
+}
+
+.jh-item-icon {
+  width: $sidebarItemSize;
+  height: $sidebarItemSize;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.jh-open-compact {
+  width: $sidebarItemSize;
+  transition: 0.2s;
+}
+
+.jh-open-wide {
+  width: 200px;
+  transition: 0.2s;
+}

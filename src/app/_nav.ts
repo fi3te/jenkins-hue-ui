@@ -1,4 +1,11 @@
-export const navItems = [
+export interface NavItem {
+  name: string;
+  url: string;
+  icon: string;
+  hover?: boolean;
+}
+
+export const navItems: NavItem[] = [
   {
     name: 'Dashboard',
     url: '/dashboard',

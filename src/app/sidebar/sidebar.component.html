@@ -1,0 +1,30 @@
+<div class="jh-sidebar d-flex flex-column justify-content-between"
+     *ngIf="mode != Mode.CLOSED"
+     [class.jh-open-compact]="mode == Mode.OPEN_COMPACT"
+     [class.jh-open-wide]="mode == Mode.OPEN_WIDE">
+  <div class="list-group" *ngIf="(currentUrl$ | async) as currentUrl">
+    <div *ngFor="let navItem of navItems"
+         [routerLink]="navItem.url"
+         class="jh-item"
+         [class.jh-item-active]="navItem.url == currentUrl"
+         [class.jh-open-wide]="navItem.hover"
+         (mouseover)="navItem.hover = true"
+         (mouseout)="navItem.hover = false"
+    >
+      <div class="jh-item-icon">
+        <i [class]="navItem.icon" [class.icon]="true"></i>
+      </div>
+      <div *ngIf="mode == Mode.OPEN_WIDE || navItem.hover">
+        {{ navItem.name }}
+      </div>
+    </div>
+  </div>
+
+  <div class="jh-item flex-row-reverse" (click)="compactTogglerClick.emit()">
+    <div class="jh-item-icon">
+      <i [class.icon-arrow-left]="!compact"
+         [class.icon-arrow-right]="compact"
+         [class.icon]="true"></i>
+    </div>
+  </div>
+</div>

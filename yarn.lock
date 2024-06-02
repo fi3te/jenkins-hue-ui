@@ -1264,13 +1264,6 @@
   resolved "https://registry.yarnpkg.com/@colors/colors/-/colors-1.5.0.tgz#bb504579c1cae923e6576a4f5da43d25f97bdbd9"
   integrity sha512-ooWCrlZP11i8GImSjTHYHLkvFDP48nS4+204nGb1RiX/WXYHmJA2III9/e2DWVabCESdW7hBAEzHRqUn9OUVvQ==
 
-"@coreui/angular@~2.13.1":
-  version "2.13.1"
-  resolved "https://registry.yarnpkg.com/@coreui/angular/-/angular-2.13.1.tgz#3025fc505a5e43bdc102a4aa600881c700f8cc23"
-  integrity sha512-cFBiAsmneYAVURlTR3Kmnfdv7s+/C5RmGIvA2SdhqQfyQYjBmUfSI2DrBx6qM0jD4COsEm9+YrejhtpgMwUKxA==
-  dependencies:
-    tslib "^2.3.0"
-
 "@coreui/coreui-plugin-npm-postinstall@^1.0.2":
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/@coreui/coreui-plugin-npm-postinstall/-/coreui-plugin-npm-postinstall-1.0.2.tgz#6daeb2ec786580d9c0849b05bc3e8d0222d5c463"

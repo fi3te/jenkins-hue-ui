@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-import { DTO } from './../generated-dtos.model';
+import { DTO } from '../generated-dtos.model';
 import { UniversalService } from './http/universal.service';
 import { Credentials } from './model/credentials.model';
 import { Principal } from './model/principal.model';

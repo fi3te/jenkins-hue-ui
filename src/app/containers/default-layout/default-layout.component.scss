@@ -4,6 +4,15 @@
   }
 }
 
-.dropdown-toggle::after {
-  content: unset !important;
+.jh-content {
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+  max-height: 100vh;
+  padding-top: 53px;
+}
+
+.jh-section {
+  flex-grow: 1;
+  overflow-y: auto;
 }
