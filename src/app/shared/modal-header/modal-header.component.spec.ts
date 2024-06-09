@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { ModalHeaderComponent } from './modal-header.component';
+import { RemoveButtonComponent } from '../remove-button/remove-button.component';
 
 describe('ModalHeaderComponent', () => {
   let component: ModalHeaderComponent;
@@ -8,7 +9,7 @@ describe('ModalHeaderComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ ModalHeaderComponent ]
+      declarations: [ ModalHeaderComponent, RemoveButtonComponent ]
     })
     .compileComponents();
   }));

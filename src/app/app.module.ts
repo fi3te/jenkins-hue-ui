@@ -12,7 +12,6 @@ import { APP_INITIALIZER, Injectable, NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { PerfectScrollbarConfigInterface, PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { tap } from 'rxjs/operators';
 
 import { AlertContainerComponent } from './alert-container/alert-container.component';
@@ -26,10 +25,6 @@ import { PageTitleComponent } from './page-title/page-title.component';
 import { NgbAlertModule, NgbDropdown, NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { NavbarComponent } from './navbar/navbar.component';
-
-const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
-  suppressScrollX: true
-};
 
 // Import containers
 const APP_CONTAINERS = [DefaultLayoutComponent];
@@ -80,7 +75,6 @@ export function init(sessionService: SessionService) {
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    PerfectScrollbarModule,
     HttpClientModule,
     HttpClientXsrfModule,
     FormsModule,
