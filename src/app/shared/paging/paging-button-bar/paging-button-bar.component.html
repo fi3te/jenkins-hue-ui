@@ -1,12 +1,12 @@
 <div class="jh-button-bar">
   <div class="form-group">
-    <span class="text-success mr-1 jh-paging-text">Anzahl: {{ pagingService?.count }}</span>
+    <span class="text-success me-1 jh-paging-text">Anzahl: {{ pagingService?.count }}</span>
   </div>
 
   <div class="form-group jh-center-vertical">
-    <span class="text-success mr-1 jh-paging-text">{{ pagingService?.page + 1 }}/{{ pagingService?.lastPage + 1 }}</span>
+    <span class="text-success me-1 jh-paging-text">{{ pagingService?.page + 1 }}/{{ pagingService?.lastPage + 1 }}</span>
 
-    <div class="mr-1">
+    <div class="me-1">
       <select class="form-control" [ngModel]="pagingService?.pageSize" (ngModelChange)="pagingService.pageSize = $event" (change)="pagingService.pageSizeHasChanged()">
         <option [ngValue]="5">5</option>
         <option [ngValue]="10">10</option>

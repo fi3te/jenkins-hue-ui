@@ -8,10 +8,8 @@
       <div class="form-group">
         <label><i class="fa" [ngClass]="{'fa-times-circle-o': loginName.invalid && loginName.dirty, 'fa-check': loginName.valid}"></i> Login:</label>
         <div class="input-group">
-          <div class="input-group-prepend">
-            <span class="input-group-text">
-              <i class="cil-user"></i>
-            </span>
+          <div class="input-group-text">
+            <i class="cil-user"></i>
           </div>
           <input type="text" class="form-control" [class.is-invalid]="loginName.invalid && loginName.dirty" [class.is-valid]="loginName.valid"
           name="login" placeholder="Login eingeben" #loginName="ngModel" [(ngModel)]="login" required="required" (keyup.enter)="createUser()">
@@ -19,7 +17,7 @@
       </div>
     </div>
     <div class="card-footer">
-      <button type="button" class="btn btn-success mr-1" [disabled]="loginName.invalid" (click)="createUser()">Anlegen</button>
+      <button type="button" class="btn btn-success me-1" [disabled]="loginName.invalid" (click)="createUser()">Anlegen</button>
     </div>
   </form>
 </div>

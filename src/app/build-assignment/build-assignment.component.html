@@ -12,7 +12,7 @@
         <div class="form-group">
           <label><u>Arbeitszeit</u></label>
           <div class="input-group">
-            <ngb-timepicker class="mr-4" [minuteStep]="15" [meridian]="false" [(ngModel)]="lampDTO.workingStart"></ngb-timepicker>
+            <ngb-timepicker class="me-4" [minuteStep]="15" [meridian]="false" [(ngModel)]="lampDTO.workingStart"></ngb-timepicker>
             <ngb-timepicker [minuteStep]="15" [meridian]="false" [(ngModel)]="lampDTO.workingEnd"></ngb-timepicker>
           </div>
         </div><!-- /.form group -->
@@ -47,7 +47,7 @@
         </div><!-- /.form group -->
 
         <div class="form-group jh-gap-normal">
-          <button class="btn btn-success mr-1" (click)="saveLamp(lampDTO)">Speichern</button>
+          <button class="btn btn-success me-1" (click)="saveLamp(lampDTO)">Speichern</button>
           <button class="btn btn-light" (click)="resetLamp(lampDTO)">Zurücksetzen</button>
         </div><!-- /.form group -->
       </div>

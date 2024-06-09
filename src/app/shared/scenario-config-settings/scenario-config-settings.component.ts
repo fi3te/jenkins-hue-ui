@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 
-import { DTO } from './../../generated-dtos.model';
+import { DTO } from '../../generated-dtos.model';
 
 import ScenarioConfigDTO = DTO.ScenarioConfigDTO;
 

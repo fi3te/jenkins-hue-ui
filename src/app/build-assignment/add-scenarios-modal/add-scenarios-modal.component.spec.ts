@@ -2,7 +2,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { AddScenariosModalComponent } from './add-scenarios-modal.component';
-import { ModalHeaderComponent } from '../../shared/modal-building-block/modal-header/modal-header.component';
+import { ModalHeaderComponent } from '../../shared/modal-header/modal-header.component';
 import { FormsModule } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 

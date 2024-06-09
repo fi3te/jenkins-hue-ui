@@ -6,10 +6,8 @@
 
       <div class="form-group">
         <div class="input-group">
-          <div class="input-group-prepend">
-            <span class="input-group-text">
-              <i class="fa fa-search"></i>
-            </span>
+          <div class="input-group-text">
+            <i class="fa fa-search"></i>
           </div>
           <input type="text" name="searchItem" class="form-control" placeholder="Suchen" [(ngModel)]="searchItem" (ngModelChange)="filter()">
         </div>
@@ -40,8 +38,8 @@
             <td>{{ l.workingEnd }}</td>
             <td>{{ l.jobs.length }}</td>
             <td>
-              <button class="btn btn-sm btn-primary mr-1" (click)="pulseOnce(l)">Pulsieren lassen</button>
-              <button class="btn btn-sm btn-light mr-1" (click)="renameLamp(l)">Umbenennen</button>
+              <button class="btn btn-sm btn-primary me-1" (click)="pulseOnce(l)">Pulsieren lassen</button>
+              <button class="btn btn-sm btn-light me-1" (click)="renameLamp(l)">Umbenennen</button>
               <button class="btn btn-sm btn-light" (click)="releaseLamp(l)">Freigeben</button>
             </td>
           </tr>

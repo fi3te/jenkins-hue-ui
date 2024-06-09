@@ -8,10 +8,8 @@
       <div class="form-group">
         <label><i class="fa" [ngClass]="{'fa-times-circle-o': teamName.invalid && teamName.dirty, 'fa-check': teamName.valid}"></i> Team-Name:</label>
         <div class="input-group">
-          <div class="input-group-prepend">
-            <span class="input-group-text">
-              <i class="cil-people"></i>
-            </span>
+          <div class="input-group-text">
+            <i class="cil-people"></i>
           </div>
           <input type="text" class="form-control" [class.is-invalid]="teamName.invalid && teamName.dirty" [class.is-valid]="teamName.valid"
           name="name" placeholder="Name eingeben" #teamName="ngModel" [(ngModel)]="name" required="required" (keyup.enter)="createTeam()">
@@ -19,7 +17,7 @@
       </div>
     </div>
     <div class="card-footer">
-      <button type="button" class="btn btn-success mr-1" [disabled]="teamName.invalid" (click)="createTeam()">Anlegen</button>
+      <button type="button" class="btn btn-success me-1" [disabled]="teamName.invalid" (click)="createTeam()">Anlegen</button>
     </div>
   </form>
 </div>

@@ -8,7 +8,7 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { BuildAssignmentComponent } from './build-assignment.component';
 import { NgbModal, NgbTimepickerModule } from '@ng-bootstrap/ng-bootstrap';
-import { RemoveButtonComponent } from './remove-button/remove-button.component';
+import { RemoveButtonComponent } from '../shared/remove-button/remove-button.component';
 import { ScenarioConfigComponent } from './scenario-config/scenario-config.component';
 import { ScenarioConfigSettingsComponent } from '../shared/scenario-config-settings/scenario-config-settings.component';
 import { SliderComponent } from '../shared/scenario-config-settings/slider/slider.component';

@@ -8,10 +8,8 @@
       <div class="form-group">
         <label><i class="fa" [ngClass]="{'fa-times-circle-o': bridgeIp.invalid && bridgeIp.dirty, 'fa-check': bridgeIp.valid}"></i> IP-Adresse:</label>
         <div class="input-group">
-          <div class="input-group-prepend">
-            <span class="input-group-text">
-              <i class="cil-router"></i>
-            </span>
+          <div class="input-group-text">
+            <i class="cil-router"></i>
           </div>
           <input type="text" class="form-control" [class.is-invalid]="bridgeIp.invalid && bridgeIp.dirty" [class.is-valid]="bridgeIp.valid"
           name="ip" placeholder="IP-Adresse eingeben" #bridgeIp="ngModel" [(ngModel)]="ip" required="required" [pattern]="ipPattern" (keyup.enter)="createBridge()">
@@ -19,7 +17,7 @@
       </div>
     </div>
     <div class="card-footer">
-      <button type="button" class="btn btn-success mr-1" [disabled]="bridgeIp.invalid" (click)="createBridge()">Anlegen</button>
+      <button type="button" class="btn btn-success me-1" [disabled]="bridgeIp.invalid" (click)="createBridge()">Anlegen</button>
       <button type="button" class="btn btn-light" (click)="searchForBridges()" [disabled]="loadingBridges">Nach
         Bridges suchen</button>
     </div>

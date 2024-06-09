@@ -2,10 +2,8 @@
 <div class="modal-body">
   <div class="form-group">
     <div class="input-group">
-      <div class="input-group-prepend" *ngIf="icon">
-        <span class="input-group-text">
-          <i [ngClass]="icon"></i>
-        </span>
+      <div class="input-group-text" *ngIf="icon">
+        <i [ngClass]="icon"></i>
       </div>
       <input type="text" name="name" class="form-control" placeholder="Name eingeben" [(ngModel)]="name" (keydown.enter)="save()">
     </div><!-- /.input group -->

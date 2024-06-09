@@ -1,17 +1,17 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light jh-navbar">
-  <button type="button" class="jh-navbar-toggler" (click)="navbarTogglerClick.emit()">
+  <button type="button" class="btn jh-navbar-toggler" (click)="navbarTogglerClick.emit()">
     <span class="navbar-toggler-icon"></span>
   </button>
 
   <img src="assets/img/brand/logo.svg" width="89" height="25">
 
   <ul class="nav navbar-nav">
-    <li class="nav-item dropdown" ngbDropdown placement="bottom-right">
+    <li class="nav-item dropdown" ngbDropdown>
       <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"
          ngbDropdownToggle (click)="false">
         <i class="icon-options-vertical"></i>
       </a>
-      <div class="dropdown-menu dropdown-menu-right" ngbDropdownMenu aria-labelledby="simple-dropdown">
+      <div class="dropdown-menu dropdown-menu-end" ngbDropdownMenu aria-labelledby="simple-dropdown">
         <div class="dropdown-header text-center">Eingeloggt als <strong>{{ username }}</strong></div>
         <a class="dropdown-item" href="#" (click)="logout()">Logout</a>
       </div>

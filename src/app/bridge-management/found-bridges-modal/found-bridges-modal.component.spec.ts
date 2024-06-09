@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { FoundBridgesModalComponent } from './found-bridges-modal.component';
-import { ModalHeaderComponent } from '../../shared/modal-building-block/modal-header/modal-header.component';
+import { ModalHeaderComponent } from '../../shared/modal-header/modal-header.component';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 describe('FoundBridgesModalComponent', () => {

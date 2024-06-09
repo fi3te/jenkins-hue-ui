@@ -4,15 +4,15 @@ import { CommonModule } from '@angular/common';
 import { ChangeRolesModalComponent } from './change-roles-modal/change-roles-modal.component';
 import { RoleService } from './role.service';
 import { NgSelectModule } from '@ng-select/ng-select';
-import { ModalBuildingBlockModule } from '../modal-building-block/modal-building-block.module';
 import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
+import { SharedModule } from '../shared.module';
 
 @NgModule({
   imports: [
     CommonModule,
     NgSelectModule,
     FormsModule,
-    ModalBuildingBlockModule
+    SharedModule
   ],
   declarations: [
     ChangeRolesModalComponent

@@ -5,14 +5,14 @@
     </div>
     <div class="card-body">
       <div class="form-group">
-        <label>Lampe(n)</label>
+        <label class="mb-2">Lampe(n)</label>
         <ng-select [items]="lamps" [multiple]="true" bindLabel="name" placeholder="Wähle mindestens eine Lampe aus..." [(ngModel)]="lampTest.lamps">
         </ng-select>
       </div>
       <app-scenario-config-settings [scenarioConfig]="lampTest.scenarioConfig"></app-scenario-config-settings>
     </div>
     <div class="card-footer">
-      <button type="button" class="btn btn-primary mr-1" (click)="testScenario()">Testen</button>
+      <button type="button" class="btn btn-primary me-1" (click)="testScenario()">Testen</button>
       <button type="button" class="btn btn-light" (click)="turnLampsOff()">Lampe(n) ausschalten</button>
     </div>
   </div>

@@ -1,11 +1,11 @@
 import { ColorPickerModule } from 'ngx-color-picker';
 import { FormsModule } from '@angular/forms';
-import { ScenarioConfigSettingsComponent } from './../../shared/scenario-config-settings/scenario-config-settings.component';
+import { ScenarioConfigSettingsComponent } from '../../shared/scenario-config-settings/scenario-config-settings.component';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { ScenarioConfigGroupComponent } from './scenario-config-group.component';
 import { ScenarioConfigComponent } from '../scenario-config/scenario-config.component';
-import { RemoveButtonComponent } from '../remove-button/remove-button.component';
+import { RemoveButtonComponent } from '../../shared/remove-button/remove-button.component';
 import { SliderComponent } from '../../shared/scenario-config-settings/slider/slider.component';
 
 describe('ScenarioConfigGroupComponent', () => {

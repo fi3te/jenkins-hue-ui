@@ -1,5 +1,12 @@
 @import '../../scss/variables';
 
+.jh-content {
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+  align-items: center;
+}
+
 .login-logo {
   font-size: 35px;
   text-align: center;
