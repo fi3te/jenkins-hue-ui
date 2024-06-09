@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 
 import { REST_USERS } from '../service/http/common/constants';
 import { PagingService } from '../shared/paging/paging.service';
-import { DTO } from './../generated-dtos.model';
+import { DTO } from '../generated-dtos.model';
 
 import UserDTO = DTO.UserDTO;
 @Injectable({
