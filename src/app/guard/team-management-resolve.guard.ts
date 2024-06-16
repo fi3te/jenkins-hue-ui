@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
+import { ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { Observable } from 'rxjs';
 
 import { REST_TEAMS } from '../service/http/common/constants';
@@ -12,7 +12,7 @@ import TeamUsersDTO = DTO.TeamUsersDTO;
   providedIn: 'root'
 })
 export class TeamManagementResolveGuard
-  implements Resolve<PagingService<TeamUsersDTO>> {
+   {
   constructor(private httpClient: HttpClient) {}
 
   resolve(

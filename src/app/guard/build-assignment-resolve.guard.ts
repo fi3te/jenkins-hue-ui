@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Resolve } from '@angular/router';
+
 import { Observable } from 'rxjs';
 
 import { DTO } from '../generated-dtos.model';
@@ -11,7 +11,7 @@ import TeamLampsDTO = DTO.TeamLampsDTO;
 @Injectable({
   providedIn: 'root'
 })
-export class BuildAssignmentResolveGuard implements Resolve<TeamLampsDTO> {
+export class BuildAssignmentResolveGuard  {
   constructor(
     private sessionService: SessionService,
     private lampService: LampService

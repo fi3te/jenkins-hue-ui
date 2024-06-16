@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
+import { ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { Observable } from 'rxjs';
 
 import { DTO } from '../generated-dtos.model';
@@ -11,7 +11,7 @@ import TeamUsersDTO = DTO.TeamUsersDTO;
 @Injectable({
   providedIn: 'root'
 })
-export class TeamSettingsResolveGuard implements Resolve<TeamUsersDTO> {
+export class TeamSettingsResolveGuard  {
   constructor(
     private teamService: TeamService,
     private sessionService: SessionService
@@ -20,7 +20,7 @@ export class TeamSettingsResolveGuard implements Resolve<TeamUsersDTO> {
   resolve(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
-  ): Observable<DTO.TeamUsersDTO> {
+  ): Observable<TeamUsersDTO> {
     return this.teamService.findOne(this.sessionService.getTeamId());
   }
 }
