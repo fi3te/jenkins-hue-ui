@@ -1,4 +1,4 @@
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpClient, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
@@ -14,21 +14,19 @@ describe('BridgeListComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [
+    declarations: [
         BridgeListComponent,
         PagingBarComponent,
         PagingSearchBarComponent,
         PagingButtonBarComponent
-      ],
-      imports: [
-        FormsModule,
-        HttpClientModule,
-        RouterTestingModule
-      ],
-      providers: [
-        HttpClient
-      ]
-    })
+    ],
+    imports: [FormsModule,
+        RouterTestingModule],
+    providers: [
+        HttpClient,
+        provideHttpClient(withInterceptorsFromDi())
+    ]
+})
     .compileComponents();
   }));
 

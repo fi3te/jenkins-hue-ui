@@ -1,15 +1,15 @@
 import { TestBed, inject, waitForAsync } from '@angular/core/testing';
 
 import { AuthenticationGuard } from './authentication.guard';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpClient, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { RouterTestingModule } from '@angular/router/testing';
 
 describe('AuthenticationGuard', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientModule, RouterTestingModule],
-      providers: [AuthenticationGuard, HttpClient]
-    });
+    imports: [RouterTestingModule],
+    providers: [AuthenticationGuard, HttpClient, provideHttpClient(withInterceptorsFromDi())]
+});
   });
 
   it('should ...', inject([AuthenticationGuard], (guard: AuthenticationGuard) => {

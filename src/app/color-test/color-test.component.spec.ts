@@ -4,7 +4,7 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { ColorTestComponent } from './color-test.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { SharedModule } from '../shared/shared.module';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 describe('ColorTestComponent', () => {
   let component: ColorTestComponent;
@@ -12,10 +12,10 @@ describe('ColorTestComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ ColorTestComponent ],
-      imports: [ NgSelectModule, FormsModule, SharedModule, HttpClientModule ],
-      providers: [ HttpClient ]
-    })
+    declarations: [ColorTestComponent],
+    imports: [NgSelectModule, FormsModule, SharedModule],
+    providers: [HttpClient, provideHttpClient(withInterceptorsFromDi())]
+})
     .compileComponents();
   }));
 

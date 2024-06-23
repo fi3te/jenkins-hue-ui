@@ -1,4 +1,4 @@
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpClient, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
@@ -10,10 +10,10 @@ describe('AddTeamComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ AddTeamComponent ],
-      imports: [ FormsModule, HttpClientModule ],
-      providers: [ HttpClient ]
-    })
+    declarations: [AddTeamComponent],
+    imports: [FormsModule],
+    providers: [HttpClient, provideHttpClient(withInterceptorsFromDi())]
+})
     .compileComponents();
   }));
 

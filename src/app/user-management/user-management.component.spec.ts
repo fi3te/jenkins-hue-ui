@@ -1,4 +1,4 @@
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { PagingButtonBarComponent } from '../shared/paging/paging-button-bar/paging-button-bar.component';
 import { PagingSearchBarComponent } from '../shared/paging/paging-search-bar/paging-search-bar.component';
 import { PagingBarComponent } from '../shared/paging/paging-bar/paging-bar.component';
@@ -18,25 +18,23 @@ describe('UserManagementComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [
+    declarations: [
         UserManagementComponent,
         AddUserComponent,
         UserListComponent,
         PagingBarComponent,
         PagingSearchBarComponent,
         PagingButtonBarComponent
-      ],
-      imports: [
-        FormsModule,
-        HttpClientModule,
-        RouterTestingModule
-      ],
-      providers: [
+    ],
+    imports: [FormsModule,
+        RouterTestingModule],
+    providers: [
         HttpClient,
         RoleService,
-        NgbModal
-      ]
-    })
+        NgbModal,
+        provideHttpClient(withInterceptorsFromDi())
+    ]
+})
     .compileComponents();
   }));
 

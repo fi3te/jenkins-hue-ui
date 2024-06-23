@@ -1,4 +1,4 @@
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
@@ -12,10 +12,10 @@ describe('LampListComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ LampListComponent ],
-      imports: [ FormsModule, HttpClientModule, RouterTestingModule ],
-      providers: [ HttpClient, NgbModal ]
-    })
+    declarations: [LampListComponent],
+    imports: [FormsModule, RouterTestingModule],
+    providers: [HttpClient, NgbModal, provideHttpClient(withInterceptorsFromDi())]
+})
     .compileComponents();
   }));
 

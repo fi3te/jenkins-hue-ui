@@ -1,4 +1,4 @@
-import { Animations } from './../../shared/animations';
+import { Animations } from '../../shared/animations';
 import { Component, Input } from '@angular/core';
 
 import { DTO } from '../../generated-dtos.model';

@@ -1,10 +1,10 @@
-import { AlertService } from './../../service/alert.service';
+import { AlertService } from '../../service/alert.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgModel } from '@angular/forms';
 
 import { SessionService } from '../../service/session.service';
-import { UserService } from './../../service/http/user.service';
-import { UserManagementService } from './../user-management.service';
+import { UserService } from '../../service/http/user.service';
+import { UserManagementService } from '../user-management.service';
 
 @Component({
   selector: 'app-add-user',

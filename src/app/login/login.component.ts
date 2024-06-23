@@ -16,7 +16,12 @@ export class LoginComponent {
 
   private failedAttempts = 0;
 
-  constructor(private sessionService: SessionService, private alertService: AlertService, private router: Router) { }
+  constructor(
+    private sessionService: SessionService,
+    private alertService: AlertService,
+    private router: Router
+  ) {
+  }
 
   public login(): void {
     this.sessionService.login(this.credentials).subscribe(() => {

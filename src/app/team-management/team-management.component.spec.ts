@@ -1,5 +1,5 @@
 import { RouterTestingModule } from '@angular/router/testing';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { PagingButtonBarComponent } from '../shared/paging/paging-button-bar/paging-button-bar.component';
 import { PagingSearchBarComponent } from '../shared/paging/paging-search-bar/paging-search-bar.component';
 import { PagingBarComponent } from '../shared/paging/paging-bar/paging-bar.component';
@@ -18,17 +18,17 @@ describe('TeamManagementComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [
+    declarations: [
         TeamManagementComponent,
         AddTeamComponent,
         TeamListComponent,
         PagingBarComponent,
         PagingSearchBarComponent,
         PagingButtonBarComponent
-      ],
-      imports: [ FormsModule, HttpClientModule, RouterTestingModule ],
-      providers: [ HttpClient, NgbModal, RoleService ]
-    })
+    ],
+    imports: [FormsModule, RouterTestingModule],
+    providers: [HttpClient, NgbModal, RoleService, provideHttpClient(withInterceptorsFromDi())]
+})
     .compileComponents();
   }));
 

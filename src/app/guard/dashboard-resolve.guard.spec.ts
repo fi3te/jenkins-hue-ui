@@ -1,14 +1,14 @@
 import { TestBed, inject, waitForAsync } from '@angular/core/testing';
 
 import { DashboardResolveGuard } from './dashboard-resolve.guard';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpClient, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 describe('DashboardResolveGuard', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientModule],
-      providers: [DashboardResolveGuard, HttpClient]
-    });
+    imports: [],
+    providers: [DashboardResolveGuard, HttpClient, provideHttpClient(withInterceptorsFromDi())]
+});
   });
 
   it('should ...', inject([DashboardResolveGuard], (guard: DashboardResolveGuard) => {

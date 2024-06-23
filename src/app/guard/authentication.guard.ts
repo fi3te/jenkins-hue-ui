@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
+import { Router } from '@angular/router';
 
 import { SessionService } from '../service/session.service';
 
@@ -7,13 +7,12 @@ import { SessionService } from '../service/session.service';
   providedIn: 'root'
 })
 export class AuthenticationGuard  {
-  constructor(private sessionService: SessionService,
-    private router: Router) {}
+  constructor(
+    private sessionService: SessionService,
+    private router: Router
+  ) {}
 
-  canActivate(
-    next: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot
-  ): boolean {
+  canActivate(): boolean {
     const loggedIn = this.sessionService.isLoggedIn();
     if (!loggedIn) {
       this.router.navigate(['login']);

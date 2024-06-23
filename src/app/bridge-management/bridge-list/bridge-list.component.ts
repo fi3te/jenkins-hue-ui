@@ -4,11 +4,10 @@ import { delay } from 'rxjs/operators';
 import { DTO } from '../../generated-dtos.model';
 import { PagingService } from '../../shared/paging/paging.service';
 import { SessionService } from '../../service/session.service';
-import { BridgeService } from './../../service/http/bridge.service';
-import { BridgeOwnershipService } from './../bridge-ownership.service';
-
-import BridgeDTO = DTO.BridgeDTO;
+import { BridgeService } from '../../service/http/bridge.service';
+import { BridgeOwnershipService } from '../bridge-ownership.service';
 import { ActivatedRoute } from '@angular/router';
+import BridgeDTO = DTO.BridgeDTO;
 
 @Component({
   selector: 'app-bridge-list',

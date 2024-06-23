@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { AvailableLampsComponent } from './available-lamps.component';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 describe('AvailableLampsComponent', () => {
   let component: AvailableLampsComponent;
@@ -9,10 +9,10 @@ describe('AvailableLampsComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ AvailableLampsComponent ],
-      imports: [ HttpClientModule ],
-      providers: [ HttpClient ]
-    })
+    declarations: [AvailableLampsComponent],
+    imports: [],
+    providers: [HttpClient, provideHttpClient(withInterceptorsFromDi())]
+})
     .compileComponents();
   }));
 

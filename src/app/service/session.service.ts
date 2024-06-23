@@ -5,11 +5,10 @@ import { DTO } from '../generated-dtos.model';
 import { UniversalService } from './http/universal.service';
 import { Credentials } from './model/credentials.model';
 import { Principal } from './model/principal.model';
-
-import PrincipalDTO = DTO.PrincipalDTO;
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { REST_LOGIN, REST_LOGOUT } from './http/common/constants';
+import PrincipalDTO = DTO.PrincipalDTO;
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +17,11 @@ export class SessionService {
 
   private principal: Principal;
 
-  constructor(private httpClient: HttpClient, private universalService: UniversalService) {}
+  constructor(
+    private httpClient: HttpClient,
+    private universalService: UniversalService
+  ) {
+  }
 
   public isLoggedIn(): boolean {
     return !!this.principal;
@@ -66,8 +69,8 @@ export class SessionService {
 
   public silentLogin(credentials: Credentials): void {
     this.login(credentials).subscribe(() => {
-        this.fetchPrincipal();
-      });
+      this.fetchPrincipal();
+    });
   }
 
   public login(credentials: Credentials): Observable<any> {
