@@ -1,6 +1,6 @@
-import { AlertService } from './../../service/alert.service';
-import { TeamService } from './../../service/http/team.service';
-import { TeamManagementService } from './../team-management.service';
+import { AlertService } from '../../service/alert.service';
+import { TeamService } from '../../service/http/team.service';
+import { TeamManagementService } from '../team-management.service';
 import { Component, ViewChild } from '@angular/core';
 import { NgModel } from '@angular/forms';
 
@@ -20,7 +20,8 @@ export class AddTeamComponent {
     private teamService: TeamService,
     private teamManagementService: TeamManagementService,
     private alertService: AlertService
-  ) { }
+  ) {
+  }
 
   public createTeam(): void {
     if (this.name) {

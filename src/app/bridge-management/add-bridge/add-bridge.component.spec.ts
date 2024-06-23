@@ -1,4 +1,4 @@
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpClient, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
@@ -11,10 +11,10 @@ describe('AddBridgeComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ AddBridgeComponent ],
-      imports: [ FormsModule, HttpClientModule ],
-      providers: [ HttpClient, NgbModal ]
-    })
+    declarations: [AddBridgeComponent],
+    imports: [FormsModule],
+    providers: [HttpClient, NgbModal, provideHttpClient(withInterceptorsFromDi())]
+})
     .compileComponents();
   }));
 

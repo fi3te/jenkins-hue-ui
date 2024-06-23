@@ -1,12 +1,13 @@
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import {
   HTTP_INTERCEPTORS,
-  HttpClientModule,
-  HttpClientXsrfModule,
   HttpErrorResponse,
   HttpHandler,
   HttpInterceptor,
   HttpRequest,
+  provideHttpClient,
+  withInterceptorsFromDi,
+  withXsrfConfiguration
 } from '@angular/common/http';
 import { APP_INITIALIZER, Injectable, NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -26,9 +27,6 @@ import { NgbAlertModule, NgbDropdown, NgbDropdownModule } from '@ng-bootstrap/ng
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { NavbarComponent } from './navbar/navbar.component';
 
-// Import containers
-const APP_CONTAINERS = [DefaultLayoutComponent];
-
 @Injectable()
 export class XhrInterceptor implements HttpInterceptor {
 
@@ -43,11 +41,13 @@ export class XhrInterceptor implements HttpInterceptor {
 @Injectable()
 export class ErrorResponseInterceptor implements HttpInterceptor {
 
-  constructor(private alertService: AlertService) {}
+  constructor(private alertService: AlertService) {
+  }
 
   intercept(req: HttpRequest<any>, next: HttpHandler) {
     return next.handle(req).pipe(tap(
-      () => {},
+      () => {
+      },
       (error) => {
         if (error instanceof HttpErrorResponse && error.error) {
           const message = error.error.message;
@@ -71,24 +71,25 @@ export function init(sessionService: SessionService) {
 // Import routing module
 // Import 3rd party components
 @NgModule({
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    AppRoutingModule,
-    HttpClientModule,
-    HttpClientXsrfModule,
-    FormsModule,
-    NgbAlertModule,
-    NgbDropdownModule
-  ],
   declarations: [
     AppComponent,
-    ...APP_CONTAINERS,
+    DefaultLayoutComponent,
     LoginComponent,
     AlertContainerComponent,
     PageTitleComponent,
     SidebarComponent,
     NavbarComponent
+  ],
+  bootstrap: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    AppRoutingModule,
+    FormsModule,
+    NgbAlertModule,
+    NgbDropdownModule
   ],
   providers: [
     {
@@ -108,8 +109,9 @@ export function init(sessionService: SessionService) {
       deps: [SessionService],
       multi: true
     },
-    NgbDropdown
-  ],
-  bootstrap: [AppComponent]
+    NgbDropdown,
+    provideHttpClient(withInterceptorsFromDi(), withXsrfConfiguration({cookieName: 'XSRF-TOKEN'}))
+  ]
 })
-export class AppModule {}
+export class AppModule {
+}

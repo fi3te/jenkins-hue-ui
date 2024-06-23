@@ -1,6 +1,6 @@
 import { AccordionStateService } from './accordion-state.service';
 import { RouterTestingModule } from '@angular/router/testing';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { ColorPickerModule } from 'ngx-color-picker';
 import { ScenarioConfigGroupComponent } from './scenario-config-group/scenario-config-group.component';
 import { FormsModule } from '@angular/forms';
@@ -19,27 +19,25 @@ describe('BuildAssignmentComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [
+    declarations: [
         BuildAssignmentComponent,
         RemoveButtonComponent,
         ScenarioConfigGroupComponent,
         ScenarioConfigComponent,
         ScenarioConfigSettingsComponent,
         SliderComponent
-      ],
-      imports: [
-        FormsModule,
+    ],
+    imports: [FormsModule,
         NgbTimepickerModule,
         ColorPickerModule,
-        HttpClientModule,
-        RouterTestingModule
-      ],
-      providers: [
+        RouterTestingModule],
+    providers: [
         NgbModal,
         HttpClient,
-        AccordionStateService
-      ]
-    })
+        AccordionStateService,
+        provideHttpClient(withInterceptorsFromDi())
+    ]
+})
     .compileComponents();
   }));
 

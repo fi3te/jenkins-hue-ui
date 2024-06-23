@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { DTO } from './../generated-dtos.model';
+import { DTO } from '../generated-dtos.model';
 
 import DashboardInformationDTO = DTO.DashboardInformationDTO;
 

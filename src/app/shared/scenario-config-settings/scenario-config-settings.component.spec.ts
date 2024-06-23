@@ -12,7 +12,10 @@ describe('ScenarioConfigSettingsComponent', () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ ScenarioConfigSettingsComponent, SliderComponent ],
-      imports: [ FormsModule, ColorPickerModule ]
+      imports: [
+        FormsModule,
+        ColorPickerModule
+      ]
     })
     .compileComponents();
   }));

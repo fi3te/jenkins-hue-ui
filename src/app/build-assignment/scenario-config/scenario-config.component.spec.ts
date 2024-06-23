@@ -14,7 +14,10 @@ describe('ScenarioConfigComponent', () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ ScenarioConfigComponent, RemoveButtonComponent, ScenarioConfigSettingsComponent, SliderComponent ],
-      imports: [ FormsModule, ColorPickerModule ]
+      imports: [
+        FormsModule,
+        ColorPickerModule
+      ]
     })
     .compileComponents();
   }));

@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 
 import { DTO } from '../../generated-dtos.model';
 import { LampService } from '../../service/http/lamp.service';
-import { AlertService } from './../../service/alert.service';
-import { SessionService } from './../../service/session.service';
-import { LampOwnershipService } from './../lamp-ownership.service';
+import { AlertService } from '../../service/alert.service';
+import { SessionService } from '../../service/session.service';
+import { LampOwnershipService } from '../lamp-ownership.service';
 
 import LampHueDTO = DTO.LampHueDTO;
 import LampCreateDTO = DTO.LampCreateDTO;

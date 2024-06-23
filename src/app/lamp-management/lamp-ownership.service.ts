@@ -1,10 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 
-import { DTO } from './../generated-dtos.model';
-
-import LampDTO = DTO.LampDTO;
-
 @Injectable({
   providedIn: 'root'
 })

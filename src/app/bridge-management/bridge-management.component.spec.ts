@@ -1,4 +1,4 @@
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { PagingButtonBarComponent } from '../shared/paging/paging-button-bar/paging-button-bar.component';
 import { PagingSearchBarComponent } from '../shared/paging/paging-search-bar/paging-search-bar.component';
 import { PagingBarComponent } from '../shared/paging/paging-bar/paging-bar.component';
@@ -17,17 +17,17 @@ describe('BridgeManagementComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [
+    declarations: [
         BridgeManagementComponent,
         AddBridgeComponent,
         BridgeListComponent,
         PagingBarComponent,
         PagingSearchBarComponent,
         PagingButtonBarComponent
-      ],
-      imports: [ FormsModule, HttpClientModule, RouterTestingModule ],
-      providers: [ HttpClient, NgbModal ]
-    })
+    ],
+    imports: [FormsModule, RouterTestingModule],
+    providers: [HttpClient, NgbModal, provideHttpClient(withInterceptorsFromDi())]
+})
     .compileComponents();
   }));
 

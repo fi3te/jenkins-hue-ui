@@ -1,24 +1,20 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { Observable } from 'rxjs';
 
 import { REST_USERS } from '../service/http/common/constants';
 import { PagingService } from '../shared/paging/paging.service';
 import { DTO } from '../generated-dtos.model';
-
 import UserDTO = DTO.UserDTO;
+
 @Injectable({
   providedIn: 'root'
 })
-export class UserManagementResolveGuard
-   {
-  constructor(private httpClient: HttpClient) {}
+export class UserManagementResolveGuard {
+  constructor(private httpClient: HttpClient) {
+  }
 
-  resolve(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot
-  ): Observable<PagingService<UserDTO>> {
+  resolve(): Observable<PagingService<UserDTO>> {
     return PagingService.getInstance<UserDTO>(this.httpClient, REST_USERS);
   }
 }

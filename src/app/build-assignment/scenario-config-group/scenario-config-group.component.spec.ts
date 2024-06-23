@@ -21,7 +21,10 @@ describe('ScenarioConfigGroupComponent', () => {
         RemoveButtonComponent,
         SliderComponent
       ],
-      imports: [ FormsModule, ColorPickerModule ]
+      imports: [
+        FormsModule,
+        ColorPickerModule
+      ]
     })
     .compileComponents();
   }));

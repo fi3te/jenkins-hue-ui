@@ -3,7 +3,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { DTO } from './../../generated-dtos.model';
+import { DTO } from '../../generated-dtos.model';
 import { REST_UNIVERSAL } from './common/constants';
 
 import PrincipalDTO = DTO.PrincipalDTO;

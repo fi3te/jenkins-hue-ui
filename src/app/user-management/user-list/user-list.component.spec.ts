@@ -1,4 +1,4 @@
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { UserListComponent } from './user-list.component';
@@ -13,10 +13,10 @@ describe('UserListComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ UserListComponent ],
-      imports: [ PagingModule, HttpClientModule, RouterTestingModule ],
-      providers: [ HttpClient, RoleService, NgbModal ]
-    })
+    declarations: [UserListComponent],
+    imports: [PagingModule, RouterTestingModule],
+    providers: [HttpClient, RoleService, NgbModal, provideHttpClient(withInterceptorsFromDi())]
+})
     .compileComponents();
   }));
 

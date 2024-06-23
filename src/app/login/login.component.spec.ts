@@ -1,4 +1,4 @@
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
@@ -12,10 +12,10 @@ describe('LoginComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ LoginComponent, AlertContainerComponent ],
-      imports: [ FormsModule, HttpClientModule, RouterTestingModule ],
-      providers: [ HttpClient ]
-    })
+    declarations: [LoginComponent, AlertContainerComponent],
+    imports: [FormsModule, RouterTestingModule],
+    providers: [HttpClient, provideHttpClient(withInterceptorsFromDi())]
+})
     .compileComponents();
   }));
 

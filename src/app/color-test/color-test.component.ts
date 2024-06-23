@@ -1,6 +1,6 @@
-import { AlertService } from './../service/alert.service';
-import { LampService } from './../service/http/lamp.service';
-import { DTO } from './../generated-dtos.model';
+import { AlertService } from '../service/alert.service';
+import { LampService } from '../service/http/lamp.service';
+import { DTO } from '../generated-dtos.model';
 import { Component, OnInit } from '@angular/core';
 
 import LampTestDTO = DTO.LampTestDTO;

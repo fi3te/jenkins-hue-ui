@@ -1,4 +1,4 @@
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpClient, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { TestBed, inject, waitForAsync } from '@angular/core/testing';
 
 import { LampManagementResolveGuard } from './lamp-management-resolve.guard';
@@ -6,9 +6,9 @@ import { LampManagementResolveGuard } from './lamp-management-resolve.guard';
 describe('LampManagementResolveGuard', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientModule],
-      providers: [LampManagementResolveGuard, HttpClient]
-    });
+    imports: [],
+    providers: [LampManagementResolveGuard, HttpClient, provideHttpClient(withInterceptorsFromDi())]
+});
   });
 
   it('should ...', inject([LampManagementResolveGuard], (guard: LampManagementResolveGuard) => {
