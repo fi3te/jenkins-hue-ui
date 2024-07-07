@@ -37,7 +37,7 @@
         <tr *ngFor="let t of teamData?.dtos">
           <td>{{ t.name }}</td>
           <td class="jh-inner-table-container">
-            <button type="button" class="btn btn-sm btn-success" *ngIf="t.users.length < 1" (click)="createUser(t.id)"><i class="fa fa-plus"></i></button>
+            <button type="button" class="btn btn-sm btn-success" *ngIf="t.users.length < 1" (click)="createUser(t.id)"><i class="cil-plus"></i></button>
 
             <table class="table table-condensed jh-inner-table" *ngIf="t.users.length">
               <thead>
@@ -45,7 +45,7 @@
                   <th>Login</th>
                   <th>Rollen</th>
                   <th>
-                    <button type="button" class="btn btn-sm btn-success" (click)="createUser(t.id)"><i class="fa fa-plus"></i></button>
+                    <button type="button" class="btn btn-sm btn-success" (click)="createUser(t.id)"><i class="cil-plus"></i></button>
                   </th>
                 </tr>
               </thead>
@@ -57,7 +57,7 @@
                     <div *ngFor="let r of u.roles">{{ r.text }}</div>
                   </td>
                   <td>
-                    <button class="btn btn-sm btn-primary me-1" (click)="changeRoles(u.id, u.roles)" [disabled]="loadingRoles"><i class="fa fa-pencil"></i></button>
+                    <button class="btn btn-sm btn-primary me-1" (click)="changeRoles(u.id, u.roles)" [disabled]="loadingRoles"><i class="cil-pencil"></i></button>
                     <button type="button" class="btn btn-sm btn-light" (click)="removeUser(u.id)" *ngIf="removingUserPossible(u.id)">Entfernen</button>
                   </td>
                 </tr>

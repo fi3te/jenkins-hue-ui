@@ -8,6 +8,6 @@
   </div>
   <div class="card-footer px-3 py-2">
     <span *ngIf="!link" class="font-xs btn-blocks">&nbsp;</span>
-    <a *ngIf="link" class="font-weight-bold font-xs btn-block text-muted" [href]="link">{{linkText}} <i class="fa fa-angle-right float-right font-lg"></i></a>
+    <a *ngIf="link" class="font-weight-bold font-xs btn-block text-muted d-flex align-items-center" [href]="link">{{linkText}} <i class="ms-1 cil-chevron-circle-right-alt float-right font-lg"></i></a>
   </div>
 </div>

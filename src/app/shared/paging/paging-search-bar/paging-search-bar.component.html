@@ -1,7 +1,7 @@
 <div class="form-group">
   <div class="input-group">
     <div class="input-group-text">
-      <i class="fa fa-search" *ngIf="!pagingService?.searching"></i>
+      <i class="cil-search" *ngIf="!pagingService?.searching"></i>
       <img *ngIf="pagingService?.searching" src="../../../../assets/img/loading.gif" width="14px" height="14px">
     </div>
     <input type="text" class="form-control" placeholder="Suchen" [ngModel]="pagingService?.searchItem" (ngModelChange)="pagingService.searchItem = $event" (input)="pagingService.computeSearch()">
